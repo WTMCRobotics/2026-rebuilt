@@ -10,6 +10,7 @@ import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import edu.wpi.first.math.geometry.Rotation2d;
+import frc.robot.controller.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -17,9 +18,21 @@ import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 
 import frc.robot.generated.TunerConstants;
+
 import frc.robot.subsystems.CommandSwerveDrivetrain;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
+
+import frc.robot.commands.Shoot;
+import frc.robot.commands.Intake;
+import frc.robot.commands.ExtendIntake;
+import frc.robot.commands.RetractIntake;
 
 public class RobotContainer {
+
+    public XboxController controller = new XboxController(0);
+    public XboxController coDriverController = new XboxController(1);
+
     private double MaxSpeed = 1.0 * TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
     private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 3/4 of a rotation per second max angular velocity
 
@@ -36,7 +49,14 @@ public class RobotContainer {
 
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
 
+    private ShooterSubsystem shooter;
+    private IntakeSubsystem intake;
+
+
     public RobotContainer() {
+        shooter = new ShooterSubsystem();
+        intake = new IntakeSubsystem();
+
         configureBindings();
     }
 
@@ -75,6 +95,12 @@ public class RobotContainer {
         joystick.leftBumper().onTrue(drivetrain.runOnce(drivetrain::seedFieldCentric));
 
         drivetrain.registerTelemetry(logger::telemeterize);
+
+        coDriverController.a().whileTrue(new Shoot(shooter, Constants.SHOOTER_SPEED));
+        coDriverController.b().whileTrue(new Intake(intake, Constants.INTAKE_SPEED));
+        coDriverController.dpadUp().onTrue(new ExtendIntake(intake, Constants.INTAKE_EXTENDER_TARGET));
+        coDriverController.dpadDown().onTrue(new RetractIntake(intake, Constants.INTAKE_EXTENDER_ZERO));
+
     }
 
     public Command getAutonomousCommand() {
