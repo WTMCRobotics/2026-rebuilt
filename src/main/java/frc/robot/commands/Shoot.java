@@ -1,24 +1,33 @@
 package frc.robot.commands;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ShooterSubsystem;
 
+import frc.robot.Constants;
+
 public class Shoot extends Command {
     ShooterSubsystem shooterSubsystem;
-    double speed;
+    double rpm;
 
-    public Shoot(ShooterSubsystem shooterSubsystem, double speed) {
+    public Shoot(ShooterSubsystem shooterSubsystem, double rpm) {
         this.shooterSubsystem = shooterSubsystem;
-        this.speed = speed;
+        this.rpm = rpm;
     }
 
-    @Override
+    private final PIDController controller = new PIDController(
+        Constants.SHOOTER_P,
+        Constants.SHOOTER_I,
+        Constants.SHOOTER_D
+    );
+
     public void initialize() {
-        shooterSubsystem.setShooter(speed);
+        controller.setTolerance(Constants.SHOOTER_TOLERANCE);
+        controller.setSetpoint(rpm);
     }
 
-    @Override
     public void execute() {
+        shooterSubsystem.setShooter(controller.calculate(shooterSubsystem.getEncoderVelocity()));
     }
 
     @Override

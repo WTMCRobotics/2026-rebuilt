@@ -8,4 +8,5 @@ public class Constants {
     public static final double SHOOTER_P = 0.0;
     public static final double SHOOTER_I = 0.0;
     public static final double SHOOTER_D = 0.0;
+    public static final double SHOOTER_TOLERANCE = 0.0;
 }
