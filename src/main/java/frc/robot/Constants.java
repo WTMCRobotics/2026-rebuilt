@@ -27,5 +27,8 @@ public class Constants {
     public static final double INTAKE_RETRACTOR_D = 0.0;
     public static final double INTAKE_RETRACTOR_TOLERANCE = 0.0;
     
+    // Climb
+    public static final int CLIMB_RIGHT_ID = 0;
+    public static final int CLIMB_LEFT_ID = 0;
 
 }
