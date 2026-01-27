@@ -9,8 +9,6 @@ import frc.robot.Constants;
 public class ShooterSubsystem implements Subsystem {
     SparkMax shooter = new SparkMax(Constants.SHOOTER_MOTOR_ID, MotorType.kBrushless);
 
-
-
     public void setShooter(double speed) {
         shooter.set(speed);
     }

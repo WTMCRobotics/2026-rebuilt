@@ -32,7 +32,7 @@ public class ExtendIntake extends Command {
 
     @Override
     public boolean isFinished() {
-        return false;
+        return controller.atSetpoint();
     }
 
     @Override
