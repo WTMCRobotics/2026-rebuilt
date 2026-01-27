@@ -35,7 +35,7 @@ public class GenericController {
     /**
      * Get the direction of a dpad.
      * @param id Channel id of the requested dpad.
-     * @return An int corresponding to the dpad's value;
+     * @return An int corresponding to the dpad's angle.
      */
     protected int dpad(int id) {
         return this.internalHID.getHID().getPOV(id);
