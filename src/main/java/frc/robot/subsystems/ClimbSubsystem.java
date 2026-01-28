@@ -7,19 +7,19 @@ import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.Constants;
 
 public class ClimbSubsystem implements Subsystem {
-    SparkMax climbDirection = new SparkMax(Constants.CLIMB_RIGHT_ID, MotorType.kBrushless);
+    SparkMax climbDirection = new SparkMax(Constants.CLIMB_DIRECTION_ID, MotorType.kBrushless);
     SparkMax climbRight = new SparkMax(Constants.CLIMB_RIGHT_ID, MotorType.kBrushless);
     SparkMax climbLeft = new SparkMax(Constants.CLIMB_LEFT_ID, MotorType.kBrushless);
 
-    public void climbDirection(double speed) {
+    public void setClimbDirection(double speed) {
         climbDirection.set(speed);
     }
 
-    public void climbRight(double speed) {
+    public void setClimbRight(double speed) {
         climbRight.set(speed);
     }
 
-    public void climbLeft(double speed) {
+    public void setClimbLeft(double speed) {
         climbLeft.set(speed);
     }
 
