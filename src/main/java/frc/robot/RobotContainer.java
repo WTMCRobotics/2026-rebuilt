@@ -106,8 +106,8 @@ public class RobotContainer {
         coDriverController.dpadDown().onTrue(new RetractIntake(intake, Constants.INTAKE_EXTENDER_ZERO));
         coDriverController.dpadLeft().onTrue(new Climb(climb, true));
         coDriverController.dpadRight().onTrue(new Climb(climb, false));
-        coDriverController.rightBumper().onTrue(new ClimbDirection(climb, false));
-        coDriverController.leftBumper().onTrue(new ClimbDirection(climb, true));
+        coDriverController.startButton().onTrue(new ClimbDirection(climb, false));
+        coDriverController.backButton().onTrue(new ClimbDirection(climb, true));
         
 
     }
