@@ -22,11 +22,14 @@ import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.ClimbSubsystem;
 
 import frc.robot.commands.Shoot;
 import frc.robot.commands.Intake;
 import frc.robot.commands.ExtendIntake;
 import frc.robot.commands.RetractIntake;
+import frc.robot.commands.Climb;
+import frc.robot.commands.ClimbDirection;
 
 public class RobotContainer {
 
@@ -51,6 +54,7 @@ public class RobotContainer {
 
     private ShooterSubsystem shooter;
     private IntakeSubsystem intake;
+    private ClimbSubsystem climb;
 
 
     public RobotContainer() {
@@ -100,6 +104,11 @@ public class RobotContainer {
         coDriverController.b().whileTrue(new Intake(intake, Constants.INTAKE_SPEED));
         coDriverController.dpadUp().onTrue(new ExtendIntake(intake, Constants.INTAKE_EXTENDER_TARGET));
         coDriverController.dpadDown().onTrue(new RetractIntake(intake, Constants.INTAKE_EXTENDER_ZERO));
+        coDriverController.dpadLeft().onTrue(new Climb(climb, true));
+        coDriverController.dpadRight().onTrue(new Climb(climb, false));
+        coDriverController.rightBumper().onTrue(new ClimbDirection(climb, false));
+        coDriverController.leftBumper().onTrue(new ClimbDirection(climb, true));
+        
 
     }
 

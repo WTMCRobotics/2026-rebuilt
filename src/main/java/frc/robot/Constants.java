@@ -32,15 +32,17 @@ public class Constants {
     public static final int CLIMB_RIGHT_ID = 0;
     public static final int CLIMB_LEFT_ID = 0;
 
-    public static final double CLIMB_DIRECTON_UP_P = 0.0;
-    public static final double CLIMB_DIRECTON_UP_I = 0.0;
-    public static final double CLIMB_DIRECTON_UP_D = 0.0;
-    public static final double CLIMB_DIRECTON_UP_TOLERANCE = 0.0;
+    public static final double CLIMB_DIRECTION_UP_P = 0.0;
+    public static final double CLIMB_DIRECTION_UP_I = 0.0;
+    public static final double CLIMB_DIRECTION_UP_D = 0.0;
+    public static final double CLIMB_DIRECTION_TOLERANCE = 0.0;
     
-    public static final double CLIMB_DIRECTON_DOWN_P = 0.0;
-    public static final double CLIMB_DIRECTON_DOWN_I = 0.0;
-    public static final double CLIMB_DIRECTON_DOWN_D = 0.0;
-    public static final double CLIMB_DIRECTON_DOWN_TOLERANCE = 0.0;
+    public static final double CLIMB_DIRECTION_DOWN_P = 0.0;
+    public static final double CLIMB_DIRECTION_DOWN_I = 0.0;
+    public static final double CLIMB_DIRECTION_DOWN_D = 0.0;
+
+    public static final double CLIMB_DIRECTION_TARGET = 0.0;
+    public static final double CLIMB_DIRECTION_ZERO = 0.0;
 
 
     public static final double CLIMB_ARM_UP_P = 0.0;
