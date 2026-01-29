@@ -72,6 +72,14 @@ public class XboxController extends GenericController {
         return this.button(3);
     }
 
+    public Trigger backButton() {
+        return this.button(7);
+    }
+
+    public Trigger startButton() {
+        return this.button(8);
+    }
+
 
     public Trigger leftBumper() {
         return this.button(4);
