@@ -9,7 +9,13 @@ public class Constants {
     public static final double SHOOTER_I = 0.0;
     public static final double SHOOTER_D = 0.0;
     public static final double SHOOTER_TOLERANCE = 0.0;
+
+    public static final double SHOOTER_TIME_BEFORE_SHOOT = 1.0;
     
+    // Feeder
+    public static final int FEEDER_MOTOR_ID = 0;
+    public static final int FEEDER_MOTOR_FORCE = 0;
+
     // Intake
     public static final int INTAKE_MOTOR_ID = 0;
     public static final int INTAKE_EXTENDER_ID = 0;
