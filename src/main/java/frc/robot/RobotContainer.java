@@ -10,7 +10,7 @@ import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import edu.wpi.first.math.geometry.Rotation2d;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.controller.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
@@ -31,6 +31,7 @@ import frc.robot.commands.ExtendIntake;
 import frc.robot.commands.RetractIntake;
 import frc.robot.commands.Climb;
 import frc.robot.commands.ClimbDirection;
+import frc.robot.commands.ResetIntake;
 
 public class RobotContainer {
 
@@ -63,6 +64,8 @@ public class RobotContainer {
         intake = new IntakeSubsystem();
 
         configureBindings();
+
+        SmartDashboard.putData("Reset intake thingamajig", new ResetIntake(intake));
     }
 
     private void configureBindings() {
