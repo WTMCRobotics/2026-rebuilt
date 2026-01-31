@@ -26,4 +26,8 @@ public class IntakeSubsystem implements Subsystem {
     public void resetEncoder() {
         intakeExtender.getEncoder().setPosition(0);
     }
+
+    public Boolean limitSwitchHit() {
+        return intakeExtender.getReverseLimitSwitch().isPressed();
+    }
 }

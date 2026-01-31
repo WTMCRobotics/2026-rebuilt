@@ -22,6 +22,8 @@ public class Constants {
     public static final double INTAKE_SPEED = 0.0;
     public static final double INTAKE_EXTENDER_TARGET = 0.0;
     public static final double INTAKE_EXTENDER_ZERO = 0.0;
+    public static final double INTAKE_EXTENDER_RETRACT = -1.0;
+
 
     public static final double INTAKE_EXTENDER_P = 0.0;
     public static final double INTAKE_EXTENDER_I = 0.0;
