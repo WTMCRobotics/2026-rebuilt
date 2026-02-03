@@ -64,7 +64,4 @@ public class Constants {
     public static final double CLIMB_ARM_TOLERANCE = 0.0;
     public static final double CLIMB_ARM_TARGET = 0.0;
     public static final double CLIMB_ARM_ZERO = 0.0;
-
-
-
 }

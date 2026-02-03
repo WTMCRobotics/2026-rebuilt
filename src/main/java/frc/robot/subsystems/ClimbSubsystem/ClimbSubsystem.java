@@ -20,8 +20,37 @@ public class ClimbSubsystem implements Subsystem {
     public ClimbSubsystem() {
     }
 
-    public void setClimbAngler(double speed) {
-        climbAngler.set(speed);
+    public void setClimbAngler(ClimbDirectionEnum direction) {
+        double P = 0;
+        double I = 0;
+        double D = 0;
+
+        double goal = 0;
+        
+        switch(direction) {
+            case CLIMB_DIRECTION_UP:
+                P = Constants.CLIMB_DIRECTION_UP_P;
+                I = Constants.CLIMB_DIRECTION_UP_P;
+                D = Constants.CLIMB_DIRECTION_UP_P;
+                goal = Constants.CLIMB_DIRECTION_TARGET;
+                break;
+            case CLIMB_DIRECTION_DOWN:
+                P = Constants.CLIMB_DIRECTION_DOWN_P;
+                D = Constants.CLIMB_DIRECTION_DOWN_P;
+                I = Constants.CLIMB_DIRECTION_DOWN_P;
+                goal = Constants.CLIMB_DIRECTION_ZERO;
+                break;
+        }
+
+        climbConfig.closedLoop
+            .p(P)
+            .i(I)
+            .d(D)
+            .outputRange(-(Constants.CLIMB_DIRECTION_TOLERANCE/2), Constants.CLIMB_DIRECTION_TOLERANCE/2);
+        
+        climbAngler.configure(climbConfig, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
+
+        climbAngler.set(goal);
     }
 
     public void setClimb(ClimbDirectionEnum direction) {
@@ -68,8 +97,12 @@ public class ClimbSubsystem implements Subsystem {
         return climbAngler.getEncoder().getPosition();
     }
 
-    public boolean isAtSetpoint() {
+    public boolean climbIsAtSetpoint() {
         return climbLeft.getClosedLoopController().isAtSetpoint() && climbRight.getClosedLoopController().isAtSetpoint();
+    }
+
+    public boolean anglerIsAtSetpoint() {
+        return climbAngler.getClosedLoopController().isAtSetpoint();
     }
 
     public void resetClimbs() {
@@ -79,5 +112,9 @@ public class ClimbSubsystem implements Subsystem {
 
     public void resetDirection() {
         climbAngler.getEncoder().setPosition(0);
+    }
+
+    public void stopAngler() {
+        climbAngler.stopMotor();
     }
 }

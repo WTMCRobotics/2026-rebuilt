@@ -9,7 +9,8 @@ public class Climb extends Command {
     ClimbSubsystem climbSubsystem;
     ClimbDirectionEnum direction;
 
-    public Climb(ClimbDirectionEnum direction) {
+    public Climb(ClimbSubsystem climbSubsystem, ClimbDirectionEnum direction) {
+        this.climbSubsystem = climbSubsystem;
         this.direction = direction;
     }
 
@@ -22,7 +23,7 @@ public class Climb extends Command {
 
     @Override
     public boolean isFinished() {
-        return climbSubsystem.isAtSetpoint();
+        return climbSubsystem.climbIsAtSetpoint();
     }
 
     @Override

@@ -2,61 +2,33 @@ package frc.robot.commands;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.ClimbSubsystem;
-
 import frc.robot.Constants;
+import frc.robot.subsystems.ClimbSubsystem.ClimbDirectionEnum;
+import frc.robot.subsystems.ClimbSubsystem.ClimbSubsystem;
 
 public class ClimbDirection extends Command {
-    ClimbSubsystem climbDirection;
-    boolean up;
-    private final PIDController controller;
+    ClimbSubsystem climbSubsystem;
+    ClimbDirectionEnum direction;
    
-
-
-    public ClimbDirection(ClimbSubsystem climbDirection, boolean up) {
-        this.climbDirection = climbDirection;
-        this.up = up;
-        
-        if(up) {
-            controller = new PIDController(
-            Constants.CLIMB_DIRECTION_UP_P,
-            Constants.CLIMB_DIRECTION_UP_I,
-            Constants.CLIMB_DIRECTION_UP_D
-                );
-        } else {
-
-            controller = new PIDController(
-            Constants.CLIMB_DIRECTION_DOWN_P,
-            Constants.CLIMB_DIRECTION_DOWN_I,
-            Constants.CLIMB_DIRECTION_DOWN_D
-                );
-        }
+    public ClimbDirection(ClimbSubsystem climbSubsystem, ClimbDirectionEnum direction) {
+        this.climbSubsystem = climbSubsystem;
+        this.direction = direction;
     }
     
-
     public void initialize() {
-        controller.setTolerance(Constants.CLIMB_DIRECTION_TOLERANCE);
-        if (up) {
-            controller.setSetpoint(Constants.CLIMB_DIRECTION_TARGET);
-        } else {
-            controller.setSetpoint(Constants.CLIMB_DIRECTION_ZERO);
-        }
-
     }
 
     public void execute() {
-        climbDirection.setClimbLeft(controller.calculate(climbDirection.getClimbDirection()));
-
+        climbSubsystem.setClimbAngler(direction);
     }
 
     @Override
     public boolean isFinished() {
-        return controller.atSetpoint();
+        return climbSubsystem.anglerIsAtSetpoint();
     }
 
     @Override
     public void end(boolean interrupted) {
-        climbDirection.setClimbDirection(0.0);
-
+        climbSubsystem.stopAngler();
     }
 }
