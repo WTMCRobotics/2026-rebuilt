@@ -21,14 +21,14 @@ import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.generated.TunerConstants;
 
 import frc.robot.subsystems.CommandSwerveDrivetrain;
-import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
-import frc.robot.subsystems.ClimbSubsystem;
-
+import frc.robot.subsystems.ClimbSubsystem.ClimbDirectionEnum;
+import frc.robot.subsystems.ClimbSubsystem.ClimbSubsystem;
+import frc.robot.subsystems.IntakeSubsystem.IntakeSubsystem;
+import frc.robot.subsystems.IntakeSubsystem.IntakeSubsystemEnum;
 import frc.robot.commands.Shoot;
 import frc.robot.commands.Intake;
-import frc.robot.commands.ExtendIntake;
-import frc.robot.commands.RetractIntake;
+import frc.robot.commands.SetIntake;
 import frc.robot.commands.Climb;
 import frc.robot.commands.ClimbDirection;
 import frc.robot.commands.ResetIntake;
@@ -106,12 +106,12 @@ public class RobotContainer {
 
         coDriverController.a().whileTrue(new Shoot(shooter, Constants.SHOOTER_SPEED));
         coDriverController.b().whileTrue(new Intake(intake, Constants.INTAKE_SPEED));
-        coDriverController.dpadUp().onTrue(new ExtendIntake(intake, Constants.INTAKE_EXTENDER_TARGET));
-        coDriverController.dpadDown().onTrue(new RetractIntake(intake, Constants.INTAKE_EXTENDER_ZERO));
-        coDriverController.dpadLeft().onTrue(new Climb(climb, true));
-        coDriverController.dpadRight().onTrue(new Climb(climb, false));
-        coDriverController.startButton().onTrue(new ClimbDirection(climb, false));
-        coDriverController.backButton().onTrue(new ClimbDirection(climb, true));
+        coDriverController.dpadUp().onTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));
+        coDriverController.dpadDown().onTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT));
+        coDriverController.dpadLeft().onTrue(new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
+        coDriverController.dpadRight().onTrue(new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
+        coDriverController.startButton().onTrue(new ClimbDirection(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
+        coDriverController.backButton().onTrue(new ClimbDirection(climb, ClimbDirectionEnum.CLIMB_DIRECTION_DOWN));
         
 
     }

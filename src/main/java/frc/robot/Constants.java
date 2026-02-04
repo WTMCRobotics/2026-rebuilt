@@ -18,7 +18,8 @@ public class Constants {
 
     // Intake
     public static final int INTAKE_MOTOR_ID = 0;
-    public static final int INTAKE_EXTENDER_ID = 0;
+    public static final int INTAKE_EXTENDER_LEFT_ID = 0;
+    public static final int INTAKE_EXTENDER_RIGHT_ID = 0;
     public static final double INTAKE_SPEED = 0.0;
     public static final double INTAKE_EXTENDER_TARGET = 0.0;
     public static final double INTAKE_EXTENDER_ZERO = 0.0;
