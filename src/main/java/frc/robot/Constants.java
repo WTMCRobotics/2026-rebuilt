@@ -2,7 +2,7 @@ package frc.robot;
 
 public class Constants {
     // Shooter
-    public static final int SHOOTER_MOTOR_ID = 0;
+    public static final int SHOOTER_MOTOR_ID = 10;
     public static final double SHOOTER_SPEED = 1.0;
 
     public static final double SHOOTER_P = 0.0;
@@ -13,13 +13,13 @@ public class Constants {
     public static final double SHOOTER_TIME_BEFORE_SHOOT = 1.0;
     
     // Feeder
-    public static final int FEEDER_MOTOR_ID = 0;
+    public static final int FEEDER_MOTOR_ID = 11;
     public static final int FEEDER_MOTOR_FORCE = 0;
 
     // Intake
-    public static final int INTAKE_MOTOR_ID = 0;
-    public static final int INTAKE_EXTENDER_LEFT_ID = 0;
-    public static final int INTAKE_EXTENDER_RIGHT_ID = 0;
+    public static final int INTAKE_MOTOR_ID = 12;
+    public static final int INTAKE_EXTENDER_LEFT_ID = 20;
+    public static final int INTAKE_EXTENDER_RIGHT_ID = 21;
     public static final double INTAKE_SPEED = 0.0;
     public static final double INTAKE_EXTENDER_TARGET = 0.0;
     public static final double INTAKE_EXTENDER_ZERO = 0.0;
@@ -37,9 +37,9 @@ public class Constants {
     public static final double INTAKE_RETRACTOR_TOLERANCE = 0.0;
     
     // Climb
-    public static final int CLIMB_DIRECTION_ID = 0;
-    public static final int CLIMB_RIGHT_ID = 0;
-    public static final int CLIMB_LEFT_ID = 0;
+    public static final int CLIMB_DIRECTION_ID = 13;
+    public static final int CLIMB_RIGHT_ID = 14;
+    public static final int CLIMB_LEFT_ID = 15;
 
     public static final double CLIMB_DIRECTION_UP_P = 0.0;
     public static final double CLIMB_DIRECTION_UP_I = 0.0;
@@ -65,4 +65,15 @@ public class Constants {
     public static final double CLIMB_ARM_TOLERANCE = 0.0;
     public static final double CLIMB_ARM_TARGET = 0.0;
     public static final double CLIMB_ARM_ZERO = 0.0;
+
+    // Vision
+        // All measured from robot center
+    public static final double CAMERA1_X_COMPONENT_METERS = 0.0; // Front is + x
+    public static final double CAMERA1_Y_COMPONENT_METERS = 0.0; // Up is + z
+    public static final double CAMERA1_Z_COMPONENT_METERS = 0.0; // Left is + y
+    
+    public static final double CAMERA1_Y_ROTATION_RADIANS = 0.0;
+    public static final double CAMERA1_X_ROTATION_RADIANS = 0.0;
+    public static final double CAMERA1_Z_ROTATION_RADIANS = 0.0;
+
 }
