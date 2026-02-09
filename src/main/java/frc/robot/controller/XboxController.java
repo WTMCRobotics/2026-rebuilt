@@ -80,7 +80,6 @@ public class XboxController extends GenericController {
         return this.button(8);
     }
 
-
     public Trigger leftBumper() {
         return this.button(4);
     }
