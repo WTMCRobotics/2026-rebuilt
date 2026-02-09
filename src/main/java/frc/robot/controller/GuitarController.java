@@ -1,8 +1,8 @@
 package frc.robot.controller;
 
-import edi.wpi.first.wpilibj2.command.button.Trigger;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
-public class GuitarController extends GenericGontroller {
+public class GuitarController extends GenericController {
 	public GuitarController(int port) {
 		super(port);
 	}

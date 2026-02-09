@@ -40,7 +40,7 @@ import frc.robot.commands.ResetIntake;
 public class RobotContainer {
 
     public XboxController controller = new XboxController(0);
-    public XboxController coDriverController = new GuitarController(1);
+    public GuitarController coDriverController = new GuitarController(1);
 
     private double MaxSpeed = 1.0 * TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
     private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 3/4 of a rotation per second max angular velocity
