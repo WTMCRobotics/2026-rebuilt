@@ -8,6 +8,7 @@ import static edu.wpi.first.units.Units.*;
 
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -69,11 +70,15 @@ public class RobotContainer {
         
         drivetrain = TunerConstants.createDrivetrain();
 
+        NamedCommands.registerCommand("climb up", new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
+
         configureBindings();
         
         SmartDashboard.putData("Reset intake thingamajig", new ResetIntake(intake));
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("Auto Chooser", autoChooser);
+
+
         
     }
 
