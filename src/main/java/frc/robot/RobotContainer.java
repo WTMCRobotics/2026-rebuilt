@@ -12,6 +12,7 @@ import com.ctre.phoenix6.swerve.SwerveRequest;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.controller.XboxController;
+import frc.robot.controller.GuitarController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -36,7 +37,7 @@ import frc.robot.commands.ResetIntake;
 public class RobotContainer {
 
     public XboxController controller = new XboxController(0);
-    public XboxController coDriverController = new XboxController(1);
+    public XboxController coDriverController = new GuitarController(1);
 
     private double MaxSpeed = 1.0 * TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
     private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 3/4 of a rotation per second max angular velocity
@@ -104,12 +105,12 @@ public class RobotContainer {
 
         drivetrain.registerTelemetry(logger::telemeterize);
 
-        coDriverController.a().whileTrue(new Shoot(shooter, Constants.SHOOTER_SPEED));
-        coDriverController.b().whileTrue(new Intake(intake, Constants.INTAKE_SPEED));
-        coDriverController.dpadUp().onTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));
-        coDriverController.dpadDown().onTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT));
-        coDriverController.dpadLeft().onTrue(new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
-        coDriverController.dpadRight().onTrue(new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
+        coDriverController.fretGreen().whileTrue(new Shoot(shooter, Constants.SHOOTER_SPEED));
+        coDriverController.fretRed().whileTrue(new Intake(intake, Constants.INTAKE_SPEED));
+        coDriverController.strumUp().onTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));
+        coDriverController.strumDown().onTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT));
+        coDriverController.strumLeft().onTrue(new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
+        coDriverController.strumRight().onTrue(new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
         coDriverController.startButton().onTrue(new ClimbDirection(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
         coDriverController.backButton().onTrue(new ClimbDirection(climb, ClimbDirectionEnum.CLIMB_DIRECTION_DOWN));
         
