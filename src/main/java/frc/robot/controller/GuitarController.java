@@ -31,8 +31,24 @@ public class GuitarController extends GenericGontroller {
 		return this.internalHID.pov(0);
 	}
 
+	public Trigger strumRight() {
+		return this.internalHID.pov(90);
+	}
+
 	public Trigger strumDown() {
 		return this.internalHID.pov(180);
+	}
+
+	public Trigger strumLeft() {
+		return this.internalHID.pov(270);
+	}
+
+	public Trigger backButton() {
+		return this.button(7);
+	}
+
+	public Trigger startButton() {
+		return this.button(8);
 	}
 }
 
