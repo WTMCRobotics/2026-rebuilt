@@ -1,10 +1,13 @@
 package frc.robot.subsystems;
 
+import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.config.ClosedLoopConfig;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.PersistMode;
 import com.revrobotics.ResetMode;
 import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.SparkBase.ControlType;
 
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.Constants;
@@ -15,16 +18,18 @@ public class ShooterSubsystem implements Subsystem {
 
     SparkMaxConfig shooterConfig = new SparkMaxConfig();
 
+    SparkClosedLoopController loopConfig = shooter.getClosedLoopController();
+
     public void setShooterSpeed(double speed) {
+        loopConfig.setSetpoint(speed, ControlType.kVelocity);
+
         shooterConfig.closedLoop
             .p(Constants.SHOOTER_P)
             .i(Constants.SHOOTER_I)
             .d(Constants.SHOOTER_D)
             .outputRange(-(Constants.SHOOTER_TOLERANCE/2), Constants.SHOOTER_TOLERANCE/2);
-            
+        
         shooter.configure(shooterConfig, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
-
-        shooter.set(speed);
     }
 
     public void stopShooter(){
