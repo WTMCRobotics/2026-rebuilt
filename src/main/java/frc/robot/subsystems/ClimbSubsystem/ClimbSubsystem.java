@@ -3,7 +3,9 @@ package frc.robot.subsystems.ClimbSubsystem;
 import com.revrobotics.PersistMode;
 import com.revrobotics.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 
 import edu.wpi.first.wpilibj2.command.Subsystem;
@@ -16,6 +18,10 @@ public class ClimbSubsystem implements Subsystem {
 
     SparkMaxConfig climbConfig = new SparkMaxConfig();
 
+    SparkClosedLoopController loopConfigLeft = climbLeft.getClosedLoopController();
+    SparkClosedLoopController loopConfigRight = climbRight.getClosedLoopController();
+    SparkClosedLoopController loopConfigAngler = climbAngler.getClosedLoopController();
+    
     public ClimbSubsystem() {
     }
 
@@ -47,9 +53,9 @@ public class ClimbSubsystem implements Subsystem {
             .d(D)
             .outputRange(-(Constants.CLIMB_DIRECTION_TOLERANCE/2), Constants.CLIMB_DIRECTION_TOLERANCE/2);
         
-        climbAngler.configure(climbConfig, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
+        loopConfigAngler.setSetpoint(goal, ControlType.kPosition);
 
-        climbAngler.set(goal);
+        climbAngler.configure(climbConfig, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
     }
 
     public void setClimb(ClimbDirectionEnum direction) {
@@ -80,11 +86,11 @@ public class ClimbSubsystem implements Subsystem {
             .d(D)
             .outputRange(-(Constants.CLIMB_ARM_TOLERANCE/2), Constants.CLIMB_ARM_TOLERANCE/2);
         
+        loopConfigLeft.setSetpoint(goal, ControlType.kPosition);
+        loopConfigRight.setSetpoint(goal, ControlType.kPosition);
+
         climbLeft.configure(climbConfig, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
         climbRight.configure(climbConfig, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
-        
-        climbLeft.set(goal);
-        climbRight.set(goal);
     }
 
     public void stopClimb() {
