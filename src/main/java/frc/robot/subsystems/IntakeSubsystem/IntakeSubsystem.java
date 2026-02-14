@@ -3,7 +3,9 @@ package frc.robot.subsystems.IntakeSubsystem;
 import com.revrobotics.PersistMode;
 import com.revrobotics.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 
 import edu.wpi.first.wpilibj2.command.Subsystem;
@@ -15,6 +17,9 @@ public class IntakeSubsystem implements Subsystem {
     SparkMax intakeExtenderRight = new SparkMax(Constants.INTAKE_EXTENDER_RIGHT_ID, MotorType.kBrushless);
 
     SparkMaxConfig intakeConfig = new SparkMaxConfig();
+
+    SparkClosedLoopController loopConfigLeft = intakeExtenderLeft.getClosedLoopController(); 
+    SparkClosedLoopController loopConfigRight = intakeExtenderRight.getClosedLoopController(); 
 
     public void setIntake(double speed) {
         intake.set(speed);
@@ -46,11 +51,11 @@ public class IntakeSubsystem implements Subsystem {
             .d(D)
             .outputRange(-(Constants.INTAKE_EXTENDER_TOLERANCE/2), Constants.INTAKE_EXTENDER_TOLERANCE/2);
         
+        loopConfigLeft.setSetpoint(goal, ControlType.kPosition);
+        loopConfigRight.setSetpoint(goal, ControlType.kPosition);
+
         intakeExtenderLeft.configure(intakeConfig, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
         intakeExtenderRight.configure(intakeConfig, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
-        
-        intakeExtenderLeft.set(goal);
-        intakeExtenderRight.set(goal);
     } 
 
     public boolean extenderIsAtSetpoint() {
