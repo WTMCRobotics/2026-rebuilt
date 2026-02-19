@@ -75,5 +75,14 @@ public class Constants {
     public static final double CAMERA1_Y_ROTATION_RADIANS = 0.0;
     public static final double CAMERA1_X_ROTATION_RADIANS = 0.0;
     public static final double CAMERA1_Z_ROTATION_RADIANS = 0.0;
+    
+    public static final double CAMERA2_X_COMPONENT_METERS = 0.0; // Front is + x
+    public static final double CAMERA2_Y_COMPONENT_METERS = 0.0; // Up is + z
+    public static final double CAMERA2_Z_COMPONENT_METERS = 0.0; // Left is + y
+    
+    public static final double CAMERA2_Y_ROTATION_RADIANS = 0.0;
+    public static final double CAMERA2_X_ROTATION_RADIANS = 0.0;
+    public static final double CAMERA2_Z_ROTATION_RADIANS = 0.0;
+
 
 }

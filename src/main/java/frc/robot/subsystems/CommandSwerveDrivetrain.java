@@ -2,8 +2,8 @@ package frc.robot.subsystems;
 
 import static edu.wpi.first.units.Units.*;
 
-import java.io.ObjectInputStream.GetField;
-import java.lang.reflect.Field;
+// import java.io.ObjectInputStream.GetField;
+// import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
@@ -69,7 +69,9 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
     private final SwerveRequest.ApplyRobotSpeeds m_pathApplyRobotSpeeds = new SwerveRequest.ApplyRobotSpeeds();
     private final AprilTagFieldLayout fieldApriltags = AprilTagFieldLayout.loadField(AprilTagFields.k2026RebuiltWelded);
     private final PhotonCamera camera1 = new PhotonCamera("camera1");
-    private PhotonPoseEstimator poseEstimator;
+    private final PhotonCamera camera2 = new PhotonCamera("camera2");
+    private PhotonPoseEstimator poseEstimator1;
+    private PhotonPoseEstimator poseEstimator2;
 
     /* Swerve requests to apply during SysId characterization */
     private final SwerveRequest.SysIdSwerveTranslation m_translationCharacterization = new SwerveRequest.SysIdSwerveTranslation();
@@ -323,14 +325,28 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
     }
 
     private void estimatedGlobalPose() {
-        List<PhotonPipelineResult> unread = camera1.getAllUnreadResults();
+        List<PhotonPipelineResult> unread1 = camera1.getAllUnreadResults();
 
-        for(PhotonPipelineResult cameraFrame: unread) {
-            Optional<EstimatedRobotPose> thisFramePoseEstimation = poseEstimator.estimateCoprocMultiTagPose(cameraFrame);
+        for(PhotonPipelineResult cameraFrame: unread1) {
+            Optional<EstimatedRobotPose> thisFramePoseEstimation = poseEstimator1.estimateCoprocMultiTagPose(cameraFrame);
             if(thisFramePoseEstimation.isPresent()) {
                 addVisionMeasurement(thisFramePoseEstimation.get().estimatedPose.toPose2d(), thisFramePoseEstimation.get().timestampSeconds);
             } else {
-                Optional<EstimatedRobotPose> thisFrameFallbackPoseEstimation = poseEstimator.estimateLowestAmbiguityPose(cameraFrame);
+                Optional<EstimatedRobotPose> thisFrameFallbackPoseEstimation = poseEstimator1.estimateLowestAmbiguityPose(cameraFrame);
+                if(thisFrameFallbackPoseEstimation.isPresent()) {
+                    addVisionMeasurement(thisFrameFallbackPoseEstimation.get().estimatedPose.toPose2d(), thisFrameFallbackPoseEstimation.get().timestampSeconds);
+                }   
+            }
+        }
+
+        List<PhotonPipelineResult> unread2 = camera2.getAllUnreadResults();
+
+        for(PhotonPipelineResult cameraFrame: unread2) {
+            Optional<EstimatedRobotPose> thisFramePoseEstimation = poseEstimator2.estimateCoprocMultiTagPose(cameraFrame);
+            if(thisFramePoseEstimation.isPresent()) {
+                addVisionMeasurement(thisFramePoseEstimation.get().estimatedPose.toPose2d(), thisFramePoseEstimation.get().timestampSeconds);
+            } else {
+                Optional<EstimatedRobotPose> thisFrameFallbackPoseEstimation = poseEstimator2.estimateLowestAmbiguityPose(cameraFrame);
                 if(thisFrameFallbackPoseEstimation.isPresent()) {
                     addVisionMeasurement(thisFrameFallbackPoseEstimation.get().estimatedPose.toPose2d(), thisFrameFallbackPoseEstimation.get().timestampSeconds);
                 }   
@@ -341,14 +357,22 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
     }
 
     private void setupPhotonvision() {
-        Transform3d robotToCam = new Transform3d(
+        Transform3d robotToCam1 = new Transform3d(
                 new Translation3d(Constants.CAMERA1_X_COMPONENT_METERS, Constants.CAMERA1_Y_COMPONENT_METERS,
                         Constants.CAMERA1_Z_COMPONENT_METERS),
                 new Rotation3d(Constants.CAMERA1_X_ROTATION_RADIANS, Constants.CAMERA1_Y_ROTATION_RADIANS,
                         Constants.CAMERA1_Z_ROTATION_RADIANS));
 
-        poseEstimator = new PhotonPoseEstimator(fieldApriltags, PoseStrategy.MULTI_TAG_PNP_ON_COPROCESSOR, robotToCam);
-        poseEstimator.setMultiTagFallbackStrategy(PoseStrategy.LOWEST_AMBIGUITY);
+        Transform3d robotToCam2 = new Transform3d(
+                new Translation3d(Constants.CAMERA1_X_COMPONENT_METERS, Constants.CAMERA1_Y_COMPONENT_METERS,
+                        Constants.CAMERA1_Z_COMPONENT_METERS),
+                new Rotation3d(Constants.CAMERA1_X_ROTATION_RADIANS, Constants.CAMERA1_Y_ROTATION_RADIANS,
+                        Constants.CAMERA1_Z_ROTATION_RADIANS));
+
+        poseEstimator1 = new PhotonPoseEstimator(fieldApriltags, PoseStrategy.MULTI_TAG_PNP_ON_COPROCESSOR, robotToCam1);
+        poseEstimator2 = new PhotonPoseEstimator(fieldApriltags, PoseStrategy.MULTI_TAG_PNP_ON_COPROCESSOR, robotToCam2);
+        poseEstimator1.setMultiTagFallbackStrategy(PoseStrategy.LOWEST_AMBIGUITY);
+        poseEstimator2.setMultiTagFallbackStrategy(PoseStrategy.LOWEST_AMBIGUITY);
     }
 
     private void startSimThread() {
