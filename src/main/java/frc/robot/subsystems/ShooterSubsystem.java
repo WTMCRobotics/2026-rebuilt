@@ -6,6 +6,7 @@ import com.revrobotics.spark.config.ClosedLoopConfig;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.PersistMode;
 import com.revrobotics.ResetMode;
+import com.revrobotics.sim.SparkMaxSim;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkBase.ControlType;
 
@@ -15,7 +16,7 @@ import frc.robot.Constants;
 public class ShooterSubsystem implements Subsystem {
     SparkMax shooter = new SparkMax(Constants.SHOOTER_MOTOR_ID, MotorType.kBrushless);
     SparkMax feeder = new SparkMax(Constants.FEEDER_MOTOR_ID, MotorType.kBrushless);
-
+    
     SparkMaxConfig shooterConfig = new SparkMaxConfig();
 
     SparkClosedLoopController loopConfig = shooter.getClosedLoopController();
@@ -30,6 +31,7 @@ public class ShooterSubsystem implements Subsystem {
             .outputRange(-(Constants.SHOOTER_TOLERANCE/2), Constants.SHOOTER_TOLERANCE/2);
         
         shooter.configure(shooterConfig, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
+        shooter.set(speed);
     }
 
     public void stopShooter(){
