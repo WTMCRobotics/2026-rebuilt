@@ -67,6 +67,11 @@ public class IntakeSubsystem implements Subsystem {
         intakeExtenderRight.getEncoder().setPosition(0);
     }
 
+    public void setEncoderPosition(double position) {
+        intakeExtenderLeft.getEncoder().setPosition(position);
+        intakeExtenderRight.getEncoder().setPosition(position);
+    }
+
     public void stopExtender() {
         intakeExtenderLeft.stopMotor();
         intakeExtenderRight.stopMotor();
@@ -74,5 +79,17 @@ public class IntakeSubsystem implements Subsystem {
 
     public Boolean limitSwitchHit() {
        return intakeExtenderLeft.getReverseLimitSwitch().isPressed() && intakeExtenderRight.getReverseLimitSwitch().isPressed();
+    }
+
+    public double getIntake() {
+        return intake.getEncoder().getVelocity();
+    }
+
+    public double getEncoderLeftPosition() {
+        return intakeExtenderLeft.getEncoder().getPosition();
+    }
+
+    public double getEncoderRightPosition() {
+        return intakeExtenderRight.getEncoder().getPosition();
     }
 }
