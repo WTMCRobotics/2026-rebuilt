@@ -42,6 +42,10 @@ public class ShooterSubsystem implements Subsystem {
         feeder.set(speed);
     }
 
+    public double getFeeder() {
+        return feeder.get();
+    }
+
     public double getEncoderPosition() {
         return shooter.getEncoder().getPosition();
     }
@@ -52,5 +56,9 @@ public class ShooterSubsystem implements Subsystem {
 
     public void resetEncoder() {
         shooter.getEncoder().setPosition(0);
+    }
+
+    public void setEncoderPosition(double position) {
+        shooter.getEncoder().setPosition(position);
     }
 }
