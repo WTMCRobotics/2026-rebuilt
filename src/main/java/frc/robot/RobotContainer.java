@@ -13,10 +13,14 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
+import edu.wpi.first.wpilibj.smartdashboard.Mechanism2d;
+import edu.wpi.first.wpilibj.smartdashboard.MechanismRoot2d;
 import frc.robot.controller.XboxController;
 import frc.robot.controller.GuitarController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -40,6 +44,9 @@ import frc.robot.commands.ClimbDirection;
 import frc.robot.commands.ResetIntake;
 
 public class RobotContainer {
+
+    private final Field2d m_field = new Field2d();
+    private Mechanism2d m_mech = new Mechanism2d(3,3);
 
     public XboxController controller = new XboxController(0);
     public GuitarController coDriverController = new GuitarController(1);
@@ -84,12 +91,16 @@ public class RobotContainer {
         SmartDashboard.putData("Reset intake thingamajig", new ResetIntake(intake));
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("Auto Chooser", autoChooser);
+        SmartDashboard.putData("Field", m_field);
+        SmartDashboard.putData("Mech", m_mech);
 
         System.out.println("ROBOT CONTAINER");
 
         Logger.recordOutput("MyPose", poseA);
     }
-
+    public int updateFieldOdometry() {
+        return 1;
+    }
     private void configureBindings() {
         // Note that X is defined as forward according to WPILib convention,
         // and Y is defined as to the left according to WPILib convention.

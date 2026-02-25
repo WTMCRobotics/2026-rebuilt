@@ -2,7 +2,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ShooterSubsystem;
-
+import frc.robot.Constants;
 public class Shoot extends Command {
     ShooterSubsystem shooterSubsystem;
     double rpm;
@@ -13,7 +13,7 @@ public class Shoot extends Command {
     }
 
     public void initialize() {
-        shooterSubsystem.setFeeder(rpm);
+        shooterSubsystem.setFeeder(Constants.FEEDER_MOTOR_FORCE);
     }
 
     public void execute() {
