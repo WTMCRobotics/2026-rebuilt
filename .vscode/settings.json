@@ -62,6 +62,7 @@
     "CommandSwerveDrivetrain",
     "Constants",
     "RobotContainer",
-    "ShooterSubsystem"
+    "ShooterSubsystem",
+    "Shoot"
   ]
 }

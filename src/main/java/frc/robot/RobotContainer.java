@@ -91,7 +91,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("Climb Up", new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
         NamedCommands.registerCommand("Climb Down", new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_DOWN));
         NamedCommands.registerCommand("Intake", new Intake(intake, Constants.INTAKE_SPEED));
-        NamedCommands.registerCommand("Shoot", new Shoot(shooter, Constants.SHOOTER_SPEED));
+        NamedCommands.registerCommand("Shoot", new Shoot(shooter, drivetrain));
         NamedCommands.registerCommand("Deploy Intake", new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));
 
         configureBindings();
@@ -162,7 +162,7 @@ public class RobotContainer {
 
         drivetrain.registerTelemetry(logger::telemeterize);
 
-        coDriverController.fretGreen().whileTrue(new Shoot(shooter, Constants.SHOOTER_SPEED));
+        coDriverController.fretGreen().whileTrue(new Shoot(shooter, drivetrain));
         coDriverController.fretRed().whileTrue(new Intake(intake, Constants.INTAKE_SPEED));
         coDriverController.strumUp().onTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));
         coDriverController.strumDown().onTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT));
