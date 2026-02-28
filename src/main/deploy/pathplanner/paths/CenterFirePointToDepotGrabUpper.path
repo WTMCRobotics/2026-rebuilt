@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.655152099816181,
-        "y": 4.401759128823686
+        "x": 2.8293706065766737,
+        "y": 4.318018787835354
       },
       "isLocked": false,
       "linkedName": "CenterFirePoint"
@@ -17,15 +17,15 @@
     {
       "anchor": {
         "x": 2.0,
-        "y": 4.85
+        "y": 7.0
       },
       "prevControl": {
-        "x": 2.2414853075221863,
-        "y": 4.785309612376219
+        "x": 2.6230326452850625,
+        "y": 6.586219191944094
       },
       "nextControl": {
-        "x": 1.2608043888896536,
-        "y": 5.048019710197615
+        "x": 1.5497731143598825,
+        "y": 7.299013616635488
       },
       "isLocked": false,
       "linkedName": null
@@ -33,15 +33,15 @@
     {
       "anchor": {
         "x": 0.6,
-        "y": 4.8
+        "y": 7.0
       },
       "prevControl": {
-        "x": 1.7370427207652468,
-        "y": 4.965853293689639
+        "x": 0.9816071428571431,
+        "y": 7.127045454545455
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "DepotGrabLower"
+      "linkedName": "DepotGrabUpper"
     }
   ],
   "rotationTargets": [],
@@ -58,7 +58,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": -90.0
   },
   "reversed": false,
   "folder": "ToDepot",

@@ -4,28 +4,28 @@
     {
       "anchor": {
         "x": 4.5,
-        "y": 0.8
+        "y": 0.4
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.3741362656415115,
-        "y": 0.8240144235012622
+        "x": 3.6172077922077923,
+        "y": 0.4012337662337665
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "TrenchStart2"
     },
     {
       "anchor": {
-        "x": 2.7308214285714296,
+        "x": 2.9,
         "y": 1.2384166666666658
       },
       "prevControl": {
-        "x": 3.0097186629525607,
-        "y": 0.8668019744999996
+        "x": 2.9987987012987016,
+        "y": 0.8546103896103898
       },
       "nextControl": {
-        "x": 2.2545986851076094,
-        "y": 1.872956369463539
+        "x": 2.7022210570356227,
+        "y": 2.006734456085631
       },
       "isLocked": false,
       "linkedName": null
@@ -41,7 +41,7 @@
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "CenterFirePoint"
     }
   ],
   "rotationTargets": [],
@@ -61,10 +61,10 @@
     "rotation": 180.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "ToCenterFirePoint",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 90.0
   },
   "useDefaultConstraints": true
 }

@@ -3,51 +3,48 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.0,
-        "y": 4.0
+        "x": 0.6,
+        "y": 7.0
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.655152099816181,
-        "y": 4.401759128823686
+        "x": 0.6000000000000001,
+        "y": 6.0
       },
       "isLocked": false,
-      "linkedName": "CenterFirePoint"
-    },
-    {
-      "anchor": {
-        "x": 2.0,
-        "y": 4.85
-      },
-      "prevControl": {
-        "x": 2.2414853075221863,
-        "y": 4.785309612376219
-      },
-      "nextControl": {
-        "x": 1.2608043888896536,
-        "y": 5.048019710197615
-      },
-      "isLocked": false,
-      "linkedName": null
+      "linkedName": "DepotGrabUpper"
     },
     {
       "anchor": {
         "x": 0.6,
-        "y": 4.8
+        "y": 5.1
       },
       "prevControl": {
-        "x": 1.7370427207652468,
-        "y": 4.965853293689639
+        "x": 0.5999999999999999,
+        "y": 6.2968671485982535
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "DepotGrabLower"
+      "linkedName": "DepotGrabUpperEnd"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "DeployIntake",
+      "waypointRelativePos": 0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "Intake",
+      "waypointRelativePos": 0,
+      "endWaypointRelativePos": 1.0,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.001,
     "maxAcceleration": 3.0,
@@ -57,14 +54,14 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 0,
-    "rotation": 90.0
+    "velocity": 5.0,
+    "rotation": -90.0
   },
   "reversed": false,
   "folder": "ToDepot",
   "idealStartingState": {
-    "velocity": 0,
-    "rotation": 180.0
+    "velocity": 3.0,
+    "rotation": -90.0
   },
   "useDefaultConstraints": true
 }

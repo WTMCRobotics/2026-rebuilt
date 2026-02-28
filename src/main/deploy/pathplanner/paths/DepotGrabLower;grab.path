@@ -3,24 +3,24 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.5,
-        "y": 4.75
+        "x": 0.6,
+        "y": 4.8
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.5566239316239316,
-        "y": 5.8825925925925935
+        "x": 0.6566239316239316,
+        "y": 5.932592592592593
       },
       "isLocked": false,
       "linkedName": "DepotGrabLower"
     },
     {
       "anchor": {
-        "x": 0.5,
+        "x": 0.6,
         "y": 7.0
       },
       "prevControl": {
-        "x": 0.5049430199430204,
+        "x": 0.6049430199430204,
         "y": 5.8825925925925935
       },
       "nextControl": null,
@@ -54,13 +54,13 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 0,
+    "velocity": 4.0,
     "rotation": 90.0
   },
   "reversed": false,
-  "folder": "depot",
+  "folder": "ToDepot",
   "idealStartingState": {
-    "velocity": 0,
+    "velocity": 2.0,
     "rotation": 90.0
   },
   "useDefaultConstraints": true

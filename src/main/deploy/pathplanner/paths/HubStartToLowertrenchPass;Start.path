@@ -3,47 +3,51 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.0,
+        "x": 3.6,
         "y": 4.0
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.1587321937321935,
-        "y": 2.4328917378917385
+        "x": 3.3055362510309685,
+        "y": 2.3682890970927337
       },
       "isLocked": false,
-      "linkedName": "CenterFirePoint"
+      "linkedName": "HubStart"
     },
     {
       "anchor": {
-        "x": 0.4,
-        "y": 0.7
+        "x": 3.3668993506493505,
+        "y": 0.619025974025974
       },
       "prevControl": {
-        "x": 1.2310143942023206,
-        "y": 1.0612588983300038
+        "x": 2.6107911115283517,
+        "y": 0.9856239081452463
+      },
+      "nextControl": {
+        "x": 3.8527922077922083,
+        "y": 0.38344155844155803
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 4.6,
+        "y": 0.5
+      },
+      "prevControl": {
+        "x": 4.178963993794759,
+        "y": 0.4661666287245051
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "outpost"
+      "linkedName": "LowerTrenchPass"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.8166311300639595,
-      "rotationDegrees": 0.0
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "DeployIntake",
-      "waypointRelativePos": 1.0,
-      "endWaypointRelativePos": null,
-      "command": null
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.001,
     "maxAcceleration": 3.0,
@@ -53,8 +57,8 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 0,
-    "rotation": 0.0
+    "velocity": 10.0,
+    "rotation": 90.0
   },
   "reversed": false,
   "folder": null,

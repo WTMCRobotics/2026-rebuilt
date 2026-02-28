@@ -1,0 +1,124 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 0.6,
+        "y": 4.8
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 0.6000000000000001,
+        "y": 5.8
+      },
+      "isLocked": false,
+      "linkedName": "DepotGrabLower"
+    },
+    {
+      "anchor": {
+        "x": 0.6,
+        "y": 7.0
+      },
+      "prevControl": {
+        "x": 0.4091015731820543,
+        "y": 6.838575743339381
+      },
+      "nextControl": {
+        "x": 0.9519993065750652,
+        "y": 7.297651622153607
+      },
+      "isLocked": false,
+      "linkedName": "DepotGrabLowerEnd"
+    },
+    {
+      "anchor": {
+        "x": 2.0,
+        "y": 7.2
+      },
+      "prevControl": {
+        "x": 1.4468750000000004,
+        "y": 7.54375
+      },
+      "nextControl": {
+        "x": 2.5531249999999996,
+        "y": 6.85625
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 0.6,
+        "y": 7.0
+      },
+      "prevControl": {
+        "x": 0.6,
+        "y": 7.3348071576664795
+      },
+      "nextControl": {
+        "x": 0.6,
+        "y": 6.6651928423335205
+      },
+      "isLocked": false,
+      "linkedName": "DepotGrabUpper"
+    },
+    {
+      "anchor": {
+        "x": 0.6,
+        "y": 5.1
+      },
+      "prevControl": {
+        "x": 0.5999999999999999,
+        "y": 6.1
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "DepotGrabUpperEnd"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1,
+      "rotationDegrees": 90.0
+    },
+    {
+      "waypointRelativePos": 3.0,
+      "rotationDegrees": -90.0
+    }
+  ],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [
+    {
+      "name": "Intake",
+      "waypointRelativePos": 0,
+      "endWaypointRelativePos": 0.7641791044776135,
+      "command": null
+    },
+    {
+      "name": "Intake",
+      "waypointRelativePos": 2.853731343283582,
+      "endWaypointRelativePos": 4.0,
+      "command": null
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.001,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -90.0
+  },
+  "reversed": false,
+  "folder": "ToDepot",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 90.0
+  },
+  "useDefaultConstraints": true
+}

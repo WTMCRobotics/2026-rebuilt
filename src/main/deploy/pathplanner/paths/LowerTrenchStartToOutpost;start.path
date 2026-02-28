@@ -3,48 +3,37 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.0,
-        "y": 4.0
+        "x": 4.5,
+        "y": 0.4
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.655152099816181,
-        "y": 4.401759128823686
+        "x": 3.315519480519481,
+        "y": 0.3957142857142857
       },
       "isLocked": false,
-      "linkedName": "CenterFirePoint"
+      "linkedName": "TrenchStart2"
     },
     {
       "anchor": {
-        "x": 2.0,
-        "y": 4.85
+        "x": 0.4,
+        "y": 0.7
       },
       "prevControl": {
-        "x": 2.2414853075221863,
-        "y": 4.785309612376219
-      },
-      "nextControl": {
-        "x": 1.2608043888896536,
-        "y": 5.048019710197615
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 0.6,
-        "y": 4.8
-      },
-      "prevControl": {
-        "x": 1.7370427207652468,
-        "y": 4.965853293689639
+        "x": 1.9828409090909092,
+        "y": 0.8693344155844158
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "DepotGrabLower"
+      "linkedName": "outpost"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.22463768115942034,
+      "rotationDegrees": 90.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
@@ -58,13 +47,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": 0.0
   },
   "reversed": false,
-  "folder": "ToDepot",
+  "folder": "ToOutpost",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 90.0
   },
   "useDefaultConstraints": true
 }

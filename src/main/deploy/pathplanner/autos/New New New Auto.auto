@@ -7,13 +7,26 @@
         {
           "type": "path",
           "data": {
-            "pathName": "UpperTrenchStartNeutralToLowerTrenchStartDownGrab"
+            "pathName": "UpperTrenchStartToLowerTrenchPassInner;Start,Grab"
           }
         },
         {
-          "type": "path",
+          "type": "sequential",
           "data": {
-            "pathName": "lowerTrenchtocenterfire"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Rev"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "lowerTrenchPassInnertocenterfire"
+                }
+              }
+            ]
           }
         },
         {
@@ -29,7 +42,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 4.0
+                  "waitTime": 5.0
                 }
               }
             ]
@@ -38,7 +51,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "CenterFirePointToDepot"
+            "pathName": "CenterFirePointToOutpost"
           }
         },
         {
@@ -54,22 +67,35 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Shoot"
+                  "name": "Rev"
                 }
               },
               {
-                "type": "wait",
+                "type": "path",
                 "data": {
-                  "waitTime": 4.0
+                  "pathName": "OutpostToCenterFirePoint"
                 }
               }
             ]
           }
         },
         {
-          "type": "path",
+          "type": "sequential",
           "data": {
-            "pathName": "OutpostToCenterFirePoint"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Shoot"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 5.0
+                }
+              }
+            ]
           }
         }
       ]

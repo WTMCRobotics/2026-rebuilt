@@ -7,13 +7,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "UpperTrenchStartNeutralToLowerTrenchStartDownGrab"
+            "pathName": "UpperTrenchStartToLowerTrenchPassInner;Start,Grab"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "lowerTrenchtocenterfire"
+            "pathName": "lowerTrenchPassInnertocenterfire"
           }
         },
         {
@@ -44,19 +44,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "centerFirePoint to lowertrench"
+            "pathName": "centerFireToLowertrenchPass"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "lowerFuelGrab"
+            "pathName": "lowerTrenchPassToUpperTrenchPassInner;grab"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "UpperTrenchStartNeutralToCenterFire"
+            "pathName": "UpperTrenchPassInnerToCenterFirePoint"
           }
         },
         {
