@@ -13,17 +13,19 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
-import edu.wpi.first.math.geometry.Pose2d;
+// import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.Mechanism2d;
-import edu.wpi.first.wpilibj.smartdashboard.MechanismRoot2d;
+// import edu.wpi.first.wpilibj.smartdashboard.MechanismRoot2d;
 import frc.robot.controller.XboxController;
 import frc.robot.controller.GuitarController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
@@ -84,7 +86,10 @@ public class RobotContainer {
         
         drivetrain = TunerConstants.createDrivetrain();
 
-        NamedCommands.registerCommand("climb up", new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
+        NamedCommands.registerCommand("Climb Up", new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
+        NamedCommands.registerCommand("Climb Down", new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_DOWN));
+        NamedCommands.registerCommand("Intake", new Intake(intake, Constants.INTAKE_SPEED));
+        // NamedCommands.registerCommand("Shoot", new Shoot(shooter));
 
         configureBindings();
         
@@ -101,6 +106,16 @@ public class RobotContainer {
     public int updateFieldOdometry() {
         return 1;
     }
+
+    private double getRotationRate() {
+        if (coDriverController.fretGreen().getAsBoolean()) {
+            drivetrain.getRotation3d().getZ();
+            // do math here :p
+        }
+
+        return -joystick.getRightX() * MaxAngularRate;
+    }
+
     private void configureBindings() {
         // Note that X is defined as forward according to WPILib convention,
         // and Y is defined as to the left according to WPILib convention.
@@ -109,7 +124,7 @@ public class RobotContainer {
             drivetrain.applyRequest(() ->
                 drive.withVelocityX(-joystick.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
                     .withVelocityY(-joystick.getLeftX() * MaxSpeed) // Drive left with negative X (left)
-                    .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
+                    .withRotationalRate(getRotationRate()) // Drive counterclockwise with negative X (left)
             )
         );
         
@@ -137,7 +152,7 @@ public class RobotContainer {
 
         drivetrain.registerTelemetry(logger::telemeterize);
 
-        coDriverController.fretGreen().whileTrue(new Shoot(shooter, Constants.SHOOTER_SPEED));
+        // coDriverController.fretGreen().whileTrue(new Shoot(shooter, drivetrain));
         coDriverController.fretRed().whileTrue(new Intake(intake, Constants.INTAKE_SPEED));
         coDriverController.strumUp().onTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));
         coDriverController.strumDown().onTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT));
