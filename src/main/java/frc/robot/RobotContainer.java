@@ -18,6 +18,8 @@ import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.Mechanism2d;
 // import edu.wpi.first.wpilibj.smartdashboard.MechanismRoot2d;
@@ -108,12 +110,19 @@ public class RobotContainer {
     }
 
     private double getRotationRate() {
-        if (coDriverController.fretGreen().getAsBoolean()) {
-            drivetrain.getRotation3d().getZ();
-            // do math here :p
+        if (!coDriverController.fretGreen().getAsBoolean()) {
+            return -joystick.getRightX() * MaxAngularRate;
         }
 
-        return -joystick.getRightX() * MaxAngularRate;
+        double hubX = (DriverStation.getAlliance().get() == Alliance.Red) ? Constants.HUB_X_BLUE : Constants.HUB_X_RED;
+        double hubY = Constants.HUB_Y;
+
+        double targetRotation = drivetrain.getAngleTowards(hubX, hubY).getRadians();
+        double currentRotation = drivetrain.getRotation3d().getZ();
+        double relativeRotation = currentRotation - targetRotation;
+        double motorPower = Math.sqrt(Math.abs(relativeRotation)) * -Math.signum(relativeRotation) * Constants.HUB_ALIGN_POWER_COEF;
+
+        return motorPower;
     }
 
     private void configureBindings() {

@@ -96,5 +96,6 @@ public class Constants {
 
     // Pathfinding
     public static final PathConstraints PATH_CONSTRAINTS = new PathConstraints(1.75, 2, Math.PI * 1.5, Math.PI * 2.5);
+    public static final double HUB_ALIGN_POWER_COEF = 1.14;
 
 }
