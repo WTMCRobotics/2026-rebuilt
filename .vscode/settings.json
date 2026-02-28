@@ -60,6 +60,7 @@
   "java.dependency.enableDependencyCheckup": false,
   "conventionalCommits.scopes": [
     "CommandSwerveDrivetrain",
-    "Constants"
+    "Constants",
+    "RobotContainer"
   ]
 }
