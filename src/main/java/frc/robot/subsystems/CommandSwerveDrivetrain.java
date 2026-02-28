@@ -36,6 +36,7 @@ import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.math.system.plant.DCMotor;
+import edu.wpi.first.units.measure.Distance;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.Notifier;
@@ -341,6 +342,13 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
 
     public Rotation2d getAngleTowards(double x, double y) {
         return Rotation2d.fromRadians(Math.atan2(y - getState().Pose.getY(), x - getState().Pose.getX()));
+    }
+
+    public double getDistanceFrom(double x, double y) {
+        double robotX = getState().Pose.getX();
+        double robotY = getState().Pose.getY();
+
+        return Math.sqrt(((robotX - x) * (robotX - x)) + ((robotY - y) * (robotY - y)));
     }
 
     private void estimatedGlobalPose() {
