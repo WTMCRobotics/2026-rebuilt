@@ -1,5 +1,7 @@
 package frc.robot;
 
+import com.pathplanner.lib.path.PathConstraints;
+
 public class Constants {
     // Shooter
     public static final int SHOOTER_MOTOR_ID = 19;
@@ -84,5 +86,16 @@ public class Constants {
     public static final double CAMERA2_X_ROTATION_RADIANS = 0.0;
     public static final double CAMERA2_Z_ROTATION_RADIANS = 0.0;
 
+    // Field Data
+    public static final double FIELD_X_INCHES = 651.2;
+    public static final double FIELD_Y_INCHES = 317.7;
+
+    public static final double HUB_X_RED = 158.6;
+    public static final double HUB_X_BLUE = FIELD_X_INCHES - 158.6;
+    public static final double HUB_Y = FIELD_Y_INCHES / 2;
+
+    // Pathfinding
+    public static final PathConstraints PATH_CONSTRAINTS = new PathConstraints(1.75, 2, Math.PI * 1.5, Math.PI * 2.5);
+    public static final double HUB_ALIGN_POWER_COEF = 1.14;
 
 }

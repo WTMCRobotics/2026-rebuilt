@@ -50,7 +50,7 @@ public class ShooterSubsystem implements Subsystem {
         return shooter.getEncoder().getPosition();
     }
 
-    public double getEncoderVelocity() {
+    public double getShooterEncoderVelocity() {
         return shooter.getEncoder().getVelocity();
     }
 

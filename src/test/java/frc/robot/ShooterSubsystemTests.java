@@ -25,7 +25,7 @@ public class ShooterSubsystemTests {
     @Test
     void testSetShooterSpeed() {
         shooterSubsystem.setShooterSpeed(100.0);
-        assertEquals(100.0, shooterSubsystem.getEncoderVelocity(), DELTA);
+        assertEquals(100.0, shooterSubsystem.getShooterEncoderVelocity(), DELTA);
     }
 
     @Test
@@ -45,6 +45,6 @@ public class ShooterSubsystemTests {
     void testStopShooter() {
         shooterSubsystem.setShooterSpeed(50.0);
         shooterSubsystem.stopShooter();
-        assertEquals(0.0, shooterSubsystem.getEncoderVelocity(), DELTA);
+        assertEquals(0.0, shooterSubsystem.getShooterEncoderVelocity(), DELTA);
     }
 }

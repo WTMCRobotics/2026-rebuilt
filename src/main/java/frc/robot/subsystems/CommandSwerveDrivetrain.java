@@ -36,10 +36,11 @@ import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.math.system.plant.DCMotor;
+import edu.wpi.first.units.measure.Distance;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.Notifier;
-import edu.wpi.first.wpilibj.RobotController;
+// import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -61,7 +62,7 @@ import frc.robot.utils.simulation.MapleSimSwerveDrivetrain;
 public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Subsystem {
     private static final double kSimLoopPeriod = 0.004; // 4 ms
     private Notifier m_simNotifier = null;
-    private double m_lastSimTime;
+    // private double m_lastSimTime;
 
     /* Blue alliance sees forward as 0 degrees (toward red alliance wall) */
     private static final Rotation2d kBlueAlliancePerspectiveRotation = Rotation2d.kZero;
@@ -87,6 +88,9 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
      * SysId routine for characterizing translation. This is used to find PID gains
      * for the drive motors.
      */
+
+    
+
     private final SysIdRoutine m_sysIdRoutineTranslation = new SysIdRoutine(
             new SysIdRoutine.Config(
                     null, // Use default ramp rate (1 V/s)
@@ -334,6 +338,17 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
             estimatedGlobalPose();
         }
 
+    }
+
+    public Rotation2d getAngleTowards(double x, double y) {
+        return Rotation2d.fromRadians(Math.atan2(y - getState().Pose.getY(), x - getState().Pose.getX()));
+    }
+
+    public double getDistanceFrom(double x, double y) {
+        double robotX = getState().Pose.getX();
+        double robotY = getState().Pose.getY();
+
+        return Math.sqrt(((robotX - x) * (robotX - x)) + ((robotY - y) * (robotY - y)));
     }
 
     private void estimatedGlobalPose() {
