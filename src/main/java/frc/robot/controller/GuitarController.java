@@ -7,11 +7,11 @@ public class GuitarController extends GenericController {
 		super(port);
 	}
 
-	public Trigger fretGreen() {
+		public Trigger fretRed() {
 		return this.button(0);
 	}
 
-	public Trigger fretRed() {
+	public Trigger fretGreen() {
 		return this.button(1);
 	}
 
