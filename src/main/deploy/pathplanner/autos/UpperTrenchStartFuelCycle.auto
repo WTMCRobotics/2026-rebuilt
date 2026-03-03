@@ -7,56 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "UpperTrenchStartToLowerTrenchPassInner;Start,Grab"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "lowerTrenchPassInnertocenterfire"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 5.0
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Shoot"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "RetractIntake"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "centerFireToLowertrenchPass"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "lowerTrenchPassToUpperTrenchPassInner;grab"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "UpperTrenchPassInnerToCenterFirePoint"
+            "pathName": "UpperTrenchStartToLowerTrenchFireOver;Grab"
           }
         },
         {
@@ -81,7 +32,26 @@
         {
           "type": "path",
           "data": {
-            "pathName": "CenterFirePointToClimb;Climb"
+            "pathName": "LowerTrenchFireOverToUpperTrenchFireOver;Grab"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 5.0
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Shoot"
+                }
+              }
+            ]
           }
         }
       ]

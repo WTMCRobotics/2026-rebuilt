@@ -20,7 +20,7 @@
         "y": 4.7
       },
       "prevControl": {
-        "x": 0.49999999999999994,
+        "x": 0.4999999999999999,
         "y": 5.302079728939614
       },
       "nextControl": {
@@ -36,7 +36,7 @@
         "y": 3.0
       },
       "prevControl": {
-        "x": 0.49999999999999994,
+        "x": 0.49999999999999983,
         "y": 3.96
       },
       "nextControl": {
@@ -48,11 +48,11 @@
     },
     {
       "anchor": {
-        "x": 0.4,
+        "x": 0.575,
         "y": 0.7
       },
       "prevControl": {
-        "x": 1.7030844155844158,
+        "x": 1.8780844155844147,
         "y": 0.4717857142857145
       },
       "nextControl": null,
@@ -97,10 +97,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 180.0
   },
   "reversed": false,
-  "folder": "ToDepot",
+  "folder": "ToOutpost",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -90.0

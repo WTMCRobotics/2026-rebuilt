@@ -46,6 +46,12 @@
               }
             ]
           }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "CenterFirePointToClimb;Climb"
+          }
         }
       ]
     }

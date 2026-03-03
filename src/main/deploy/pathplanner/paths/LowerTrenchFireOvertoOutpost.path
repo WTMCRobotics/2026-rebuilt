@@ -3,32 +3,37 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.575,
-        "y": 0.7
+        "x": 5.75,
+        "y": 0.6
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.1607857142857143,
-        "y": 2.4477499999999996
+        "x": 5.9883267911245435,
+        "y": 0.5244993997886231
       },
       "isLocked": false,
-      "linkedName": "outpost"
+      "linkedName": "LowerTrenchFireOver"
     },
     {
       "anchor": {
-        "x": 3.0,
-        "y": 4.0
+        "x": 0.575,
+        "y": 0.7
       },
       "prevControl": {
-        "x": 2.83879761904762,
-        "y": 3.387142857142858
+        "x": 0.876467791419412,
+        "y": 0.7000000000000002
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "CenterFirePoint"
+      "linkedName": "outpost"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.45,
+      "rotationDegrees": 0.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
@@ -45,10 +50,10 @@
     "rotation": 180.0
   },
   "reversed": false,
-  "folder": "ToCenterFirePoint",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

@@ -3,35 +3,51 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.625,
-        "y": 0.8
+        "x": 5.75,
+        "y": 7.5
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.440519480519481,
-        "y": 0.7957142857142857
+        "x": 5.9883267911245435,
+        "y": 7.4244993997886235
       },
       "isLocked": false,
-      "linkedName": "LowerTrenchPassInner"
+      "linkedName": "UpperTrenchFireOver"
     },
     {
       "anchor": {
-        "x": 0.575,
-        "y": 0.7
+        "x": 3.1750000000000003,
+        "y": 7.4
       },
       "prevControl": {
-        "x": 2.157840909090908,
-        "y": 0.8693344155844158
+        "x": 5.087527932887444,
+        "y": 7.5571035427019755
+      },
+      "nextControl": {
+        "x": 2.0747590761103654,
+        "y": 7.3096213216045465
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 0.6,
+        "y": 7.0
+      },
+      "prevControl": {
+        "x": 0.901467791419412,
+        "y": 7.0
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "outpost"
+      "linkedName": "DepotGrabUpper"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.22463768115942034,
-      "rotationDegrees": -90.0
+      "waypointRelativePos": 0.9,
+      "rotationDegrees": 0.0
     }
   ],
   "constraintZones": [],
@@ -47,13 +63,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": "ToOutpost",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

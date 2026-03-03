@@ -3,35 +3,48 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.575,
-        "y": 0.7
-      },
-      "prevControl": null,
-      "nextControl": {
-        "x": 2.1607857142857143,
-        "y": 2.4477499999999996
-      },
-      "isLocked": false,
-      "linkedName": "outpost"
-    },
-    {
-      "anchor": {
         "x": 3.0,
         "y": 4.0
       },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.481338156004422,
+        "y": 3.457085716164598
+      },
+      "isLocked": false,
+      "linkedName": "CenterFirePoint"
+    },
+    {
+      "anchor": {
+        "x": 1.5,
+        "y": 3.7
+      },
       "prevControl": {
-        "x": 2.83879761904762,
-        "y": 3.387142857142858
+        "x": 2.6162463376582603,
+        "y": 3.3795418251502367
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "CenterFirePoint"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "RetractIntake",
+      "waypointRelativePos": 0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "Climb",
+      "waypointRelativePos": 1.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.001,
     "maxAcceleration": 3.0,
@@ -41,11 +54,11 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 0,
-    "rotation": 180.0
+    "velocity": 0.0,
+    "rotation": 0.0
   },
   "reversed": false,
-  "folder": "ToCenterFirePoint",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
     "rotation": 180.0
