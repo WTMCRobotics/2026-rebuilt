@@ -31,6 +31,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Transform3d;
+import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.numbers.N1;
@@ -349,6 +350,13 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         double robotY = getState().Pose.getY();
 
         return Math.sqrt(((robotX - x) * (robotX - x)) + ((robotY - y) * (robotY - y)));
+    }
+
+    public Translation2d getRobotPosition() {
+        double robotX = getState().Pose.getX();
+        double robotY = getState().Pose.getY();
+
+        return new Translation2d(robotX, robotY);
     }
 
     private void estimatedGlobalPose() {
