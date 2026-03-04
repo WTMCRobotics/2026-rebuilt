@@ -14,7 +14,7 @@ public class Intake extends Command {
     }
 
     public void initialize() {
-        intakeSubsystem.setIntake(Constants.INTAKE_SPEED);
+        intakeSubsystem.setIntake(speed);
     }
 
     public void execute() {
