@@ -167,8 +167,8 @@ public class RobotContainer {
         coDriverController.fretGreen().whileTrue(new Shoot(shooter, drivetrain));
         coDriverController.fretRed().whileTrue(new Intake(intake, Constants.INTAKE_SPEED));
         coDriverController.fretYellow().whileTrue(new Intake(intake, -Constants.INTAKE_SPEED));
-        coDriverController.strumUp().onTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));
-        coDriverController.strumDown().onTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT));
+        coDriverController.strumUp().whileTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND)); // TODO: Change back to onTrue when we have a limit switch
+        coDriverController.strumDown().whileTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT)); // TODO: Same as above
         coDriverController.strumLeft().onTrue(new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
         coDriverController.strumRight().onTrue(new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
         coDriverController.startButton().onTrue(new ClimbDirection(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));

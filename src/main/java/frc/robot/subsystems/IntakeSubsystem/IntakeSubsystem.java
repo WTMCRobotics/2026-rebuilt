@@ -24,42 +24,25 @@ public class IntakeSubsystem implements Subsystem {
     public void setIntake(double speed) {
         intake.set(speed);
     }
+    
     public void setExtender(IntakeSubsystemEnum direction) {
-        double P = 0;
-        double I = 0;
-        double D = 0;
-
         double goal = 0;
 
         switch(direction) {
             case INTAKE_EXTEND:
-                P = Constants.INTAKE_EXTENDER_P;
-                I = Constants.INTAKE_EXTENDER_I;
-                D = Constants.INTAKE_EXTENDER_D;
                 goal = Constants.INTAKE_EXTENDER_TARGET;
                 break;
             case INTAKE_RETRACT:
-                P = Constants.INTAKE_RETRACTOR_P;
-                I = Constants.INTAKE_RETRACTOR_I;
-                D = Constants.INTAKE_RETRACTOR_D;
                 goal = Constants.INTAKE_EXTENDER_ZERO;
                 break;
         }
-        intakeConfig.closedLoop
-            .p(P)
-            .i(I)
-            .d(D)
-            .outputRange(-(Constants.INTAKE_EXTENDER_TOLERANCE/2), Constants.INTAKE_EXTENDER_TOLERANCE/2);
-        
-        loopConfigLeft.setSetpoint(goal, ControlType.kPosition);
-        loopConfigRight.setSetpoint(goal, ControlType.kPosition);
 
-        intakeExtenderLeft.configure(intakeConfig, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
-        intakeExtenderRight.configure(intakeConfig, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
+        intakeExtenderLeft.set(goal);
+        intakeExtenderRight.set(-goal);
     } 
 
     public boolean extenderIsAtSetpoint() {
-        return intakeExtenderLeft.getClosedLoopController().isAtSetpoint() && intakeExtenderRight.getClosedLoopController().isAtSetpoint();
+        return false; // TODO: limit switch!!!
     }
 
     public void resetEncoder() {

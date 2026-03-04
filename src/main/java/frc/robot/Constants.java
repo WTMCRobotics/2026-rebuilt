@@ -22,21 +22,8 @@ public class Constants {
     public static final int INTAKE_MOTOR_ID = 52;
     public static final int INTAKE_EXTENDER_LEFT_ID = 50;
     public static final int INTAKE_EXTENDER_RIGHT_ID = 51;
+
     public static final double INTAKE_SPEED = -0.4;
-    public static final double INTAKE_EXTENDER_TARGET = 0.3;
-    public static final double INTAKE_EXTENDER_ZERO = 0.0;
-    public static final double INTAKE_EXTENDER_RETRACT = -1.0;
-
-
-    public static final double INTAKE_EXTENDER_P = 0.02;
-    public static final double INTAKE_EXTENDER_I = 0.0;
-    public static final double INTAKE_EXTENDER_D = 0.0;
-    public static final double INTAKE_EXTENDER_TOLERANCE = 0.4;
-    
-    public static final double INTAKE_RETRACTOR_P = 0.02;
-    public static final double INTAKE_RETRACTOR_I = 0.0;
-    public static final double INTAKE_RETRACTOR_D = 0.0;
-    public static final double INTAKE_RETRACTOR_TOLERANCE = 0.4;
     
     // Climb
     public static final int CLIMB_DIRECTION_ID = 60;
