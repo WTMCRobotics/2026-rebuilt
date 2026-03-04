@@ -5,7 +5,7 @@ import com.pathplanner.lib.path.PathConstraints;
 public class Constants {
     // Shooter
     public static final int SHOOTER_MOTOR_ID = 19;
-    public static final double SHOOTER_SPEED = 1.0;
+    public static final double SHOOTER_SPEED = -0.75;
 
     public static final double SHOOTER_P = 0.02;
     public static final double SHOOTER_I = 0.0;
@@ -16,13 +16,13 @@ public class Constants {
     
     // Feeder
     public static final int FEEDER_MOTOR_ID = 8;
-    public static final double FEEDER_MOTOR_FORCE = 0.4;
+    public static final double FEEDER_MOTOR_FORCE = -1.0;
 
     // Intake
-    public static final int INTAKE_MOTOR_ID = 50;
-    public static final int INTAKE_EXTENDER_LEFT_ID = 51;
-    public static final int INTAKE_EXTENDER_RIGHT_ID = 52;
-    public static final double INTAKE_SPEED = 0.4;
+    public static final int INTAKE_MOTOR_ID = 52;
+    public static final int INTAKE_EXTENDER_LEFT_ID = 50;
+    public static final int INTAKE_EXTENDER_RIGHT_ID = 51;
+    public static final double INTAKE_SPEED = -0.4;
     public static final double INTAKE_EXTENDER_TARGET = 0.3;
     public static final double INTAKE_EXTENDER_ZERO = 0.0;
     public static final double INTAKE_EXTENDER_RETRACT = -1.0;
