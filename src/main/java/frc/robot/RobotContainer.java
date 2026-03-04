@@ -83,8 +83,8 @@ public class RobotContainer {
 
 
     public RobotContainer() {
-        // shooter = new ShooterSubsystem();
-        // intake = new IntakeSubsystem();
+        shooter = new ShooterSubsystem();
+        intake = new IntakeSubsystem();
         
         drivetrain = TunerConstants.createDrivetrain();
 
@@ -111,19 +111,21 @@ public class RobotContainer {
     }
 
     private double getRotationRate() {
-        if (!coDriverController.fretGreen().getAsBoolean()) {
-            return -joystick.getRightX() * MaxAngularRate;
-        }
+        return -joystick.getRightX() * MaxAngularRate;
 
-        double hubX = (DriverStation.getAlliance().get() == Alliance.Red) ? Constants.HUB_X_BLUE : Constants.HUB_X_RED;
-        double hubY = Constants.HUB_Y;
+    //     if (!coDriverController.fretGreen().getAsBoolean()) {
+    //         return -joystick.getRightX() * MaxAngularRate;
+    //     }
 
-        double targetRotation = drivetrain.getAngleTowards(hubX, hubY).getRadians();
-        double currentRotation = drivetrain.getRotation3d().getZ();
-        double relativeRotation = currentRotation - targetRotation;
-        double motorPower = Math.sqrt(Math.abs(relativeRotation)) * -Math.signum(relativeRotation) * Constants.HUB_ALIGN_POWER_COEF;
+    //     double hubX = (DriverStation.getAlliance().get() == Alliance.Red) ? Constants.HUB_X_BLUE : Constants.HUB_X_RED;
+    //     double hubY = Constants.HUB_Y;
 
-        return motorPower;
+    //     double targetRotation = drivetrain.getAngleTowards(hubX, hubY).getRadians();
+    //     double currentRotation = drivetrain.getRotation3d().getZ();
+    //     double relativeRotation = currentRotation - targetRotation;
+    //     double motorPower = Math.sqrt(Math.abs(relativeRotation)) * -Math.signum(relativeRotation) * Constants.HUB_ALIGN_POWER_COEF;
+
+    //     return motorPower;
     }
 
     private void configureBindings() {
@@ -164,14 +166,13 @@ public class RobotContainer {
 
         coDriverController.fretGreen().whileTrue(new Shoot(shooter, drivetrain));
         coDriverController.fretRed().whileTrue(new Intake(intake, Constants.INTAKE_SPEED));
+        coDriverController.fretYellow().whileTrue(new Intake(intake, -Constants.INTAKE_SPEED));
         coDriverController.strumUp().onTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));
         coDriverController.strumDown().onTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT));
         coDriverController.strumLeft().onTrue(new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
         coDriverController.strumRight().onTrue(new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
         coDriverController.startButton().onTrue(new ClimbDirection(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
         coDriverController.backButton().onTrue(new ClimbDirection(climb, ClimbDirectionEnum.CLIMB_DIRECTION_DOWN));
-        
-
     }
 
     public Command getAutonomousCommand() {
