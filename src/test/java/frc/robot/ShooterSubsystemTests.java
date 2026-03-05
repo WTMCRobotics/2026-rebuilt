@@ -43,7 +43,7 @@ public class ShooterSubsystemTests {
 
     @Test
     void testStopShooter() {
-        shooterSubsystem.setShooterSpeed(50.0);
+        shooterSubsystem.setShooter(50.0);
         shooterSubsystem.stopShooter();
         assertEquals(0.0, shooterSubsystem.getShooterEncoderVelocity(), DELTA);
     }
