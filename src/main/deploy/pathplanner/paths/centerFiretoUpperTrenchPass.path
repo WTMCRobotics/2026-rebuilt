@@ -8,40 +8,40 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.655152099816181,
-        "y": 4.401759128823686
+        "x": 3.2489668030898,
+        "y": 4.022705306852031
       },
       "isLocked": false,
       "linkedName": "CenterFirePoint"
     },
     {
       "anchor": {
-        "x": 2.0,
-        "y": 4.85
+        "x": 2.6984285714285723,
+        "y": 7.187904761904762
       },
       "prevControl": {
-        "x": 2.2414853075221863,
-        "y": 4.785309612376219
+        "x": 2.0668882732902856,
+        "y": 6.39446478861466
       },
       "nextControl": {
-        "x": 1.2608043888896536,
-        "y": 5.048019710197615
+        "x": 3.0955882146839984,
+        "y": 7.686878996273399
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 0.6,
-        "y": 4.8
+        "x": 4.625,
+        "y": 7.6
       },
       "prevControl": {
-        "x": 1.7370427207652468,
-        "y": 4.965853293689639
+        "x": 3.761512115428209,
+        "y": 7.527203394895316
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "DepotGrabLower"
+      "linkedName": "UpperTrenchPass"
     }
   ],
   "rotationTargets": [],
@@ -57,11 +57,11 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 0,
-    "rotation": 90.0
+    "velocity": 10.0,
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": "ToDepot",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
     "rotation": 180.0

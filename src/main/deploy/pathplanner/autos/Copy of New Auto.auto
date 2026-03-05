@@ -7,30 +7,48 @@
         {
           "type": "path",
           "data": {
-            "pathName": "UpperTrenchStartToLowerTrenchPassInner;Start,Grab"
+            "pathName": "UpperTrenchStartToDepotGrabUpper"
           }
         },
         {
-          "type": "sequential",
+          "type": "path",
+          "data": {
+            "pathName": "DepotGrabUpper;grab"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "UpperDepotGrabEndToOutbost(behindClimb)"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 3.0
+          }
+        },
+        {
+          "type": "parallel",
           "data": {
             "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "OutpostToCenterFirePoint"
+                }
+              },
               {
                 "type": "named",
                 "data": {
                   "name": "Rev"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "lowerTrenchPassInnertocenterfire"
                 }
               }
             ]
           }
         },
         {
-          "type": "sequential",
+          "type": "parallel",
           "data": {
             "commands": [
               {
@@ -51,17 +69,17 @@
         {
           "type": "path",
           "data": {
-            "pathName": "CenterFirePointToOutpost"
+            "pathName": "centerFiretoUpperTrenchPass"
           }
         },
         {
-          "type": "wait",
+          "type": "path",
           "data": {
-            "waitTime": 2.0
+            "pathName": "UpperTrenchPassToLowerTrenchPassInner;Grab"
           }
         },
         {
-          "type": "sequential",
+          "type": "parallel",
           "data": {
             "commands": [
               {
@@ -73,14 +91,14 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "OutpostToCenterFirePoint"
+                  "pathName": "lowerTrenchPassInnertocenterfire"
                 }
               }
             ]
           }
         },
         {
-          "type": "sequential",
+          "type": "parallel",
           "data": {
             "commands": [
               {

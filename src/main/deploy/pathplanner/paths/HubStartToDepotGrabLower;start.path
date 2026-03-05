@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.0,
+        "x": 3.6,
         "y": 4.0
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.655152099816181,
+        "x": 3.255152099816181,
         "y": 4.401759128823686
       },
       "isLocked": false,
-      "linkedName": "CenterFirePoint"
+      "linkedName": "HubStart"
     },
     {
       "anchor": {

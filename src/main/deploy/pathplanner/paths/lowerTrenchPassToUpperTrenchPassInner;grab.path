@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.5,
+        "x": 4.6,
         "y": 0.5
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.946930664679349,
-        "y": 0.669850116255226
+        "x": 5.049045109727015,
+        "y": 0.675912363188269
       },
       "isLocked": false,
-      "linkedName": "lowerTrenchStartNeutral"
+      "linkedName": "LowerTrenchPass"
     },
     {
       "anchor": {
@@ -20,12 +20,12 @@
         "y": 1.1304404761904754
       },
       "prevControl": {
-        "x": 6.913086627015581,
-        "y": 0.4770309635948502
+        "x": 6.903520941362639,
+        "y": 0.5035228997886101
       },
       "nextControl": {
-        "x": 7.954964341931255,
-        "y": 1.828034786403077
+        "x": 8.013024881122995,
+        "y": 1.8581714214574325
       },
       "isLocked": false,
       "linkedName": null
@@ -36,36 +36,31 @@
         "y": 6.928761904761904
       },
       "prevControl": {
-        "x": 7.7821000585165,
-        "y": 6.383132419536791
+        "x": 7.808998056709747,
+        "y": 6.4031459130046615
       },
       "nextControl": {
-        "x": 6.7682354941985965,
-        "y": 7.526365867201884
+        "x": 6.730226687163073,
+        "y": 7.513242817960229
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 4.5,
+        "x": 4.625,
         "y": 7.25
       },
       "prevControl": {
-        "x": 5.898418155094497,
-        "y": 7.134038065336787
+        "x": 6.194237977968107,
+        "y": 7.0550215662942914
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "UpperTrenchStartInner"
+      "linkedName": "UpperTrenchPassInner"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 2.576763485477173,
-      "rotationDegrees": 90.0
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [
     {
@@ -106,7 +101,7 @@
     "rotation": 90.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "NeutralZoneUsage",
   "idealStartingState": {
     "velocity": 0.0,
     "rotation": 90.0

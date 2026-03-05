@@ -7,11 +7,11 @@
         {
           "type": "path",
           "data": {
-            "pathName": "UpperTrenchStartToLowerTrenchPassInner;Start,Grab"
+            "pathName": "lowerTrenchStartToUpperTrenchPassInner;grab,start"
           }
         },
         {
-          "type": "sequential",
+          "type": "parallel",
           "data": {
             "commands": [
               {
@@ -23,26 +23,26 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "lowerTrenchPassInnertocenterfire"
+                  "pathName": "UpperTrenchPassInnerToCenterFirePoint"
                 }
               }
             ]
           }
         },
         {
-          "type": "sequential",
+          "type": "parallel",
           "data": {
             "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Shoot"
-                }
-              },
               {
                 "type": "wait",
                 "data": {
                   "waitTime": 5.0
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Shoot"
                 }
               }
             ]
@@ -51,57 +51,51 @@
         {
           "type": "path",
           "data": {
-            "pathName": "CenterFirePointToOutpost"
+            "pathName": "CenterFirePointToDepotGrabLower"
           }
         },
         {
-          "type": "wait",
-          "data": {
-            "waitTime": 2.0
-          }
-        },
-        {
-          "type": "sequential",
+          "type": "parallel",
           "data": {
             "commands": [
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 5.0
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Shoot"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "DepotGrabLower;grab"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "DepotLowerGrabEndToCenterFirePoint"
+                }
+              },
               {
                 "type": "named",
                 "data": {
                   "name": "Rev"
                 }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "OutpostToCenterFirePoint"
-                }
               }
             ]
-          }
-        },
-        {
-          "type": "sequential",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Shoot"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 5.0
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "CenterFirePointToClimb;Climb"
           }
         }
       ]

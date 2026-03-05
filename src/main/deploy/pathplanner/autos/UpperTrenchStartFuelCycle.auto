@@ -7,13 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "lowerFuelGrab"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "UpperTrenchStartNeutralToCenterFire"
+            "pathName": "UpperTrenchStartToLowerTrenchFireOver;Grab"
           }
         },
         {
@@ -38,7 +32,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "CenterFirePointToDepotGrabLower"
+            "pathName": "LowerTrenchFireOverToUpperTrenchFireOver;Grab"
           }
         },
         {
@@ -58,31 +52,6 @@
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "DepotGrabLower"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "DepotLowerGrabEndToCenterFirePoint"
           }
         }
       ]

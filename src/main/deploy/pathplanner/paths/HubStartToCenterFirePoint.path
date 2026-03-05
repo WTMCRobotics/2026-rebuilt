@@ -12,7 +12,7 @@
         "y": 4.0
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "HubStart"
     },
     {
       "anchor": {
@@ -45,7 +45,7 @@
     "rotation": 180.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "ToCenterFirePoint",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 180.0

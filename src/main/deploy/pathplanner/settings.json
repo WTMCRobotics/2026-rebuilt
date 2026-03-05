@@ -3,7 +3,10 @@
   "robotLength": 0.762,
   "holonomicMode": true,
   "pathFolders": [
-    "depot"
+    "NeutralZoneUsage",
+    "ToCenterFirePoint",
+    "ToDepot",
+    "ToOutpost"
   ],
   "autoFolders": [],
   "defaultMaxVel": 3.001,

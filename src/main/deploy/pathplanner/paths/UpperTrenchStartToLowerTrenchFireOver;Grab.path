@@ -1,0 +1,114 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 4.5,
+        "y": 7.65
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 5.5421671541163295,
+        "y": 7.464224808490348
+      },
+      "isLocked": false,
+      "linkedName": "TrenchStart1"
+    },
+    {
+      "anchor": {
+        "x": 7.5,
+        "y": 7.0
+      },
+      "prevControl": {
+        "x": 6.942498175473844,
+        "y": 7.655907820449197
+      },
+      "nextControl": {
+        "x": 7.966232624168349,
+        "y": 6.451471527289641
+      },
+      "isLocked": false,
+      "linkedName": "UpperNeutralPoint"
+    },
+    {
+      "anchor": {
+        "x": 7.75,
+        "y": 1.5
+      },
+      "prevControl": {
+        "x": 8.34930846125215,
+        "y": 2.4761855915393136
+      },
+      "nextControl": {
+        "x": 7.619200684716897,
+        "y": 1.2869470978337274
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 5.75,
+        "y": 0.6
+      },
+      "prevControl": {
+        "x": 6.113484146117461,
+        "y": 0.7418791594883544
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "LowerTrenchFireOver"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.7753623188405802,
+      "rotationDegrees": -90.0
+    },
+    {
+      "waypointRelativePos": 2.210144927536232,
+      "rotationDegrees": -90.0
+    }
+  ],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [
+    {
+      "name": "DeployIntake",
+      "waypointRelativePos": 0.4388059701492541,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "Intake",
+      "waypointRelativePos": 0.528358208955224,
+      "endWaypointRelativePos": 2.55223880597015,
+      "command": null
+    },
+    {
+      "name": "Rev",
+      "waypointRelativePos": 2.086567164179105,
+      "endWaypointRelativePos": 3.0,
+      "command": null
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.001,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "reversed": false,
+  "folder": "NeutralZoneUsage",
+  "idealStartingState": {
+    "velocity": 0.0,
+    "rotation": -90.0
+  },
+  "useDefaultConstraints": true
+}

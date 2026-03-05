@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.0,
-        "y": 4.0
+        "x": 5.75,
+        "y": 7.5
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.655152099816181,
-        "y": 4.401759128823686
+        "x": 5.9883267911245435,
+        "y": 7.4244993997886235
       },
       "isLocked": false,
-      "linkedName": "CenterFirePoint"
+      "linkedName": "UpperTrenchFireOver"
     },
     {
       "anchor": {
-        "x": 2.0,
-        "y": 4.85
+        "x": 3.1750000000000003,
+        "y": 7.4
       },
       "prevControl": {
-        "x": 2.2414853075221863,
-        "y": 4.785309612376219
+        "x": 5.087527932887444,
+        "y": 7.5571035427019755
       },
       "nextControl": {
-        "x": 1.2608043888896536,
-        "y": 5.048019710197615
+        "x": 2.0747590761103654,
+        "y": 7.3096213216045465
       },
       "isLocked": false,
       "linkedName": null
@@ -33,18 +33,23 @@
     {
       "anchor": {
         "x": 0.6,
-        "y": 4.8
+        "y": 7.0
       },
       "prevControl": {
-        "x": 1.7370427207652468,
-        "y": 4.965853293689639
+        "x": 0.901467791419412,
+        "y": 7.0
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "DepotGrabLower"
+      "linkedName": "DepotGrabUpper"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.9,
+      "rotationDegrees": 0.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
@@ -58,13 +63,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": "ToDepot",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }
