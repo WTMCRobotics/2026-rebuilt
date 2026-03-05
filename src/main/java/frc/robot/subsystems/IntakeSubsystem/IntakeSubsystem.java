@@ -26,19 +26,19 @@ public class IntakeSubsystem implements Subsystem {
     }
     
     public void setExtender(IntakeSubsystemEnum direction) {
-        double goal = 0;
+        double invert = 0;
 
         switch(direction) {
             case INTAKE_EXTEND:
-                goal = Constants.INTAKE_EXTENDER_TARGET;
+                invert = -1;
                 break;
             case INTAKE_RETRACT:
-                goal = Constants.INTAKE_EXTENDER_ZERO;
+                invert = 1;
                 break;
         }
 
-        intakeExtenderLeft.set(goal);
-        intakeExtenderRight.set(-goal);
+        intakeExtenderLeft.set(Constants.INTAKE_EXTENDER_SPEED * invert);
+        intakeExtenderRight.set(-Constants.INTAKE_EXTENDER_SPEED * invert);
     } 
 
     public boolean extenderIsAtSetpoint() {
