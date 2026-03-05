@@ -96,7 +96,8 @@ public class RobotContainer {
         SmartDashboard.putData("Field", m_field);
         SmartDashboard.putData("Mech", m_mech);
 
-        System.out.println("ROBOT CONTAINER");
+        SmartDashboard.putNumber("Shooter velocity", shooter.getShooterEncoderVelocity());
+        SmartDashboard.putNumber("Feeder velocity", shooter.getFeederEncoderVelocity());
 
         Logger.recordOutput("MyPose", poseA);
     }
