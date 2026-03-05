@@ -9,10 +9,9 @@ import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.Constants;
 
-public class Shoot extends Command {
+public class Rev extends Command {
     ShooterSubsystem shooterSubsystem;
     CommandSwerveDrivetrain drivetrain;
-    double rpm;
 
     double hubX = (DriverStation.getAlliance().get() == Alliance.Red) ? Constants.HUB_X_BLUE : Constants.HUB_X_RED;
     double hubY = Constants.HUB_Y;
@@ -23,38 +22,22 @@ public class Shoot extends Command {
         Constants.SHOOTER_D
     );
 
-    private final PIDController feederController = new PIDController(
-        Constants.FEEDER_P,
-        Constants.FEEDER_I,
-        Constants.FEEDER_D
-    );
 
-    public Shoot(ShooterSubsystem shooterSubsystem, CommandSwerveDrivetrain drivetrain) {
+    public Rev (ShooterSubsystem shooterSubsystem,CommandSwerveDrivetrain drivetrain) {
         this.shooterSubsystem = shooterSubsystem;
-        this.drivetrain = drivetrain;
+        this.drivetrain=drivetrain;
     }
 
     public void initialize() {
         shooterController.setTolerance(Constants.SHOOTER_TOLERANCE);
-        feederController.setTolerance(Constants.FEEDER_TOLERANCE);
-        feederController.setSetpoint(Constants.FEEDER_SPEED_RPM);
     }
 
-
-
     public void execute() {
-        shooterSubsystem.setShooter(Constants.SHOOTER_SPEED);
-        shooterSubsystem.setFeeder(-0.5);
-        //shooterController.setSetpoint(shooterSubsystem.getGoalSpeed(drivetrain.getDistanceFrom(hubX, hubY),drivetrain));
+        // shooterSubsystem.setShooter(Constants.SHOOTER_SPEED);
+        // shooterSubsystem.setFeeder(Constants.FEEDER_MOTOR_FORCE);
 
-
-        // shooterSubsystem.setShooter(shooterController.calculate(shooterSubsystem.getShooterEncoderVelocity()));
-
-        // if(shooterController.atSetpoint()){
-        //     shooterSubsystem.setFeeder(feederController.calculate(shooterSubsystem.getFeederEncoderVelocity()));
-        // } else {
-        //     shooterSubsystem.setFeeder(0.0);
-        // }
+        shooterController.setSetpoint(shooterSubsystem.getGoalSpeed(drivetrain.getDistanceFrom(hubX, hubY),drivetrain));
+        shooterSubsystem.setShooter(shooterController.calculate(shooterSubsystem.getShooterEncoderVelocity()));
     }
 
     @Override
@@ -65,6 +48,5 @@ public class Shoot extends Command {
     @Override
     public void end(boolean interrupted) {
         shooterSubsystem.stopShooter();
-        shooterSubsystem.setFeeder(0);
     }
 }

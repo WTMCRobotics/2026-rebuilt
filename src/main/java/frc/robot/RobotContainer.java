@@ -40,6 +40,7 @@ import frc.robot.commands.SetIntake;
 import frc.robot.commands.Climb;
 import frc.robot.commands.ClimbDirection;
 import frc.robot.commands.ResetIntake;
+import frc.robot.commands.Rev;
 
 public class RobotContainer {
 
@@ -82,11 +83,17 @@ public class RobotContainer {
         
         drivetrain = TunerConstants.createDrivetrain();
 
-        NamedCommands.registerCommand("Climb Up", new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
-        NamedCommands.registerCommand("Climb Down", new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_DOWN));
+        //NamedCommands.registerCommand("Climb Up", new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
+        //NamedCommands.registerCommand("Climb Down", new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_DOWN));
+
+        NamedCommands.registerCommand("Climb" ,new Climb(climb,ClimbDirectionEnum.CLIMB_DIRECTION_UP));
+
         NamedCommands.registerCommand("Intake", new Intake(intake, Constants.INTAKE_SPEED));
+        NamedCommands.registerCommand("Deploy Intake",new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));
+        NamedCommands.registerCommand("Retract Intake",new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT));
+
         NamedCommands.registerCommand("Shoot", new Shoot(shooter, drivetrain));
-        NamedCommands.registerCommand("Deploy Intake", new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));
+        NamedCommands.registerCommand("Rev", new Rev(shooter, drivetrain));
 
         configureBindings();
         
@@ -162,8 +169,8 @@ public class RobotContainer {
         coDriverController.fretGreen().whileTrue(new Shoot(shooter, drivetrain));
         coDriverController.fretRed().whileTrue(new Intake(intake, Constants.INTAKE_SPEED));
         coDriverController.fretYellow().whileTrue(new Intake(intake, -Constants.INTAKE_SPEED));
-        coDriverController.strumUp().whileTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND)); // TODO: Change back to onTrue when we have a limit switch
-        coDriverController.strumDown().whileTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT)); // TODO: Same as above
+        coDriverController.strumUp().whileTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));
+        coDriverController.strumDown().whileTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT));
         coDriverController.strumLeft().onTrue(new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
         coDriverController.strumRight().onTrue(new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
         coDriverController.startButton().onTrue(new ClimbDirection(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
