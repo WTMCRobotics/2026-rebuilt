@@ -42,6 +42,10 @@ public class ShooterSubsystem implements Subsystem {
         return shooter.getVelocity().getValueAsDouble();
     }
 
+    public double getFeederEncoderVelocity() {
+        return feeder.getEncoder().getVelocity();
+    }
+
     public void resetEncoder() {
         shooter.setPosition(0);
     }
