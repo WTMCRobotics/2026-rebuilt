@@ -20,7 +20,7 @@
         "y": 5.1
       },
       "prevControl": {
-        "x": 0.5999999999999999,
+        "x": 0.5999999999999998,
         "y": 6.2968671485982535
       },
       "nextControl": null,
@@ -33,7 +33,7 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "DeployIntake",
+      "name": "Deploy Intake",
       "waypointRelativePos": 0,
       "endWaypointRelativePos": null,
       "command": null
