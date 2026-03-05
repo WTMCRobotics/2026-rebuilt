@@ -23,8 +23,8 @@ public class Constants {
     public static final int INTAKE_EXTENDER_LEFT_ID = 50;
     public static final int INTAKE_EXTENDER_RIGHT_ID = 51;
     
-    public static final double INTAKE_SPEED = -0.4;
-    public static final double INTAKE_EXTENDER_SPEED = 0.2;
+    public static final double INTAKE_SPEED = -0.75;
+    public static final double INTAKE_EXTENDER_SPEED = 0.4;
     
     // Climb
     public static final int CLIMB_DIRECTION_ID = 60;
