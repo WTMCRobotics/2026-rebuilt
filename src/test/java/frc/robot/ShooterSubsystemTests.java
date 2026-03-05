@@ -23,8 +23,8 @@ public class ShooterSubsystemTests {
     }
 
     @Test
-    void testSetShooterSpeed() {
-        shooterSubsystem.setShooterSpeed(100.0);
+    void testSetShooter() {
+        shooterSubsystem.setShooter(0.8);
         assertEquals(100.0, shooterSubsystem.getShooterEncoderVelocity(), DELTA);
     }
 
