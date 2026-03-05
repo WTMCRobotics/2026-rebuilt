@@ -39,7 +39,6 @@ import frc.robot.commands.Intake;
 import frc.robot.commands.SetIntake;
 import frc.robot.commands.Climb;
 import frc.robot.commands.ClimbDirection;
-import frc.robot.commands.ResetIntake;
 import frc.robot.commands.Rev;
 
 public class RobotContainer {
@@ -97,7 +96,6 @@ public class RobotContainer {
 
         configureBindings();
         
-        SmartDashboard.putData("Reset intake thingamajig", new ResetIntake(intake));
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("Auto Chooser", autoChooser);
         SmartDashboard.putData("Field", m_field);
@@ -105,6 +103,13 @@ public class RobotContainer {
 
         SmartDashboard.putNumber("Shooter velocity", shooter.getShooterEncoderVelocity());
         SmartDashboard.putNumber("Feeder velocity", shooter.getFeederEncoderVelocity());
+
+        SmartDashboard.putNumber("Left Intake Position", intake.getEncoderLeftPosition());
+        SmartDashboard.putNumber("Right Intake Position", intake.getEncoderRightPosition());
+        SmartDashboard.putBoolean("Right Intake Forward Limit", intake.rightForwardLimitSwitchHit());
+        SmartDashboard.putBoolean("Right Intake Reverse Limit", intake.rightReverseLimitSwitchHit());
+        SmartDashboard.putBoolean("Left Intake Forward Limit", intake.leftForwardLimitSwitchHit());
+        SmartDashboard.putBoolean("Left Intake Reverse Limit", intake.leftReverseLimitSwitchHit());
 
         Logger.recordOutput("MyPose", poseA);
     }

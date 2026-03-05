@@ -24,14 +24,14 @@ public class SetIntake extends Command {
                 invert = 1;
                 break;
         }
-         
+
         intakeSubsystem.setRightExtender(-Constants.INTAKE_EXTENDER_SPEED * invert);
     }
 
     public void execute() {
-        if(intakeSubsystem.leftLimitSwitchHit()) {}
+        if(intakeSubsystem.leftReverseLimitSwitchHit()) {}
             intakeSubsystem.resetLeftEncoder();
-        if(intakeSubsystem.rightLimitSwitchHit())
+        if(intakeSubsystem.rightReverseLimitSwitchHit())
             intakeSubsystem.resetRightEncoder();
 
         if(intakeSubsystem.getEncoderLeftPosition() < Constants.INTAKE_BUMP_MAX && intakeSubsystem.getEncoderLeftPosition() > Constants.INTAKE_BUMP_MIN) {

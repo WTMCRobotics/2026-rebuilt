@@ -53,12 +53,20 @@ public class IntakeSubsystem implements Subsystem {
         intakeExtenderRight.stopMotor();
     }
 
-    public Boolean leftLimitSwitchHit() {
+    public Boolean leftReverseLimitSwitchHit() {
        return intakeExtenderLeft.getReverseLimitSwitch().isPressed();
     }
 
-    public Boolean rightLimitSwitchHit() {
+    public Boolean rightReverseLimitSwitchHit() {
        return intakeExtenderRight.getReverseLimitSwitch().isPressed();
+    }
+
+    public Boolean leftForwardLimitSwitchHit() {
+       return intakeExtenderLeft.getForwardLimitSwitch().isPressed();
+    }
+
+    public Boolean rightForwardLimitSwitchHit() {
+       return intakeExtenderRight.getForwardLimitSwitch().isPressed();
     }
 
     public double getIntake() {

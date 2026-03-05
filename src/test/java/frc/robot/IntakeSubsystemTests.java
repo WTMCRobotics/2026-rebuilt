@@ -33,19 +33,17 @@ public class IntakeSubsystemTests {
     @Test
     void testResetLeftEncoder() {
         intakeSubsystem.setEncoderPosition(12.0);
-        intakeSubsystem.resetEncoder();
         assertEquals(0.0, intakeSubsystem.getEncoderLeftPosition(), DELTA);
     }
 
     @Test
     void testResetRightEncoder() {
         intakeSubsystem.setEncoderPosition(12.0);
-        intakeSubsystem.resetEncoder();
         assertEquals(0.0, intakeSubsystem.getEncoderRightPosition(), DELTA);
     }
     @Test
     // add mocking of the limit switch
     void testlimitSwitchHit() {
-        assertFalse(intakeSubsystem.limitSwitchHit());
+        assertFalse(intakeSubsystem.leftLimitSwitchHit());
     }
 }
