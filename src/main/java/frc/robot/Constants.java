@@ -28,6 +28,10 @@ public class Constants {
     
     public static final double INTAKE_SPEED = -0.75;
     public static final double INTAKE_EXTENDER_SPEED = 0.4;
+    public static final double INTAKE_LEFT_OVER_BUMP_SPEED = 0.5;
+
+    public static final double INTAKE_BUMP_MAX = 5;
+    public static final double INTAKE_BUMP_MIN = 6;
     
     // Climb
     public static final int CLIMB_DIRECTION_ID = 60;

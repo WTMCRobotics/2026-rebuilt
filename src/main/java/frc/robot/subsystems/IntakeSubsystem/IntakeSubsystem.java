@@ -22,28 +22,24 @@ public class IntakeSubsystem implements Subsystem {
         intake.set(speed);
     }
     
-    public void setExtender(IntakeSubsystemEnum direction) {
-        double invert = 0;
-
-        switch(direction) {
-            case INTAKE_EXTEND:
-                invert = -1;
-                break;
-            case INTAKE_RETRACT:
-                invert = 1;
-                break;
-        }
-
-        intakeExtenderLeft.set(Constants.INTAKE_EXTENDER_SPEED * invert);
-        intakeExtenderRight.set(-Constants.INTAKE_EXTENDER_SPEED * invert);
-    } 
-
-    public boolean extenderIsAtSetpoint() {
-        return false; // TODO: limit switch!!!
+    public void setLeftExtender(double speed) {
+        intakeExtenderLeft.set(speed);
     }
 
-    public void resetEncoder() {
+    public void setRightExtender(double speed) {
+        intakeExtenderRight.set(speed);
+    }
+
+    public void resetEncoders() {
         intakeExtenderLeft.getEncoder().setPosition(0);
+        intakeExtenderRight.getEncoder().setPosition(0);
+    }
+
+    public void resetLeftEncoder() {
+        intakeExtenderLeft.getEncoder().setPosition(0);
+    }
+    
+    public void resetRightEncoder() {
         intakeExtenderRight.getEncoder().setPosition(0);
     }
 
@@ -57,8 +53,12 @@ public class IntakeSubsystem implements Subsystem {
         intakeExtenderRight.stopMotor();
     }
 
-    public Boolean limitSwitchHit() {
-       return intakeExtenderLeft.getReverseLimitSwitch().isPressed() && intakeExtenderRight.getReverseLimitSwitch().isPressed();
+    public Boolean leftLimitSwitchHit() {
+       return intakeExtenderLeft.getReverseLimitSwitch().isPressed();
+    }
+
+    public Boolean rightLimitSwitchHit() {
+       return intakeExtenderRight.getReverseLimitSwitch().isPressed();
     }
 
     public double getIntake() {
