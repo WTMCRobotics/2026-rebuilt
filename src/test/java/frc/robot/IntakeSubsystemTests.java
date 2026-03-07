@@ -44,6 +44,6 @@ public class IntakeSubsystemTests {
     @Test
     // add mocking of the limit switch
     void testlimitSwitchHit() {
-        assertFalse(intakeSubsystem.leftLimitSwitchHit());
+        assertFalse(intakeSubsystem.leftForwardLimitSwitchHit());
     }
 }

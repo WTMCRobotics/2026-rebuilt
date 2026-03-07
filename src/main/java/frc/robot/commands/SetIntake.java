@@ -25,19 +25,16 @@ public class SetIntake extends Command {
                 break;
         }
 
-        intakeSubsystem.setRightExtender(-Constants.INTAKE_EXTENDER_SPEED * invert);
+        // intakeSubsystem.setRightExtender(-Constants.INTAKE_EXTENDER_SPEED * invert);
     }
 
     public void execute() {
-        if(intakeSubsystem.leftReverseLimitSwitchHit()) {}
-            intakeSubsystem.resetLeftEncoder();
-        if(intakeSubsystem.rightReverseLimitSwitchHit())
-            intakeSubsystem.resetRightEncoder();
-
         if(intakeSubsystem.getEncoderLeftPosition() < Constants.INTAKE_BUMP_MAX && intakeSubsystem.getEncoderLeftPosition() > Constants.INTAKE_BUMP_MIN) {
             intakeSubsystem.setLeftExtender(Constants.INTAKE_LEFT_OVER_BUMP_SPEED * invert);
+            intakeSubsystem.setRightExtender(Constants.INTAKE_LEFT_OVER_BUMP_SPEED * invert);
         } else {
             intakeSubsystem.setLeftExtender(Constants.INTAKE_EXTENDER_SPEED * invert);
+            intakeSubsystem.setRightExtender(Constants.INTAKE_EXTENDER_SPEED * invert);
         }
     }
 
