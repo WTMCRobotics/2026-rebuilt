@@ -4,6 +4,7 @@ import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -43,15 +44,27 @@ public class Shoot extends Command {
         feederController.setSetpoint(Constants.FEEDER_SPEED_RPM);
     }
 
-
+    public double lerp(double fromMin, double fromMax, double toMin, double toMax, double value) {
+        double fromDelta = fromMax - fromMin;
+        double toDelta = toMax - toMin;
+        
+        return (value - fromMin) * (fromDelta / toDelta) + toMin;
+    }
 
     public void execute() {
         // shooterSubsystem.setShooter(Constants.SHOOTER_SPEED);
         // shooterSubsystem.setFeeder(Constants.FEEDER_SPEED);
+        
+        SmartDashboard.putNumber("Shooter Setpoint", shooterController.getSetpoint());
 
         if (guitar.fretBlue().getAsBoolean()) {
-            shooterController.setSetpoint(Constants.RPMLEEVERTHINGYMAJIG * guitar.getLeverAxis());
-        } else {
+            shooterController.setSetpoint(lerp(
+                0.1, 
+                0.9, 
+                0, 
+                Constants.RPMLEEVERTHINGYMAJIG,
+                guitar.getLeverAxis()));
+        } else { 
             shooterController.setSetpoint(shooterSubsystem.getGoalSpeed(drivetrain.getDistanceFrom(hubX, hubY),drivetrain));
         }
 

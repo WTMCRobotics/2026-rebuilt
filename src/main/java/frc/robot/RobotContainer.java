@@ -24,6 +24,7 @@ import edu.wpi.first.wpilibj.smartdashboard.Mechanism2d;
 import frc.robot.controller.XboxController;
 import frc.robot.controller.GuitarController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
@@ -105,9 +106,6 @@ public class RobotContainer {
         SmartDashboard.putData("Mech", m_mech);
         SmartDashboard.putData("Reset Intake", new ResetIntake(intake));
 
-        SmartDashboard.putNumber("Shooter velocity", shooter.getShooterEncoderVelocity());
-        SmartDashboard.putNumber("Feeder velocity", shooter.getFeederEncoderVelocity());
-
 
 
         Logger.recordOutput("MyPose", poseA);
@@ -180,6 +178,25 @@ public class RobotContainer {
         coDriverController.strumRight().onTrue(new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
         coDriverController.startButton().onTrue(new ClimbDirection(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
         coDriverController.backButton().onTrue(new ClimbDirection(climb, ClimbDirectionEnum.CLIMB_DIRECTION_DOWN));
+
+
+        // Orchestra
+        
+        SmartDashboard.putString("song", "");
+        SmartDashboard.putData(
+            "Play Song",
+            Commands.runOnce(
+                () -> {
+                    drivetrain.loadSong(SmartDashboard.getString("song", null));
+                    System.out.println("Playing Music 1");
+                    // drivetrain.getSqOrchestra().stop();
+                    drivetrain.getSqOrchestra().play();
+                    System.out.println("Playing Music 2");
+                },
+                drivetrain
+            )
+        );
+        
     }
 
     public Command getAutonomousCommand() {

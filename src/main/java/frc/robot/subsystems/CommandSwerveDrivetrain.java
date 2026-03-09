@@ -12,6 +12,7 @@ import org.photonvision.PhotonPoseEstimator;
 import org.photonvision.PhotonPoseEstimator.PoseStrategy;
 import org.photonvision.targeting.PhotonPipelineResult;
 
+import com.ctre.phoenix6.Orchestra;
 import com.ctre.phoenix6.SignalLogger;
 import com.ctre.phoenix6.Utils;
 import com.ctre.phoenix6.swerve.SwerveDrivetrainConstants;
@@ -80,6 +81,8 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
     private final SwerveRequest.SysIdSwerveSteerGains m_steerCharacterization = new SwerveRequest.SysIdSwerveSteerGains();
     private final SwerveRequest.SysIdSwerveRotation m_rotationCharacterization = new SwerveRequest.SysIdSwerveRotation();
     private Field2d field = new Field2d();
+
+    Orchestra sqOrchestra;
 
     /*
      * SysId routine for characterizing translation. This is used to find PID gains
@@ -482,5 +485,16 @@ private void startSimThread() {
     @Override
     public Optional<Pose2d> samplePoseAt(double timestampSeconds) {
         return super.samplePoseAt(Utils.fpgaToCurrentTime(timestampSeconds));
+    }
+
+
+    // Orchestra
+    public void loadSong(String song) {
+        var status = sqOrchestra.loadMusic(song);
+        System.out.println("Music Loaded");
+    }
+
+    public Orchestra getSqOrchestra() {
+        return this.sqOrchestra;
     }
 }

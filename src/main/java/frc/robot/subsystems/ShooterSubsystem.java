@@ -4,16 +4,28 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.SparkMax;
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.None;
 
 import edu.wpi.first.math.geometry.Translation2d;
-import edu.wpi.first.wpilibj2.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class ShooterSubsystem implements Subsystem {
+public class ShooterSubsystem extends SubsystemBase {
     TalonFX shooter = new TalonFX(Constants.SHOOTER_MOTOR_ID);
     SparkMax feeder = new SparkMax(Constants.FEEDER_MOTOR_ID, MotorType.kBrushless);
     
     SparkMaxConfig shooterConfig = new SparkMaxConfig();
+
+    public ShooterSubsystem() {
+        SmartDashboard.putNumber("Shooter Setpoint", 0);
+    }
+
+    @Override
+    public void periodic() {
+        SmartDashboard.putNumber("Shooter velocity", getShooterEncoderVelocity());
+        SmartDashboard.putNumber("Feeder velocity", getFeederEncoderVelocity());
+    }
 
     public void setShooter(double speed) {
         shooter.set(speed);

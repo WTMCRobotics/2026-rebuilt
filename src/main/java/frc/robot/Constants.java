@@ -10,7 +10,7 @@ public class Constants {
     public static final double SHOOTER_P = 0.02;
     public static final double SHOOTER_I = 0.0;
     public static final double SHOOTER_D = 0.0;
-    public static final double SHOOTER_TOLERANCE = 0.4;
+    public static final double SHOOTER_TOLERANCE = 20.0;
     public static final double RPMLEEVERTHINGYMAJIG = 6000;
     
     // Feeder
