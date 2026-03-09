@@ -71,7 +71,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
     private final SwerveRequest.ApplyRobotSpeeds m_pathApplyRobotSpeeds = new SwerveRequest.ApplyRobotSpeeds();
     private final AprilTagFieldLayout fieldApriltags = AprilTagFieldLayout.loadField(AprilTagFields.k2026RebuiltWelded);
     private final PhotonCamera camera1 = new PhotonCamera("camera1");
-    private final PhotonCamera camera2 = new PhotonCamera("camera2");
+    // private final PhotonCamera camera2 = new PhotonCamera("camera2");
     private PhotonPoseEstimator poseEstimator1;
     private PhotonPoseEstimator poseEstimator2;
 
@@ -370,19 +370,19 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
             }
         }
 
-        List<PhotonPipelineResult> unread2 = camera2.getAllUnreadResults();
+        // List<PhotonPipelineResult> unread2 = camera2.getAllUnreadResults();
 
-        for(PhotonPipelineResult cameraFrame: unread2) {
-            Optional<EstimatedRobotPose> thisFramePoseEstimation = poseEstimator2.estimateCoprocMultiTagPose(cameraFrame);
-            if(thisFramePoseEstimation.isPresent()) {
-                addVisionMeasurement(thisFramePoseEstimation.get().estimatedPose.toPose2d(), thisFramePoseEstimation.get().timestampSeconds);
-            } else {
-                Optional<EstimatedRobotPose> thisFrameFallbackPoseEstimation = poseEstimator2.estimateLowestAmbiguityPose(cameraFrame);
-                if(thisFrameFallbackPoseEstimation.isPresent()) {
-                    addVisionMeasurement(thisFrameFallbackPoseEstimation.get().estimatedPose.toPose2d(), thisFrameFallbackPoseEstimation.get().timestampSeconds);
-                }   
-            }
-        }
+        // for(PhotonPipelineResult cameraFrame: unread2) {
+        //     Optional<EstimatedRobotPose> thisFramePoseEstimation = poseEstimator2.estimateCoprocMultiTagPose(cameraFrame);
+        //     if(thisFramePoseEstimation.isPresent()) {
+        //         addVisionMeasurement(thisFramePoseEstimation.get().estimatedPose.toPose2d(), thisFramePoseEstimation.get().timestampSeconds);
+        //     } else {
+        //         Optional<EstimatedRobotPose> thisFrameFallbackPoseEstimation = poseEstimator2.estimateLowestAmbiguityPose(cameraFrame);
+        //         if(thisFrameFallbackPoseEstimation.isPresent()) {
+        //             addVisionMeasurement(thisFrameFallbackPoseEstimation.get().estimatedPose.toPose2d(), thisFrameFallbackPoseEstimation.get().timestampSeconds);
+        //         }   
+        //     }
+        // }
         
         field.setRobotPose(getState().Pose);
     }

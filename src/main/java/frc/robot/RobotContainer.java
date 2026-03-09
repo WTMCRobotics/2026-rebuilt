@@ -17,6 +17,8 @@ import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.Mechanism2d;
 import frc.robot.controller.XboxController;
@@ -92,7 +94,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("Deploy Intake",new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));
         NamedCommands.registerCommand("Retract Intake",new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT));
 
-        NamedCommands.registerCommand("Shoot", new Shoot(shooter, drivetrain));
+        NamedCommands.registerCommand("Shoot", new Shoot(shooter, drivetrain, coDriverController));
         NamedCommands.registerCommand("Rev", new Rev(shooter, drivetrain));
 
         configureBindings();
@@ -115,21 +117,21 @@ public class RobotContainer {
     }
 
     private double getRotationRate() {
-        return -joystick.getRightX() * MaxAngularRate;
+        // return -joystick.getRightX() * MaxAngularRate;
 
-    //     if (!coDriverController.fretGreen().getAsBoolean()) {
-    //         return -joystick.getRightX() * MaxAngularRate;
-    //     }
+        if (!controller.x().getAsBoolean()) {
+            return -joystick.getRightX() * MaxAngularRate;
+        }
 
-    //     double hubX = (DriverStation.getAlliance().get() == Alliance.Red) ? Constants.HUB_X_BLUE : Constants.HUB_X_RED;
-    //     double hubY = Constants.HUB_Y;
+        double hubX = (DriverStation.getAlliance().get() == Alliance.Red) ? Constants.HUB_X_BLUE : Constants.HUB_X_RED;
+        double hubY = Constants.HUB_Y;
 
-    //     double targetRotation = drivetrain.getAngleTowards(hubX, hubY).getRadians();
-    //     double currentRotation = drivetrain.getRotation3d().getZ();
-    //     double relativeRotation = currentRotation - targetRotation;
-    //     double motorPower = Math.sqrt(Math.abs(relativeRotation)) * -Math.signum(relativeRotation) * Constants.HUB_ALIGN_POWER_COEF;
+        double targetRotation = drivetrain.getAngleTowards(hubX, hubY).getRadians();
+        double currentRotation = drivetrain.getRotation3d().getZ();
+        double relativeRotation = currentRotation - targetRotation;
+        double motorPower = Math.sqrt(Math.abs(relativeRotation)) * -Math.signum(relativeRotation) * Constants.HUB_ALIGN_POWER_COEF;
 
-    //     return motorPower;
+        return motorPower;
     }
 
     private void configureBindings() {
@@ -138,8 +140,8 @@ public class RobotContainer {
         drivetrain.setDefaultCommand(
             // Drivetrain will execute this command periodically
             drivetrain.applyRequest(() ->
-                drive.withVelocityX(-joystick.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
-                    .withVelocityY(-joystick.getLeftX() * MaxSpeed) // Drive left with negative X (left)
+                drive.withVelocityX(-Math.pow(joystick.getLeftY() * MaxSpeed, 2) * Math.signum(joystick.getLeftY())) // Drive forward with negative Y (forward)
+                    .withVelocityY(-Math.pow(joystick.getLeftX() * MaxSpeed, 2) * Math.signum(joystick.getLeftX())) // Drive left with negative X (left)
                     .withRotationalRate(getRotationRate()) // Drive counterclockwise with negative X (left)
             )
         );
@@ -168,7 +170,8 @@ public class RobotContainer {
 
         drivetrain.registerTelemetry(logger::telemeterize);
 
-        coDriverController.fretGreen().whileTrue(new Shoot(shooter, drivetrain));
+        coDriverController.fretGreen().whileTrue(new Shoot(shooter, drivetrain, coDriverController));
+        coDriverController.fretBlue().whileTrue(new Shoot(shooter, drivetrain, coDriverController));
         coDriverController.fretRed().whileTrue(new Intake(intake, Constants.INTAKE_SPEED));
         coDriverController.fretYellow().whileTrue(new Intake(intake, -Constants.INTAKE_SPEED));
         coDriverController.strumUp().whileTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));

@@ -7,11 +7,13 @@ import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.controller.GuitarController;
 import frc.robot.Constants;
 
 public class Shoot extends Command {
     ShooterSubsystem shooterSubsystem;
     CommandSwerveDrivetrain drivetrain;
+    GuitarController guitar;
     double rpm;
 
     double hubX = (DriverStation.getAlliance().get() == Alliance.Red) ? Constants.HUB_X_BLUE : Constants.HUB_X_RED;
@@ -29,9 +31,10 @@ public class Shoot extends Command {
         Constants.FEEDER_D
     );
 
-    public Shoot(ShooterSubsystem shooterSubsystem, CommandSwerveDrivetrain drivetrain) {
+    public Shoot(ShooterSubsystem shooterSubsystem, CommandSwerveDrivetrain drivetrain, GuitarController guitar) {
         this.shooterSubsystem = shooterSubsystem;
         this.drivetrain = drivetrain;
+        this.guitar = guitar;
     }
 
     public void initialize() {
@@ -43,18 +46,24 @@ public class Shoot extends Command {
 
 
     public void execute() {
-        shooterSubsystem.setShooter(Constants.SHOOTER_SPEED);
-        shooterSubsystem.setFeeder(-0.5);
-        //shooterController.setSetpoint(shooterSubsystem.getGoalSpeed(drivetrain.getDistanceFrom(hubX, hubY),drivetrain));
+        // shooterSubsystem.setShooter(Constants.SHOOTER_SPEED);
+        // shooterSubsystem.setFeeder(Constants.FEEDER_SPEED);
 
+        if (guitar.fretBlue().getAsBoolean()) {
+            shooterController.setSetpoint(Constants.RPMLEEVERTHINGYMAJIG * guitar.getLeverAxis());
+        } else {
+            shooterController.setSetpoint(shooterSubsystem.getGoalSpeed(drivetrain.getDistanceFrom(hubX, hubY),drivetrain));
+        }
 
-        // shooterSubsystem.setShooter(shooterController.calculate(shooterSubsystem.getShooterEncoderVelocity()));
+        shooterSubsystem.setShooter(shooterController.calculate(shooterSubsystem.getShooterEncoderVelocity()));
 
-        // if(shooterController.atSetpoint()){
-        //     shooterSubsystem.setFeeder(feederController.calculate(shooterSubsystem.getFeederEncoderVelocity()));
-        // } else {
-        //     shooterSubsystem.setFeeder(0.0);
-        // }
+        if ((shooterSubsystem.getShooterEncoderVelocity() > shooterController.getSetpoint()) && (shooterSubsystem.getShooterEncoderVelocity() < 1e308)) {
+            shooterSubsystem.setFeeder(feederController.calculate(shooterSubsystem.getFeederEncoderVelocity()));
+        } else {
+            shooterSubsystem.setFeeder(0.0);
+        }
+
+        System.out.println(shooterController.getSetpoint());
     }
 
     @Override

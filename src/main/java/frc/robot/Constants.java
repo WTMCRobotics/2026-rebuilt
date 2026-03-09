@@ -5,16 +5,18 @@ import com.pathplanner.lib.path.PathConstraints;
 public class Constants {
     // Shooter
     public static final int SHOOTER_MOTOR_ID = 19;
-    public static final double SHOOTER_SPEED = -0.75;
+    public static final double SHOOTER_SPEED = -1.0;
 
     public static final double SHOOTER_P = 0.02;
     public static final double SHOOTER_I = 0.0;
     public static final double SHOOTER_D = 0.0;
     public static final double SHOOTER_TOLERANCE = 0.4;
+    public static final double RPMLEEVERTHINGYMAJIG = 6000;
     
     // Feeder
     public static final int FEEDER_MOTOR_ID = 8;
-    public static final double FEEDER_SPEED_RPM = 200;
+    public static final double FEEDER_SPEED = -0.25;
+    public static final double FEEDER_SPEED_RPM = 200; // TODO: use when PIDs work
 
     public static final double FEEDER_P = 0.02;
     public static final double FEEDER_I = 0.0;
@@ -26,7 +28,7 @@ public class Constants {
     public static final int INTAKE_EXTENDER_LEFT_ID = 50;
     public static final int INTAKE_EXTENDER_RIGHT_ID = 51;
     
-    public static final double INTAKE_SPEED = -0.75;
+    public static final double INTAKE_SPEED = -1.0;
     public static final double INTAKE_EXTENDER_SPEED = 0.4;
     public static final double INTAKE_LEFT_OVER_BUMP_SPEED = 1.0;
 

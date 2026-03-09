@@ -50,5 +50,9 @@ public class GuitarController extends GenericController {
 	public Trigger startButton() {
 		return this.button(8);
 	}
+
+	public double getLeverAxis() {
+		return this.axis(2);
+	}
 }
 
