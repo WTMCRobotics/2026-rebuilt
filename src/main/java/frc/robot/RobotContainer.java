@@ -169,9 +169,10 @@ public class RobotContainer {
         drivetrain.registerTelemetry(logger::telemeterize);
 
         coDriverController.fretGreen().whileTrue(new Shoot(shooter, drivetrain, coDriverController));
-        coDriverController.fretBlue().whileTrue(new Shoot(shooter, drivetrain, coDriverController));
-        coDriverController.fretRed().whileTrue(new Intake(intake, Constants.INTAKE_SPEED));
-        coDriverController.fretYellow().whileTrue(new Intake(intake, -Constants.INTAKE_SPEED));
+        coDriverController.fretRed().whileTrue(new Shoot(shooter, drivetrain, coDriverController));
+        coDriverController.fretYellow().whileTrue(new Intake(intake, Constants.INTAKE_SPEED));
+        coDriverController.fretBlue().whileTrue(new Intake(intake, -Constants.INTAKE_SPEED));
+
         coDriverController.strumUp().whileTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));
         coDriverController.strumDown().whileTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT));
         coDriverController.strumLeft().onTrue(new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));

@@ -44,39 +44,41 @@ public class Shoot extends Command {
         feederController.setSetpoint(Constants.FEEDER_SPEED_RPM);
     }
 
-    public double lerp(double fromMin, double fromMax, double toMin, double toMax, double value) {
+    public double map(double fromMin, double fromMax, double toMin, double toMax, double value) {
         double fromDelta = fromMax - fromMin;
         double toDelta = toMax - toMin;
         
-        return (value - fromMin) * (fromDelta / toDelta) + toMin;
+        return ((value - fromMin) / fromDelta) * toDelta + toMin;
     }
 
     public void execute() {
         // shooterSubsystem.setShooter(Constants.SHOOTER_SPEED);
         // shooterSubsystem.setFeeder(Constants.FEEDER_SPEED);
         
-        SmartDashboard.putNumber("Shooter Setpoint", shooterController.getSetpoint());
-
-        if (guitar.fretBlue().getAsBoolean()) {
-            shooterController.setSetpoint(lerp(
+        double setpoint;
+        if (guitar.fretRed().getAsBoolean()) {
+            setpoint = -map(
                 0.1, 
                 0.9, 
-                0, 
-                Constants.RPMLEEVERTHINGYMAJIG,
-                guitar.getLeverAxis()));
+                Constants.RPMLEEVERTHINGYMAJIG_MIN,
+                Constants.RPMLEEVERTHINGYMAJIG_MAX,
+                guitar.getLeverAxis());
         } else { 
-            shooterController.setSetpoint(shooterSubsystem.getGoalSpeed(drivetrain.getDistanceFrom(hubX, hubY),drivetrain));
+            setpoint = shooterSubsystem.getGoalSpeed(drivetrain.getDistanceFrom(hubX, hubY));
         }
 
-        shooterSubsystem.setShooter(shooterController.calculate(shooterSubsystem.getShooterEncoderVelocity()));
+        double shooterCalculate = -shooterController.calculate(shooterSubsystem.getShooterEncoderVelocity(), setpoint);
+        SmartDashboard.putNumber("Shooter calculation", shooterCalculate);
 
-        if ((shooterSubsystem.getShooterEncoderVelocity() > shooterController.getSetpoint()) && (shooterSubsystem.getShooterEncoderVelocity() < 1e308)) {
-            shooterSubsystem.setFeeder(feederController.calculate(shooterSubsystem.getFeederEncoderVelocity()));
+        shooterSubsystem.setShooter(shooterCalculate);
+
+        if ((shooterSubsystem.getShooterEncoderVelocity() == shooterController.getSetpoint())) {
+            shooterSubsystem.setFeeder(feederController.calculate(-shooterSubsystem.getFeederEncoderVelocity()));
         } else {
             shooterSubsystem.setFeeder(0.0);
         }
 
-        System.out.println(shooterController.getSetpoint());
+        SmartDashboard.putNumber("Shooter Setpoint", shooterController.getSetpoint());
     }
 
     @Override
@@ -88,5 +90,6 @@ public class Shoot extends Command {
     public void end(boolean interrupted) {
         shooterSubsystem.stopShooter();
         shooterSubsystem.setFeeder(0);
+        shooterController.setSetpoint(0);
     }
 }

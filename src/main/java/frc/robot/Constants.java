@@ -5,13 +5,17 @@ import com.pathplanner.lib.path.PathConstraints;
 public class Constants {
     // Shooter
     public static final int SHOOTER_MOTOR_ID = 19;
-    public static final double SHOOTER_SPEED = -1.0;
 
-    public static final double SHOOTER_P = 0.02;
-    public static final double SHOOTER_I = 0.0;
+    public static final double SHOOTER_P = 0.0025;
+    public static final double SHOOTER_I = 0.001;
     public static final double SHOOTER_D = 0.0;
-    public static final double SHOOTER_TOLERANCE = 20.0;
-    public static final double RPMLEEVERTHINGYMAJIG = 6000;
+    public static final double SHOOTER_TOLERANCE = 2.0;
+
+    public static final double RPMLEEVERTHINGYMAJIG_MIN = 30;
+    public static final double RPMLEEVERTHINGYMAJIG_MAX = 65;
+
+    public static final double SHOOT_ANGLE_RADIANS = Math.toRadians(65);
+    public static final double SHOOTER_RPS_CORRECTION = 1;
     
     // Feeder
     public static final int FEEDER_MOTOR_ID = 8;

@@ -36,7 +36,7 @@ public class Rev extends Command {
         // shooterSubsystem.setShooter(Constants.SHOOTER_SPEED);
         // shooterSubsystem.setFeeder(Constants.FEEDER_MOTOR_FORCE);
 
-        shooterController.setSetpoint(shooterSubsystem.getGoalSpeed(drivetrain.getDistanceFrom(hubX, hubY),drivetrain));
+        shooterController.setSetpoint(shooterSubsystem.getGoalSpeed(drivetrain.getDistanceFrom(hubX, hubY)));
         shooterSubsystem.setShooter(shooterController.calculate(shooterSubsystem.getShooterEncoderVelocity()));
     }
 
