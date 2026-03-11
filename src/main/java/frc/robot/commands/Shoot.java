@@ -1,9 +1,13 @@
 package frc.robot.commands;
 
+import java.lang.constant.Constable;
+import java.util.Optional;
+
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
@@ -17,20 +21,10 @@ public class Shoot extends Command {
     GuitarController guitar;
     double rpm;
 
-    double hubX = (DriverStation.getAlliance().get() == Alliance.Red) ? Constants.HUB_X_BLUE : Constants.HUB_X_RED;
+    double hubX = 0; //(DriverStation.getAlliance().get() == Alliance.Red) ? Constants.HUB_X_RED : Constants.HUB_X_BLUE;
     double hubY = Constants.HUB_Y;
 
-    private final PIDController shooterController = new PIDController(
-        Constants.SHOOTER_P,
-        Constants.SHOOTER_I,
-        Constants.SHOOTER_D
-    );
-
-    private final PIDController feederController = new PIDController(
-        Constants.FEEDER_P,
-        Constants.FEEDER_I,
-        Constants.FEEDER_D
-    );
+    double startTime;
 
     public Shoot(ShooterSubsystem shooterSubsystem, CommandSwerveDrivetrain drivetrain, GuitarController guitar) {
         this.shooterSubsystem = shooterSubsystem;
@@ -39,9 +33,16 @@ public class Shoot extends Command {
     }
 
     public void initialize() {
-        shooterController.setTolerance(Constants.SHOOTER_TOLERANCE);
-        feederController.setTolerance(Constants.FEEDER_TOLERANCE);
-        feederController.setSetpoint(Constants.FEEDER_SPEED_RPM);
+        startTime = Timer.getFPGATimestamp();
+
+        Optional<Alliance> optionalAlliance = DriverStation.getAlliance();
+        if(optionalAlliance.isPresent()) {
+           if(optionalAlliance.get().equals(Alliance.Red)) {
+                hubX = Constants.HUB_X_RED;                
+           } else if(optionalAlliance.get().equals(Alliance.Red)) {
+                hubX = Constants.HUB_X_BLUE;                
+           }
+        }
     }
 
     public double map(double fromMin, double fromMax, double toMin, double toMax, double value) {
@@ -52,33 +53,36 @@ public class Shoot extends Command {
     }
 
     public void execute() {
-        // shooterSubsystem.setShooter(Constants.SHOOTER_SPEED);
-        // shooterSubsystem.setFeeder(Constants.FEEDER_SPEED);
+        double currentTime = Timer.getFPGATimestamp();
+        double speed;
+
+        double hubDistance = drivetrain.getDistanceFrom(hubX, hubY);
         
-        double setpoint;
+
         if (guitar.fretRed().getAsBoolean()) {
-            setpoint = -map(
+            speed = -map(
                 0.1, 
                 0.9, 
                 Constants.RPMLEEVERTHINGYMAJIG_MIN,
                 Constants.RPMLEEVERTHINGYMAJIG_MAX,
                 guitar.getLeverAxis());
         } else { 
-            setpoint = shooterSubsystem.getGoalSpeed(drivetrain.getDistanceFrom(hubX, hubY));
+            speed = shooterSubsystem.getGoalSpeed(hubDistance);
         }
 
-        double shooterCalculate = -shooterController.calculate(shooterSubsystem.getShooterEncoderVelocity(), setpoint);
-        SmartDashboard.putNumber("Shooter calculation", shooterCalculate);
+        SmartDashboard.putNumber("Shooter Setpoint", speed);
+        SmartDashboard.putNumber("Hub Distance", hubDistance);
+        SmartDashboard.putNumber("Hub X", hubX);
+        SmartDashboard.putNumber("Hub Y", hubY);
+        SmartDashboard.putString("Aliance", DriverStation.getAlliance().get().toString());
 
-        shooterSubsystem.setShooter(shooterCalculate);
+        shooterSubsystem.setShooter(speed);
 
-        if ((shooterSubsystem.getShooterEncoderVelocity() == shooterController.getSetpoint())) {
-            shooterSubsystem.setFeeder(feederController.calculate(-shooterSubsystem.getFeederEncoderVelocity()));
+        if (currentTime + Constants.TIME_TO_REV >= startTime) {
+            shooterSubsystem.setFeeder(Constants.FEEDER_SPEED);
         } else {
             shooterSubsystem.setFeeder(0.0);
         }
-
-        SmartDashboard.putNumber("Shooter Setpoint", shooterController.getSetpoint());
     }
 
     @Override
@@ -90,6 +94,5 @@ public class Shoot extends Command {
     public void end(boolean interrupted) {
         shooterSubsystem.stopShooter();
         shooterSubsystem.setFeeder(0);
-        shooterController.setSetpoint(0);
     }
 }
