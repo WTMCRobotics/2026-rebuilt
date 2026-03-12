@@ -351,6 +351,19 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         return Math.sqrt(((robotX - x) * (robotX - x)) + ((robotY - y) * (robotY - y)));
     }
 
+    public double getHubX() {
+        Optional<Alliance> optionalAlliance = DriverStation.getAlliance();
+        if(optionalAlliance.isPresent()) {
+           if(optionalAlliance.get().equals(Alliance.Red)) {
+                return Constants.HUB_X_RED;                
+           } else if(optionalAlliance.get().equals(Alliance.Red)) {
+                return Constants.HUB_X_BLUE;
+           }
+        }
+
+        return 0;
+    }
+
     public Translation2d getRobotPosition() {
         double robotX = getState().Pose.getX();
         double robotY = getState().Pose.getY();
