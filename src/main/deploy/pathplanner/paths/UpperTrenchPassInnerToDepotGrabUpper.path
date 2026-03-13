@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 4.625,
-        "y": 7.25
+        "y": 7.4
       },
       "prevControl": null,
       "nextControl": {
         "x": 3.625,
-        "y": 7.25
+        "y": 7.4
       },
       "isLocked": false,
       "linkedName": "UpperTrenchPassInner"

@@ -35,14 +35,7 @@ public class Shoot extends Command {
     public void initialize() {
         startTime = Timer.getFPGATimestamp();
 
-        Optional<Alliance> optionalAlliance = DriverStation.getAlliance();
-        if(optionalAlliance.isPresent()) {
-           if(optionalAlliance.get().equals(Alliance.Red)) {
-                hubX = Constants.HUB_X_RED;                
-           } else if(optionalAlliance.get().equals(Alliance.Red)) {
-                hubX = Constants.HUB_X_BLUE;                
-           }
-        }
+        hubX = drivetrain.getHubX();
     }
 
     public double map(double fromMin, double fromMax, double toMin, double toMax, double value) {

@@ -11,22 +11,21 @@
           }
         },
         {
-          "type": "deadline",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 1.5
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Rev"
-                }
-              }
-            ]
+            "pathName": "centerFireToLowertrenchPass"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "lowerTrenchPassToUpperTrenchPassInner;grab"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "UpperTrenchPassInnerToCenterFirePoint"
           }
         },
         {

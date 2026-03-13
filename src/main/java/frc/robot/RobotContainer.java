@@ -115,13 +115,11 @@ public class RobotContainer {
     }
 
     private double getRotationRate() {
-        // return -joystick.getRightX() * MaxAngularRate;
-
         if (!controller.x().getAsBoolean()) {
             return -joystick.getRightX() * MaxAngularRate;
         }
 
-        double hubX = (DriverStation.getAlliance().get() == Alliance.Red) ? Constants.HUB_X_BLUE : Constants.HUB_X_RED;
+        double hubX = drivetrain.getHubX();
         double hubY = Constants.HUB_Y;
 
         double targetRotation = drivetrain.getAngleTowards(hubX, hubY).getRadians();

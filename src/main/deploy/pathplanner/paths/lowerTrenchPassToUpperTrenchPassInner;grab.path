@@ -36,12 +36,12 @@
         "y": 6.928761904761904
       },
       "prevControl": {
-        "x": 7.808998056709747,
-        "y": 6.4031459130046615
+        "x": 7.905127179813247,
+        "y": 6.517873878068846
       },
       "nextControl": {
-        "x": 6.730226687163073,
-        "y": 7.513242817960229
+        "x": 6.667891737891737,
+        "y": 7.355498575498576
       },
       "isLocked": false,
       "linkedName": null
@@ -49,28 +49,47 @@
     {
       "anchor": {
         "x": 4.625,
-        "y": 7.25
+        "y": 7.4
       },
       "prevControl": {
-        "x": 6.194237977968107,
-        "y": 7.0550215662942914
+        "x": 6.4611680911680915,
+        "y": 7.226296296296296
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "UpperTrenchPassInner"
     }
   ],
-  "rotationTargets": [],
-  "constraintZones": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1.5799573560767632,
+      "rotationDegrees": 90.0
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 1.6043214044564578,
+      "maxWaypointRelativePos": 3.0,
+      "constraints": {
+        "maxVelocity": 1.0,
+        "maxAcceleration": 3.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
   "pointTowardsZones": [
     {
       "fieldPosition": {
-        "x": 8.0,
-        "y": 90.0
+        "x": 4.6,
+        "y": 4.3
       },
-      "rotationOffset": 0.0,
-      "minWaypointRelativePos": 0.8486352357319908,
-      "maxWaypointRelativePos": 2.129032258064518,
+      "rotationOffset": 180.0,
+      "minWaypointRelativePos": 1.5881161377447668,
+      "maxWaypointRelativePos": 2.406482106684666,
       "name": "Point Towards Zone"
     }
   ],
@@ -84,7 +103,7 @@
     {
       "name": "Intake",
       "waypointRelativePos": 1.1404466501240613,
-      "endWaypointRelativePos": 1.9096774193548454,
+      "endWaypointRelativePos": 2.1228899392302485,
       "command": null
     }
   ],
@@ -97,7 +116,7 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 10.0,
+    "velocity": 2.0,
     "rotation": 90.0
   },
   "reversed": false,

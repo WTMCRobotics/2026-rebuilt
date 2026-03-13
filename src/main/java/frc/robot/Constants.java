@@ -6,26 +6,17 @@ public class Constants {
     // Shooter
     public static final int SHOOTER_MOTOR_ID = 19;
 
-    public static final double SHOOTER_P = 0.0025;
-    public static final double SHOOTER_I = 0.001;
-    public static final double SHOOTER_D = 0.0;
-    public static final double SHOOTER_TOLERANCE = 2.0;
-
-    public static final double RPMLEEVERTHINGYMAJIG_MIN = 30;
-    public static final double RPMLEEVERTHINGYMAJIG_MAX = 65;
+    public static final double RPMLEEVERTHINGYMAJIG_MIN = -1.0;
+    public static final double RPMLEEVERTHINGYMAJIG_MAX = -0.1;
+    public static final double TIME_TO_REV = 0.1;
 
     public static final double SHOOT_ANGLE_RADIANS = Math.toRadians(65);
-    public static final double SHOOTER_RPS_CORRECTION = 1;
+    public static final double SHOOTER_RPS_CORRECTION = 0.05;
+    public static final double AUTON_SHOOTER_SPEED = 0.5;
     
     // Feeder
     public static final int FEEDER_MOTOR_ID = 8;
     public static final double FEEDER_SPEED = -0.25;
-    public static final double FEEDER_SPEED_RPM = 200; // TODO: use when PIDs work
-
-    public static final double FEEDER_P = 0.02;
-    public static final double FEEDER_I = 0.0;
-    public static final double FEEDER_D = 0.0;
-    public static final double FEEDER_TOLERANCE = 0.4;
 
     // Intake
     public static final int INTAKE_MOTOR_ID = 52;
@@ -88,15 +79,17 @@ public class Constants {
     public static final double CAMERA2_Z_ROTATION_RADIANS = 0.0;
 
     // Field Data
-    public static final double FIELD_X_INCHES = 651.2;
-    public static final double FIELD_Y_INCHES = 317.7;
+    public static final double FIELD_X_METERS = 16.5405;
+    public static final double FIELD_Y_METERS = 8.0696;
 
-    public static final double HUB_X_RED = 158.6;
-    public static final double HUB_X_BLUE = FIELD_X_INCHES - 158.6;
-    public static final double HUB_Y = FIELD_Y_INCHES / 2;
+    public static final double HUB_X_RED = FIELD_X_METERS - 4.0284;
+    public static final double HUB_X_BLUE = 4.0284;
+    public static final double HUB_Y = FIELD_Y_METERS / 2;
 
     // Pathfinding
     public static final PathConstraints PATH_CONSTRAINTS = new PathConstraints(1.75, 2, Math.PI * 1.5, Math.PI * 2.5);
-    public static final double HUB_ALIGN_POWER_COEF = 1.14;
+    public static final double HUB_ALIGN_POWER_COEF = 1.2;
+    public static final double HUB_ALIGN_HEIGHT = 0.5;
+    public static final double HUB_ALIGN_DISTANCE = 0.34;
 
 }

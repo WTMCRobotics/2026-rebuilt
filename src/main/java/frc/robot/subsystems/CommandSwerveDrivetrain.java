@@ -354,9 +354,9 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
     public double getHubX() {
         Optional<Alliance> optionalAlliance = DriverStation.getAlliance();
         if(optionalAlliance.isPresent()) {
-           if(optionalAlliance.get().equals(Alliance.Red)) {
+           if(optionalAlliance.get().toString().equals("Red")) {
                 return Constants.HUB_X_RED;                
-           } else if(optionalAlliance.get().equals(Alliance.Red)) {
+           } else if(optionalAlliance.get().toString().equals("Blue")) {
                 return Constants.HUB_X_BLUE;
            }
         }

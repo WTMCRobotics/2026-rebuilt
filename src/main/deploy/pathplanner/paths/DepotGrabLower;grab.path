@@ -3,16 +3,48 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.6,
+        "x": 0.5,
         "y": 4.8
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.6566239316239316,
-        "y": 5.932592592592593
+        "x": 0.5,
+        "y": 5.5
       },
       "isLocked": false,
       "linkedName": "DepotGrabLower"
+    },
+    {
+      "anchor": {
+        "x": 1.0,
+        "y": 4.8
+      },
+      "prevControl": {
+        "x": 0.9746228583232395,
+        "y": 4.551291333724943
+      },
+      "nextControl": {
+        "x": 1.1158101373872855,
+        "y": 5.9349972025060485
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 0.8,
+        "y": 6.8
+      },
+      "prevControl": {
+        "x": 0.9611906679335268,
+        "y": 7.15156162578314
+      },
+      "nextControl": {
+        "x": 0.6388093320664733,
+        "y": 6.44843837421686
+      },
+      "isLocked": false,
+      "linkedName": null
     },
     {
       "anchor": {
@@ -20,15 +52,28 @@
         "y": 7.0
       },
       "prevControl": {
-        "x": 0.6049430199430204,
-        "y": 5.8825925925925935
+        "x": 0.5999999999999996,
+        "y": 6.75
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "DepotGrabLowerEnd"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.29424307036244457,
+      "rotationDegrees": 90.0
+    },
+    {
+      "waypointRelativePos": 0.844349680170581,
+      "rotationDegrees": 180.0
+    },
+    {
+      "waypointRelativePos": 1.9509594882728978,
+      "rotationDegrees": 180.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
@@ -54,13 +99,13 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 4.0,
-    "rotation": 90.0
+    "velocity": 1.0,
+    "rotation": -90.0
   },
   "reversed": false,
   "folder": "ToDepot",
   "idealStartingState": {
-    "velocity": 2.0,
+    "velocity": 0.0,
     "rotation": 90.0
   },
   "useDefaultConstraints": true

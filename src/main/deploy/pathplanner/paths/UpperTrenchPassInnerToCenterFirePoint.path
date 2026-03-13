@@ -4,28 +4,28 @@
     {
       "anchor": {
         "x": 4.625,
-        "y": 7.25
+        "y": 7.4
       },
       "prevControl": null,
       "nextControl": {
         "x": 3.8272140201379674,
-        "y": 7.32891254198727
+        "y": 7.47891254198727
       },
       "isLocked": false,
       "linkedName": "UpperTrenchPassInner"
     },
     {
       "anchor": {
-        "x": 2.8957305194805194,
-        "y": 7.1
+        "x": 2.533418803418803,
+        "y": 6.644886039886041
       },
       "prevControl": {
-        "x": 3.292652461688673,
-        "y": 7.511558706180083
+        "x": 2.930340745626957,
+        "y": 7.056444746066124
       },
       "nextControl": {
-        "x": 2.358474445204187,
-        "y": 6.5429322461074655
+        "x": 1.9961627291424708,
+        "y": 6.087818285993507
       },
       "isLocked": false,
       "linkedName": null
@@ -45,7 +45,21 @@
     }
   ],
   "rotationTargets": [],
-  "constraintZones": [],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0,
+      "maxWaypointRelativePos": 0.8264686022957415,
+      "constraints": {
+        "maxVelocity": 1.0,
+        "maxAcceleration": 3.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
