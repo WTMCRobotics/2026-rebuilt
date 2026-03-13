@@ -3,48 +3,53 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.5,
-        "y": 7.65
+        "x": 4.625,
+        "y": 7.4
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.5,
-        "y": 7.65
+        "x": 4.07913456507882,
+        "y": 7.418930576869258
       },
       "isLocked": false,
-      "linkedName": "TrenchStart1"
+      "linkedName": "UpperTrenchPassInner"
     },
     {
       "anchor": {
-        "x": 2.4392857142857145,
-        "y": 7.25
+        "x": 3.145,
+        "y": 7.252142159598053
       },
       "prevControl": {
-        "x": 3.9455357142857155,
-        "y": 7.3125
+        "x": 3.534186234176824,
+        "y": 7.5493458346886255
       },
       "nextControl": {
-        "x": 0.933035714285714,
-        "y": 7.1875
+        "x": 2.45566088040659,
+        "y": 6.725725493910495
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 0.6,
-        "y": 7.0
+        "x": 3.0,
+        "y": 4.0
       },
       "prevControl": {
-        "x": 1.1141233766233771,
-        "y": 7.583490259740259
+        "x": 2.8846675997598172,
+        "y": 4.929432479029407
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "DepotGrabUpper"
+      "linkedName": "CenterFirePoint"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.5302766393442622,
+      "rotationDegrees": 0.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
@@ -57,14 +62,14 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 3.0,
-    "rotation": -90.0
+    "velocity": 0,
+    "rotation": 180.0
   },
   "reversed": false,
-  "folder": "Fully Outdated and Tests",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

@@ -4,28 +4,28 @@
     {
       "anchor": {
         "x": 4.625,
-        "y": 0.8
+        "y": 0.6359248134068083
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.646655844155844,
-        "y": 0.6190259740259743
+        "x": 4.342572288690976,
+        "y": 0.6808839290629083
       },
       "isLocked": false,
       "linkedName": "LowerTrenchPassInner"
     },
     {
       "anchor": {
-        "x": 2.2773214285714287,
-        "y": 1.7233279220779218
+        "x": 3.145,
+        "y": 0.85
       },
       "prevControl": {
-        "x": 2.3761201298701304,
-        "y": 1.3395216450216458
+        "x": 3.475323042198482,
+        "y": 0.5414305703370883
       },
       "nextControl": {
-        "x": 2.0795424856070515,
-        "y": 2.491645711496887
+        "x": 2.6063597822844136,
+        "y": 1.3531677586516517
       },
       "isLocked": false,
       "linkedName": null
@@ -36,15 +36,24 @@
         "y": 4.0
       },
       "prevControl": {
-        "x": 2.9689664319079125,
-        "y": 3.6943163866199322
+        "x": 3.1272738657938524,
+        "y": 2.1478910397297373
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "CenterFirePoint"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.6025998975409836,
+      "rotationDegrees": 0.0
+    },
+    {
+      "waypointRelativePos": 1.4926229508196724,
+      "rotationDegrees": -90.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
@@ -61,10 +70,10 @@
     "rotation": 180.0
   },
   "reversed": false,
-  "folder": "ToCenterFirePoint",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

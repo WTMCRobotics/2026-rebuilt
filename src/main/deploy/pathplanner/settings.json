@@ -3,10 +3,14 @@
   "robotLength": 0.762,
   "holonomicMode": true,
   "pathFolders": [
+    "Climb",
+    "Fully Outdated and Tests",
+    "HubStart",
     "NeutralZoneUsage",
+    "LowerTrenchStart",
     "ToCenterFirePoint",
-    "ToDepot",
-    "ToOutpost"
+    "ToOutpost",
+    "UpperTrenchStart"
   ],
   "autoFolders": [],
   "defaultMaxVel": 3.001,

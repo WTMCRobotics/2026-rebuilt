@@ -7,25 +7,44 @@
         {
           "type": "path",
           "data": {
-            "pathName": "hubstartToCenterFirePoint;start"
+            "pathName": "reckless;HubStartToUppertrenchPass;Start"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "centerFireToLowertrenchPass;UO,blind"
+            "pathName": "UpperTrenchPassToLowerTrenchPass"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "test;lowerTrenchPassToUpperTrenchPassInner;grab"
+            "pathName": "LowerTrenchPassInnerToOutpost"
           }
         },
         {
-          "type": "path",
+          "type": "wait",
           "data": {
-            "pathName": "UpperTrenchPassInnertoCenterFirePoint"
+            "waitTime": 1.0
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "OutpostToCenterFirePoint"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Rev"
+                }
+              }
+            ]
           }
         },
         {
@@ -35,7 +54,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 5.0
+                  "waitTime": 7.0
                 }
               },
               {

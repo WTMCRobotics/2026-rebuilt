@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 4.625,
-        "y": 0.8
+        "y": 0.6359248134068083
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.440519480519481,
-        "y": 0.7957142857142857
+        "x": 2.910982971191406,
+        "y": 0.692351335797991
       },
       "isLocked": false,
       "linkedName": "LowerTrenchPassInner"
@@ -20,8 +20,8 @@
         "y": 0.7
       },
       "prevControl": {
-        "x": 2.157840909090908,
-        "y": 0.8693344155844158
+        "x": 2.2470322091238835,
+        "y": 0.6365970284598221
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,11 +30,29 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.22463768115942034,
-      "rotationDegrees": -90.0
+      "waypointRelativePos": 0.1,
+      "rotationDegrees": 0.0
+    },
+    {
+      "waypointRelativePos": 0.98,
+      "rotationDegrees": 180.0
     }
   ],
-  "constraintZones": [],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.9,
+      "maxWaypointRelativePos": 1.0,
+      "constraints": {
+        "maxVelocity": 0.9,
+        "maxAcceleration": 3.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -53,7 +71,7 @@
   "folder": "ToOutpost",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

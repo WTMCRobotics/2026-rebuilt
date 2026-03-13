@@ -3,48 +3,37 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.5,
-        "y": 7.65
+        "x": 5.75,
+        "y": 0.6
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.5,
-        "y": 7.65
+        "x": 5.9883267911245435,
+        "y": 0.5244993997886231
       },
       "isLocked": false,
-      "linkedName": "TrenchStart1"
+      "linkedName": "LowerTrenchFireOver"
     },
     {
       "anchor": {
-        "x": 2.4392857142857145,
-        "y": 7.25
+        "x": 0.575,
+        "y": 0.7
       },
       "prevControl": {
-        "x": 3.9455357142857155,
-        "y": 7.3125
-      },
-      "nextControl": {
-        "x": 0.933035714285714,
-        "y": 7.1875
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 0.6,
-        "y": 7.0
-      },
-      "prevControl": {
-        "x": 1.1141233766233771,
-        "y": 7.583490259740259
+        "x": 0.876467791419412,
+        "y": 0.7000000000000002
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "DepotGrabUpper"
+      "linkedName": "outpost"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.45,
+      "rotationDegrees": 0.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
@@ -57,14 +46,14 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 3.0,
-    "rotation": -90.0
+    "velocity": 0,
+    "rotation": 180.0
   },
   "reversed": false,
   "folder": "Fully Outdated and Tests",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

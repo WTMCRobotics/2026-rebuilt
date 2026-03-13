@@ -3,75 +3,67 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.5,
-        "y": 4.8
+        "x": 4.625,
+        "y": 7.6
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.5,
-        "y": 5.5
+        "x": 5.075701894715878,
+        "y": 7.788255582762611
       },
       "isLocked": false,
-      "linkedName": "DepotGrabLower"
+      "linkedName": "UpperTrenchPassReckless"
     },
     {
       "anchor": {
-        "x": 1.0,
-        "y": 4.8
+        "x": 7.25,
+        "y": 7.25
       },
       "prevControl": {
-        "x": 0.9746228583232395,
-        "y": 4.551291333724943
+        "x": 7.099503726156627,
+        "y": 7.4496268307599465
       },
       "nextControl": {
-        "x": 1.1158101373872855,
-        "y": 5.9349972025060485
+        "x": 8.069830159618633,
+        "y": 6.162530574036567
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 0.8,
-        "y": 6.8
+        "x": 7.4172649572649565,
+        "y": 0.9729059829059838
       },
       "prevControl": {
-        "x": 0.9611906679335268,
-        "y": 7.15156162578314
+        "x": 8.056895031879675,
+        "y": 1.2927210202133423
       },
       "nextControl": {
-        "x": 0.6388093320664733,
-        "y": 6.44843837421686
+        "x": 6.6420512820512805,
+        "y": 0.5852991452991465
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 0.6,
-        "y": 7.0
+        "x": 4.625,
+        "y": 0.6359248134068083
       },
       "prevControl": {
-        "x": 0.5999999999999996,
-        "y": 6.75
+        "x": 6.3384552387984865,
+        "y": 0.6874633681840726
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "DepotGrabLowerEnd"
+      "linkedName": "LowerTrenchPassInner"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.29424307036244457,
-      "rotationDegrees": 90.0
-    },
-    {
-      "waypointRelativePos": 0.844349680170581,
-      "rotationDegrees": 180.0
-    },
-    {
-      "waypointRelativePos": 1.9509594882728978,
-      "rotationDegrees": 180.0
+      "waypointRelativePos": 1.7825726141079146,
+      "rotationDegrees": -90.0
     }
   ],
   "constraintZones": [],
@@ -79,14 +71,14 @@
   "eventMarkers": [
     {
       "name": "Deploy Intake",
-      "waypointRelativePos": 0,
+      "waypointRelativePos": 0.7253731343283585,
       "endWaypointRelativePos": null,
       "command": null
     },
     {
       "name": "Intake",
-      "waypointRelativePos": 0.0,
-      "endWaypointRelativePos": 1.0,
+      "waypointRelativePos": 1.1315136476426855,
+      "endWaypointRelativePos": 1.9096774193548454,
       "command": null
     }
   ],
@@ -99,14 +91,14 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 1.0,
-    "rotation": -90.0
+    "velocity": 10.0,
+    "rotation": 0.0
   },
   "reversed": false,
   "folder": "Fully Outdated and Tests",
   "idealStartingState": {
-    "velocity": 0.0,
-    "rotation": 90.0
+    "velocity": 0,
+    "rotation": -90.0
   },
   "useDefaultConstraints": true
 }

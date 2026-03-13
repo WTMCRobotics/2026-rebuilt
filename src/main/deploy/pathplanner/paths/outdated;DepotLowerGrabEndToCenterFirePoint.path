@@ -3,45 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.5,
-        "y": 7.65
-      },
-      "prevControl": null,
-      "nextControl": {
-        "x": 3.5,
-        "y": 7.65
-      },
-      "isLocked": false,
-      "linkedName": "TrenchStart1"
-    },
-    {
-      "anchor": {
-        "x": 2.4392857142857145,
-        "y": 7.25
-      },
-      "prevControl": {
-        "x": 3.9455357142857155,
-        "y": 7.3125
-      },
-      "nextControl": {
-        "x": 0.933035714285714,
-        "y": 7.1875
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
         "x": 0.6,
         "y": 7.0
       },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.0093806983093105,
+        "y": 6.51318641976776
+      },
+      "isLocked": false,
+      "linkedName": "DepotGrabLowerEnd"
+    },
+    {
+      "anchor": {
+        "x": 3.0,
+        "y": 4.0
+      },
       "prevControl": {
-        "x": 1.1141233766233771,
-        "y": 7.583490259740259
+        "x": 2.627872107633322,
+        "y": 4.440388879036024
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "DepotGrabUpper"
+      "linkedName": "CenterFirePoint"
     }
   ],
   "rotationTargets": [],
@@ -57,8 +41,8 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 3.0,
-    "rotation": -90.0
+    "velocity": 0,
+    "rotation": 180.0
   },
   "reversed": false,
   "folder": "Fully Outdated and Tests",
