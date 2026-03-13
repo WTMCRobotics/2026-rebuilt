@@ -3,51 +3,48 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.5,
-        "y": 7.65
+        "x": 0.6,
+        "y": 7.0
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.5,
-        "y": 7.65
+        "x": 0.6000000000000001,
+        "y": 6.0
       },
       "isLocked": false,
-      "linkedName": "TrenchStart1"
-    },
-    {
-      "anchor": {
-        "x": 2.4392857142857145,
-        "y": 7.25
-      },
-      "prevControl": {
-        "x": 3.9455357142857155,
-        "y": 7.3125
-      },
-      "nextControl": {
-        "x": 0.933035714285714,
-        "y": 7.1875
-      },
-      "isLocked": false,
-      "linkedName": null
+      "linkedName": "DepotGrabUpper"
     },
     {
       "anchor": {
         "x": 0.6,
-        "y": 7.0
+        "y": 5.1
       },
       "prevControl": {
-        "x": 1.1141233766233771,
-        "y": 7.583490259740259
+        "x": 0.5999999999999998,
+        "y": 6.2968671485982535
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "DepotGrabUpper"
+      "linkedName": "DepotGrabUpperEnd"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "Deploy Intake",
+      "waypointRelativePos": 0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "Intake",
+      "waypointRelativePos": 0,
+      "endWaypointRelativePos": 1.0,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.001,
     "maxAcceleration": 3.0,
@@ -57,13 +54,13 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 3.0,
+    "velocity": 5.0,
     "rotation": -90.0
   },
   "reversed": false,
   "folder": "Fully Outdated and Tests",
   "idealStartingState": {
-    "velocity": 0,
+    "velocity": 3.0,
     "rotation": -90.0
   },
   "useDefaultConstraints": true

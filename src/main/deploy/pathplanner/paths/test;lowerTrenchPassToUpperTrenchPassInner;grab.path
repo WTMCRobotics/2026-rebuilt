@@ -1,0 +1,129 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 4.6,
+        "y": 0.5
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 5.049045109727015,
+        "y": 0.675912363188269
+      },
+      "isLocked": false,
+      "linkedName": "LowerTrenchPassReckless"
+    },
+    {
+      "anchor": {
+        "x": 7.416988095238095,
+        "y": 1.1304404761904754
+      },
+      "prevControl": {
+        "x": 6.903520941362639,
+        "y": 0.5035228997886101
+      },
+      "nextControl": {
+        "x": 8.013024881122995,
+        "y": 1.8581714214574325
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 7.416988095238095,
+        "y": 6.861031624930246
+      },
+      "prevControl": {
+        "x": 8.041996121936842,
+        "y": 6.478229851076695
+      },
+      "nextControl": {
+        "x": 6.8574283766973565,
+        "y": 7.203747948056177
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 4.625,
+        "y": 7.4
+      },
+      "prevControl": {
+        "x": 6.580486319405692,
+        "y": 7.415727669852121
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "UpperTrenchPassInner"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1.5799573560767632,
+      "rotationDegrees": 90.0
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 1.6043214044564578,
+      "maxWaypointRelativePos": 3.0,
+      "constraints": {
+        "maxVelocity": 1.0,
+        "maxAcceleration": 3.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
+  "pointTowardsZones": [
+    {
+      "fieldPosition": {
+        "x": 4.6,
+        "y": 4.3
+      },
+      "rotationOffset": 180.0,
+      "minWaypointRelativePos": 1.5881161377447668,
+      "maxWaypointRelativePos": 2.406482106684666,
+      "name": "Point Towards Zone"
+    }
+  ],
+  "eventMarkers": [
+    {
+      "name": "Deploy Intake",
+      "waypointRelativePos": 0.9677419354838579,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "Intake",
+      "waypointRelativePos": 1.1404466501240613,
+      "endWaypointRelativePos": 2.1228899392302485,
+      "command": null
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.001,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 2.0,
+    "rotation": 0.0
+  },
+  "reversed": false,
+  "folder": "Fully Outdated and Tests",
+  "idealStartingState": {
+    "velocity": 0.0,
+    "rotation": 90.0
+  },
+  "useDefaultConstraints": true
+}

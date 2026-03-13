@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.5,
-        "y": 7.65
+        "x": 3.6,
+        "y": 4.0
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.5,
-        "y": 7.65
+        "x": 3.429370606576674,
+        "y": 4.318018787835354
       },
       "isLocked": false,
-      "linkedName": "TrenchStart1"
+      "linkedName": "HubStart"
     },
     {
       "anchor": {
-        "x": 2.4392857142857145,
-        "y": 7.25
+        "x": 2.0,
+        "y": 7.0
       },
       "prevControl": {
-        "x": 3.9455357142857155,
-        "y": 7.3125
+        "x": 2.6230326452850625,
+        "y": 6.586219191944094
       },
       "nextControl": {
-        "x": 0.933035714285714,
-        "y": 7.1875
+        "x": 1.5497731143598825,
+        "y": 7.299013616635488
       },
       "isLocked": false,
       "linkedName": null
@@ -36,8 +36,8 @@
         "y": 7.0
       },
       "prevControl": {
-        "x": 1.1141233766233771,
-        "y": 7.583490259740259
+        "x": 0.9816071428571431,
+        "y": 7.127045454545455
       },
       "nextControl": null,
       "isLocked": false,
@@ -57,14 +57,14 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 3.0,
+    "velocity": 0,
     "rotation": -90.0
   },
   "reversed": false,
   "folder": "Fully Outdated and Tests",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 180.0
   },
   "useDefaultConstraints": true
 }

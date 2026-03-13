@@ -3,10 +3,14 @@
   "robotLength": 0.762,
   "holonomicMode": true,
   "pathFolders": [
+    "Climb",
+    "Fully Outdated and Tests",
+    "HubStart",
     "NeutralZoneUsage",
+    "LowerTrenchStart",
     "ToCenterFirePoint",
-    "ToDepot",
-    "ToOutpost"
+    "ToOutpost",
+    "UpperTrenchStart"
   ],
   "autoFolders": [],
   "defaultMaxVel": 3.001,
@@ -22,7 +26,7 @@
   "maxDriveSpeed": 5.45,
   "driveMotorType": "krakenX60",
   "driveCurrentLimit": 60.0,
-  "wheelCOF": 1.2,
+  "wheelCOF": 1.1,
   "flModuleX": 0.22,
   "flModuleY": 0.279,
   "frModuleX": 0.22,
