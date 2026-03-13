@@ -52,15 +52,19 @@ public class Shoot extends Command {
         double hubDistance = drivetrain.getDistanceFrom(hubX, hubY);
         
 
-        if (guitar.fretRed().getAsBoolean()) {
+        if (DriverStation.isAutonomous()) {
+            speed = Constants.AUTON_SHOOTER_SPEED;
+        } else {
+            if (guitar.fretRed().getAsBoolean()) {
             speed = -map(
-                0.1, 
+                    0.1, 
                 0.9, 
-                Constants.RPMLEEVERTHINGYMAJIG_MIN,
+                    Constants.RPMLEEVERTHINGYMAJIG_MIN,
                 Constants.RPMLEEVERTHINGYMAJIG_MAX,
-                guitar.getLeverAxis());
-        } else { 
-            speed = shooterSubsystem.getGoalSpeed(hubDistance);
+                    guitar.getLeverAxis());
+            } else { 
+                speed = shooterSubsystem.getGoalSpeed(hubDistance);
+            }
         }
 
         SmartDashboard.putNumber("Shooter Setpoint", speed);

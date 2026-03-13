@@ -25,6 +25,8 @@ import frc.robot.controller.XboxController;
 import frc.robot.controller.GuitarController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
@@ -92,7 +94,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("Climb" ,new Climb(climb,ClimbDirectionEnum.CLIMB_DIRECTION_UP));
 
         NamedCommands.registerCommand("Intake", new Intake(intake, Constants.INTAKE_SPEED));
-        NamedCommands.registerCommand("Deploy Intake",new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));
+        NamedCommands.registerCommand("Deploy Intake",new ParallelDeadlineGroup(new WaitCommand(1.5),new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND)));
         NamedCommands.registerCommand("Retract Intake",new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT));
 
         NamedCommands.registerCommand("Shoot", new Shoot(shooter, drivetrain, coDriverController));

@@ -12,7 +12,7 @@ public class Constants {
 
     public static final double SHOOT_ANGLE_RADIANS = Math.toRadians(65);
     public static final double SHOOTER_RPS_CORRECTION = 0.05;
-    public static final double AUTON_SHOOTER_SPEED = 0.5;
+    public static final double AUTON_SHOOTER_SPEED = 0.6;
     
     // Feeder
     public static final int FEEDER_MOTOR_ID = 8;
