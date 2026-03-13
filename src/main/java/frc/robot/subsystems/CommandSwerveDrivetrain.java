@@ -22,6 +22,7 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.config.PIDConstants;
 import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
+import com.pathplanner.lib.path.PathConstraints;
 
 import edu.wpi.first.apriltag.AprilTagFieldLayout;
 import edu.wpi.first.apriltag.AprilTagFields;
@@ -509,5 +510,10 @@ private void startSimThread() {
 
     public Orchestra getSqOrchestra() {
         return this.sqOrchestra;
+    }
+
+    public Command pathFindToPose(Pose2d endPose) {
+        PathConstraints constraints = new PathConstraints(1.75, 2, Math.PI * 1.5, Math.PI * 2.5);
+        return AutoBuilder.pathfindToPose(endPose, constraints, 0);
     }
 }

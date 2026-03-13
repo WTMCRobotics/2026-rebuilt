@@ -6,6 +6,8 @@ package frc.robot;
 
 import static edu.wpi.first.units.Units.*;
 
+import java.util.Optional;
+
 import org.littletonrobotics.junction.Logger;
 
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
@@ -13,17 +15,23 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.Mechanism2d;
 import frc.robot.controller.XboxController;
 import frc.robot.controller.GuitarController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
@@ -86,10 +94,9 @@ public class RobotContainer {
         
         drivetrain = TunerConstants.createDrivetrain();
 
-        //NamedCommands.registerCommand("Climb Up", new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
-        //NamedCommands.registerCommand("Climb Down", new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_DOWN));
-
-        // NamedCommands.registerCommand("Climb" ,new Climb(climb,ClimbDirectionEnum.CLIMB_DIRECTION_UP));
+        NamedCommands.registerCommand("Climb", new SequentialCommandGroup(
+            new ParallelDeadlineGroup(new WaitCommand(1.0), new ClimbDirection(climb, 0.2)),
+            new ParallelDeadlineGroup(new WaitCommand(1.0), new ClimbLeft(climb, 0.2), new ClimbRight(climb, -0.2))));
 
         NamedCommands.registerCommand("Intake", new Intake(intake, Constants.INTAKE_SPEED));
         NamedCommands.registerCommand("Deploy Intake",new ParallelDeadlineGroup(new WaitCommand(1.5),new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND)));
@@ -174,12 +181,12 @@ public class RobotContainer {
         coDriverController.strumUp().whileTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));
         coDriverController.strumDown().whileTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT));
 
-        coDriverController.strumLeft().whileTrue(new ClimbDirection(climb, 1.0));
-        coDriverController.strumRight().whileTrue(new ClimbDirection(climb, -1.0));
-        coDriverController.fretGreen().and(coDriverController.lowFretboard()).whileTrue(new ClimbLeft(climb, 1.0));
-        coDriverController.fretRed().and(coDriverController.lowFretboard()).whileTrue(new ClimbLeft(climb, -1.0));
-        coDriverController.fretYellow().and(coDriverController.lowFretboard()).whileTrue(new ClimbRight(climb, -1.0));
-        coDriverController.fretBlue().and(coDriverController.lowFretboard()).whileTrue(new ClimbRight(climb, 1.0));
+        coDriverController.strumLeft().whileTrue(new ClimbDirection(climb, 0.25));
+        coDriverController.strumRight().whileTrue(new ClimbDirection(climb, -0.25));
+        coDriverController.fretGreen().and(coDriverController.lowFretboard()).whileTrue(new ClimbLeft(climb, 0.5));
+        coDriverController.fretRed().and(coDriverController.lowFretboard()).whileTrue(new ClimbLeft(climb, -0.5));
+        coDriverController.fretYellow().and(coDriverController.lowFretboard()).whileTrue(new ClimbRight(climb, -0.5));
+        coDriverController.fretBlue().and(coDriverController.lowFretboard()).whileTrue(new ClimbRight(climb, 0.5));
 
 
         // Orchestra
@@ -204,4 +211,19 @@ public class RobotContainer {
     public Command getAutonomousCommand() {
         return autoChooser.getSelected();
     }
+
+    public Pose2d getClimbSpot() {
+        Pose2d goalSpot = new Pose2d(new Translation2d(0,0), new Rotation2d(0,0));
+    Optional<Alliance> optionalAlliance = DriverStation.getAlliance();
+        if(optionalAlliance.isPresent()) {
+           if(optionalAlliance.get().toString().equals("Red")) {
+                goalSpot = new Pose2d(new Translation2d(0,0), new Rotation2d(0,0));
+           } else if(optionalAlliance.get().toString().equals("Blue")) {
+                goalSpot = new Pose2d(new Translation2d(0,0), new Rotation2d(0,0));
+           }
+        }
+
+        return goalSpot;
+    }
+
 }
