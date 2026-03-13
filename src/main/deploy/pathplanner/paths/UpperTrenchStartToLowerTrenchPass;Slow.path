@@ -102,12 +102,6 @@
       "waypointRelativePos": 0.528358208955224,
       "endWaypointRelativePos": 2.55223880597015,
       "command": null
-    },
-    {
-      "name": "Rev",
-      "waypointRelativePos": 2.086567164179105,
-      "endWaypointRelativePos": 3.0,
-      "command": null
     }
   ],
   "globalConstraints": {
