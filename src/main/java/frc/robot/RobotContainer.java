@@ -35,7 +35,6 @@ import frc.robot.generated.TunerConstants;
 
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.ShooterSubsystem;
-import frc.robot.subsystems.ClimbSubsystem.ClimbDirectionEnum;
 import frc.robot.subsystems.ClimbSubsystem.ClimbSubsystem;
 import frc.robot.subsystems.IntakeSubsystem.IntakeSubsystem;
 import frc.robot.subsystems.IntakeSubsystem.IntakeSubsystemEnum;
@@ -43,7 +42,8 @@ import frc.robot.commands.Shoot;
 import frc.robot.commands.Intake;
 import frc.robot.commands.ResetIntake;
 import frc.robot.commands.SetIntake;
-import frc.robot.commands.Climb;
+import frc.robot.commands.ClimbLeft;
+import frc.robot.commands.ClimbRight;
 import frc.robot.commands.ClimbDirection;
 import frc.robot.commands.Rev;
 
@@ -91,7 +91,7 @@ public class RobotContainer {
         //NamedCommands.registerCommand("Climb Up", new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
         //NamedCommands.registerCommand("Climb Down", new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_DOWN));
 
-        NamedCommands.registerCommand("Climb" ,new Climb(climb,ClimbDirectionEnum.CLIMB_DIRECTION_UP));
+        // NamedCommands.registerCommand("Climb" ,new Climb(climb,ClimbDirectionEnum.CLIMB_DIRECTION_UP));
 
         NamedCommands.registerCommand("Intake", new Intake(intake, Constants.INTAKE_SPEED));
         NamedCommands.registerCommand("Deploy Intake",new ParallelDeadlineGroup(new WaitCommand(1.5),new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND)));
@@ -168,17 +168,20 @@ public class RobotContainer {
 
         drivetrain.registerTelemetry(logger::telemeterize);
 
-        coDriverController.fretGreen().whileTrue(new Shoot(shooter, drivetrain, coDriverController));
-        coDriverController.fretRed().whileTrue(new Shoot(shooter, drivetrain, coDriverController));
-        coDriverController.fretYellow().whileTrue(new Intake(intake, Constants.INTAKE_SPEED));
-        coDriverController.fretBlue().whileTrue(new Intake(intake, -Constants.INTAKE_SPEED));
+        coDriverController.fretGreen().and(coDriverController.highFretboard()).whileTrue(new Shoot(shooter, drivetrain, coDriverController));
+        coDriverController.fretRed().and(coDriverController.highFretboard()).whileTrue(new Shoot(shooter, drivetrain, coDriverController));
+        coDriverController.fretYellow().and(coDriverController.highFretboard()).whileTrue(new Intake(intake, Constants.INTAKE_SPEED));
+        coDriverController.fretBlue().and(coDriverController.highFretboard()).whileTrue(new Intake(intake, -Constants.INTAKE_SPEED));
 
         coDriverController.strumUp().whileTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));
         coDriverController.strumDown().whileTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT));
-        coDriverController.strumLeft().onTrue(new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
-        coDriverController.strumRight().onTrue(new Climb(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
-        coDriverController.startButton().onTrue(new ClimbDirection(climb, ClimbDirectionEnum.CLIMB_DIRECTION_UP));
-        coDriverController.backButton().onTrue(new ClimbDirection(climb, ClimbDirectionEnum.CLIMB_DIRECTION_DOWN));
+
+        coDriverController.strumLeft().whileTrue(new ClimbDirection(climb, 1.0));
+        coDriverController.strumRight().whileTrue(new ClimbDirection(climb, -1.0));
+        coDriverController.fretGreen().and(coDriverController.lowFretboard()).whileTrue(new ClimbLeft(climb, 1.0));
+        coDriverController.fretRed().and(coDriverController.lowFretboard()).whileTrue(new ClimbLeft(climb, -1.0));
+        coDriverController.fretYellow().and(coDriverController.lowFretboard()).whileTrue(new ClimbRight(climb, -1.0));
+        coDriverController.fretBlue().and(coDriverController.lowFretboard()).whileTrue(new ClimbRight(climb, 1.0));
 
 
         // Orchestra

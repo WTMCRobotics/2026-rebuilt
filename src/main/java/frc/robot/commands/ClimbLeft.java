@@ -3,20 +3,20 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ClimbSubsystem.ClimbSubsystem;
 
-public class ClimbDirection extends Command {
+public class ClimbLeft extends Command {
     ClimbSubsystem climbSubsystem;
     double speed;
-   
-    public ClimbDirection(ClimbSubsystem climbSubsystem, double speed) {
+
+    public ClimbLeft(ClimbSubsystem climbSubsystem, double speed) {
         this.climbSubsystem = climbSubsystem;
         this.speed = speed;
     }
-    
+
     public void initialize() {
+        climbSubsystem.setClimbLeft(speed);
     }
 
     public void execute() {
-        climbSubsystem.setClimbAngler(speed);
     }
 
     @Override
@@ -26,6 +26,6 @@ public class ClimbDirection extends Command {
 
     @Override
     public void end(boolean interrupted) {
-        climbSubsystem.setClimbAngler(0);
+        climbSubsystem.setClimbLeft(0);
     }
 }

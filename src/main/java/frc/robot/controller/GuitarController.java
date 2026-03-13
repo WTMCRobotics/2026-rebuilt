@@ -51,6 +51,14 @@ public class GuitarController extends GenericController {
 		return this.button(8);
 	}
 
+	public Trigger lowFretboard() {
+		return this.button(9);
+	}
+
+	public Trigger highFretboard() {
+		return this.button(9).negate();
+	}
+
 	public double getLeverAxis() {
 		return this.axis(2);
 	}

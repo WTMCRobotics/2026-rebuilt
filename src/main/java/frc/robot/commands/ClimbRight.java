@@ -1,21 +1,19 @@
 package frc.robot.commands;
 
-
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.ClimbSubsystem.ClimbDirectionEnum;
 import frc.robot.subsystems.ClimbSubsystem.ClimbSubsystem;
 
-public class Climb extends Command {
+public class ClimbRight extends Command {
     ClimbSubsystem climbSubsystem;
-    ClimbDirectionEnum direction;
+    double speed;
 
-    public Climb(ClimbSubsystem climbSubsystem, ClimbDirectionEnum direction) {
+    public ClimbRight(ClimbSubsystem climbSubsystem, double speed) {
         this.climbSubsystem = climbSubsystem;
-        this.direction = direction;
+        this.speed = speed;
     }
 
     public void initialize() {
-        climbSubsystem.setClimb(direction);
+        climbSubsystem.setClimbRight(speed);
     }
 
     public void execute() {
@@ -23,11 +21,11 @@ public class Climb extends Command {
 
     @Override
     public boolean isFinished() {
-        return climbSubsystem.climbIsAtSetpoint();
+        return false;
     }
 
     @Override
     public void end(boolean interrupted) {
-        climbSubsystem.stopClimb();
+        climbSubsystem.setClimbRight(0);
     }
 }
