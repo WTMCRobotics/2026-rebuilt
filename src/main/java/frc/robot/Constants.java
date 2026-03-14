@@ -66,7 +66,7 @@ public class Constants {
     public static final double CAMERA1_Y_COMPONENT_METERS = 0.0; // Up is + z
     public static final double CAMERA1_Z_COMPONENT_METERS = 0.4445; // Left is + y
     
-    public static final double CAMERA1_Y_ROTATION_RADIANS = 0.2 * Math.PI;
+    public static final double CAMERA1_Y_ROTATION_RADIANS = Math.toRadians(4);
     public static final double CAMERA1_X_ROTATION_RADIANS = 0.0;
     public static final double CAMERA1_Z_ROTATION_RADIANS = Math.PI;
     
