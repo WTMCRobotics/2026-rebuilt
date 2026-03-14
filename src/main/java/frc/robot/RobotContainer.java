@@ -7,6 +7,7 @@ package frc.robot;
 import static edu.wpi.first.units.Units.*;
 
 import java.util.Optional;
+import java.util.Set;
 
 import org.littletonrobotics.junction.Logger;
 
@@ -29,8 +30,10 @@ import frc.robot.controller.XboxController;
 import frc.robot.controller.GuitarController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.DeferredCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
+import edu.wpi.first.wpilibj2.command.ProxyCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -94,9 +97,11 @@ public class RobotContainer {
         
         drivetrain = TunerConstants.createDrivetrain();
 
-        NamedCommands.registerCommand("Climb", new SequentialCommandGroup(
-            new ParallelDeadlineGroup(new WaitCommand(1.0), new ClimbDirection(climb, 0.2)),
-            new ParallelDeadlineGroup(new WaitCommand(1.0), new ClimbLeft(climb, 0.2), new ClimbRight(climb, -0.2))));
+        NamedCommands.registerCommand("Climb", new DeferredCommand(() -> new SequentialCommandGroup(
+                drivetrain.pathFindToPose(getClimbSpot()),
+                new ParallelDeadlineGroup(new WaitCommand(1.0), new ClimbDirection(climb, 0.2)),
+                new ParallelDeadlineGroup(new WaitCommand(1.0), new ClimbLeft(climb, 0.2), new ClimbRight(climb, -0.2))
+            ), Set.of(drivetrain)));
 
         NamedCommands.registerCommand("Intake", new Intake(intake, Constants.INTAKE_SPEED));
         NamedCommands.registerCommand("Deploy Intake",new ParallelDeadlineGroup(new WaitCommand(1.5),new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND)));
