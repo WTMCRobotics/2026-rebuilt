@@ -7,8 +7,8 @@ public class Constants {
     public static final int SHOOTER_MOTOR_ID = 19;
 
     public static final double RPMLEEVERTHINGYMAJIG_MIN = -1.0;
-    public static final double RPMLEEVERTHINGYMAJIG_MAX = -0.1;
-    public static final double TIME_TO_REV = 0.1;
+    public static final double RPMLEEVERTHINGYMAJIG_MAX = -0.4;
+    public static final double TIME_TO_REV = 1.0;
 
     public static final double SHOOT_ANGLE_RADIANS = Math.toRadians(65);
     public static final double SHOOTER_RPS_CORRECTION = 0.05;
