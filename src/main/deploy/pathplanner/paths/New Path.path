@@ -1,0 +1,112 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 4.5,
+        "y": 0.4
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 5.5,
+        "y": 0.40000000000000036
+      },
+      "isLocked": false,
+      "linkedName": "TrenchStart2"
+    },
+    {
+      "anchor": {
+        "x": 8.037435897435897,
+        "y": 1.877321937321939
+      },
+      "prevControl": {
+        "x": 7.383816027089804,
+        "y": 1.1204989295527819
+      },
+      "nextControl": {
+        "x": 8.528404558404558,
+        "y": 2.4458119658119664
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 7.921153846153846,
+        "y": 3.5440313390313403
+      },
+      "prevControl": {
+        "x": 8.602027359587089,
+        "y": 5.385484704907608
+      },
+      "nextControl": {
+        "x": 7.352663817663816,
+        "y": 2.0065242165242183
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 4.625,
+        "y": 0.6359248134068083
+      },
+      "prevControl": {
+        "x": 7.520626780626781,
+        "y": 0.6240598290598303
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "LowerTrenchPassInner"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 2.305135951661624,
+      "rotationDegrees": 90.0
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 2.802011313639214,
+      "maxWaypointRelativePos": 3.0,
+      "constraints": {
+        "maxVelocity": 2.0,
+        "maxAcceleration": 3.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
+  "pointTowardsZones": [],
+  "eventMarkers": [
+    {
+      "name": "Intake",
+      "waypointRelativePos": 0.36580766813324694,
+      "endWaypointRelativePos": 2.711502199874287,
+      "command": null
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.001,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "reversed": false,
+  "folder": "NeutralZoneUsage",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 90.0
+  },
+  "useDefaultConstraints": true
+}

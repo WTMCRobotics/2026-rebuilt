@@ -1,0 +1,148 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 4.5,
+        "y": 0.4
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 4.949045109727015,
+        "y": 0.575912363188269
+      },
+      "isLocked": false,
+      "linkedName": "TrenchStart2"
+    },
+    {
+      "anchor": {
+        "x": 7.416988095238095,
+        "y": 1.1304404761904754
+      },
+      "prevControl": {
+        "x": 6.903520941362639,
+        "y": 0.5035228997886101
+      },
+      "nextControl": {
+        "x": 8.013024881122995,
+        "y": 1.8581714214574325
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 7.298214285714287,
+        "y": 6.928761904761904
+      },
+      "prevControl": {
+        "x": 7.905127179813247,
+        "y": 6.517873878068846
+      },
+      "nextControl": {
+        "x": 6.667891737891737,
+        "y": 7.355498575498576
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 4.625,
+        "y": 7.4
+      },
+      "prevControl": {
+        "x": 6.516151384626116,
+        "y": 7.408372846330915
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "UpperTrenchPassInner"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1.5799573560767632,
+      "rotationDegrees": 90.0
+    },
+    {
+      "waypointRelativePos": 2.4193839651639353,
+      "rotationDegrees": 0.0
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 2.5551950918079087,
+      "maxWaypointRelativePos": 2.65,
+      "constraints": {
+        "maxVelocity": 0.5,
+        "maxAcceleration": 3.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    },
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 2.63868290960452,
+      "maxWaypointRelativePos": 3.0,
+      "constraints": {
+        "maxVelocity": 2.0,
+        "maxAcceleration": 1.2,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    },
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.94800810263334,
+      "maxWaypointRelativePos": 2.4469952734638913,
+      "constraints": {
+        "maxVelocity": 2.0,
+        "maxAcceleration": 3.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
+  "pointTowardsZones": [],
+  "eventMarkers": [
+    {
+      "name": "Deploy Intake",
+      "waypointRelativePos": 0.9677419354838579,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "Intake",
+      "waypointRelativePos": 1.1404466501240613,
+      "endWaypointRelativePos": 2.4632005401755377,
+      "command": null
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.001,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 2.0,
+    "rotation": 0.0
+  },
+  "reversed": false,
+  "folder": "NeutralZoneUsage",
+  "idealStartingState": {
+    "velocity": 0.0,
+    "rotation": 90.0
+  },
+  "useDefaultConstraints": true
+}
