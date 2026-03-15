@@ -16,7 +16,7 @@ public class Constants {
     
     // Feeder
     public static final int FEEDER_MOTOR_ID = 8;
-    public static final double FEEDER_SPEED = -0.25;
+    public static final double FEEDER_SPEED = -0.5;
 
     // Intake
     public static final int INTAKE_MOTOR_ID = 52;

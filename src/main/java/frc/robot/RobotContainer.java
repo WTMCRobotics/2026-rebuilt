@@ -99,13 +99,14 @@ public class RobotContainer {
 
         NamedCommands.registerCommand("Climb", new DeferredCommand(() -> new SequentialCommandGroup(
                 drivetrain.pathFindToPose(getClimbSpot()),
-                new ParallelDeadlineGroup(new WaitCommand(1.0), new ClimbDirection(climb, 0.2)),
-                new ParallelDeadlineGroup(new WaitCommand(1.0), new ClimbLeft(climb, 0.2), new ClimbRight(climb, -0.2))
+                new ParallelDeadlineGroup(new WaitCommand(2.0), new ClimbDirection(climb, 0.2)),
+                new ParallelDeadlineGroup(new WaitCommand(0.5), new ClimbLeft(climb, 0.2), new ClimbRight(climb, -0.2)),
+                new ParallelDeadlineGroup(new WaitCommand(2.0), new ClimbLeft(climb, -0.2), new ClimbRight(climb, 0.2))
             ), Set.of(drivetrain)));
 
         NamedCommands.registerCommand("Intake", new Intake(intake, Constants.INTAKE_SPEED));
-        NamedCommands.registerCommand("Deploy Intake",new ParallelDeadlineGroup(new WaitCommand(1.5),new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND)));
-        NamedCommands.registerCommand("Retract Intake",new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT));
+        NamedCommands.registerCommand("Deploy Intake",new ParallelDeadlineGroup(new WaitCommand(1.5),new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT)));
+        NamedCommands.registerCommand("Retract Intake",new ParallelDeadlineGroup(new WaitCommand(1.5),new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND)));
 
         NamedCommands.registerCommand("Shoot", new Shoot(shooter, drivetrain, coDriverController));
         NamedCommands.registerCommand("Rev", new Rev(shooter, drivetrain));
