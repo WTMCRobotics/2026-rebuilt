@@ -29,6 +29,8 @@ public class Robot extends LoggedRobot {
     int shiftNum;
     double shiftStartStamp;
 
+    Boolean slowmode = false;
+
     /* log and replay timestamp and joystick data */
     private final HootAutoReplay m_timeAndJoystickReplay = new HootAutoReplay()
         .withTimestampReplay()
@@ -82,6 +84,8 @@ public class Robot extends LoggedRobot {
         shiftNum = 0;
         shiftStartStamp = Timer.getFPGATimestamp();
 
+        slowmode = false;
+
     }
 
     @Override
@@ -109,6 +113,10 @@ public class Robot extends LoggedRobot {
     @Override
     public void simulationPeriodic() {
         SimulatedArena.getInstance().simulationPeriodic();
+    }
+
+    public Boolean getSlowmode() {
+        return slowmode;
     }
 
     

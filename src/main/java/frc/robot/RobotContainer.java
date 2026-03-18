@@ -167,10 +167,7 @@ public class RobotContainer {
         drivetrain.setDefaultCommand(
             // Drivetrain will execute this command periodically
             drivetrain.applyRequest(() -> {
-                double driveSpeedCoef = 1;
-                if(controller.b().getAsBoolean()) {
-                    driveSpeedCoef = 0.5;
-                }
+                double driveSpeedCoef = 1 / controller.getLeftTriggerAxis();
 
                 return drive.withVelocityX(-Math.pow(joystick.getLeftY() * MaxSpeed, 2) * Math.signum(joystick.getLeftY()) * driveSpeedCoef) // Drive forward with negative Y (forward)
                     .withVelocityY(-Math.pow(joystick.getLeftX() * MaxSpeed, 2) * Math.signum(joystick.getLeftX()) * driveSpeedCoef) // Drive left with negative X (left)
