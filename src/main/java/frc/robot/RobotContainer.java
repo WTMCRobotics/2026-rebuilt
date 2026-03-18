@@ -128,17 +128,33 @@ public class RobotContainer {
     }
 
     private double getRotationRate() {
+        double motorPower = 0;
         if (!controller.x().getAsBoolean()) {
-            return -joystick.getRightX() * MaxAngularRate;
+            motorPower = -joystick.getRightX() * MaxAngularRate;
+        } else {
+            
+            final double L = 1.0;
+            final double K = 1.0;
+
+            double hubX = drivetrain.getHubX();
+            double hubY = Constants.HUB_Y;
+
+            double targetRotation = drivetrain.getAngleTowards(hubX, hubY).getRadians();
+            double currentRotation = -drivetrain.getRotation3d().getZ();
+            double relativeRotation = currentRotation - targetRotation;
+            motorPower = L * Math.copySign(Math.pow(Math.abs(relativeRotation), 1 / K), relativeRotation) * Constants.HUB_ALIGN_POWER_COEF;
+
+            SmartDashboard.putNumber("L", L);
+            SmartDashboard.putNumber("K", K);
+            SmartDashboard.putNumber("HubX", hubX);
+            SmartDashboard.putNumber("HubY", hubY);
+            SmartDashboard.putNumber("targetrotation", targetRotation);
+            SmartDashboard.putNumber("currentRotation", currentRotation);
+            SmartDashboard.putNumber("relativerotation", relativeRotation);
         }
 
-        double hubX = drivetrain.getHubX();
-        double hubY = Constants.HUB_Y;
-
-        double targetRotation = drivetrain.getAngleTowards(hubX, hubY).getRadians();
-        double currentRotation = drivetrain.getRotation3d().getZ();
-        double relativeRotation = currentRotation - targetRotation;
-        double motorPower = Math.sqrt(Math.abs(relativeRotation)) * -Math.signum(relativeRotation) * Constants.HUB_ALIGN_POWER_COEF;
+        
+        SmartDashboard.putNumber("Motor Power", motorPower);
 
         return motorPower;
     }

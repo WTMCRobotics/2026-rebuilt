@@ -3,6 +3,9 @@ package frc.robot;
 import com.pathplanner.lib.path.PathConstraints;
 
 public class Constants {
+    // Earth
+    public static final double GRAVITAS = 9.80665;
+
     // Shooter
     public static final int SHOOTER_MOTOR_ID = 19;
 
@@ -13,6 +16,8 @@ public class Constants {
     public static final double SHOOT_ANGLE_RADIANS = Math.toRadians(65);
     public static final double SHOOTER_RPS_CORRECTION = 0.05;
     public static final double AUTON_SHOOTER_SPEED = 0.6;
+
+    public static final double SHOOTER_DIAMETER = 5.0 / 39.37; 
     
     // Feeder
     public static final int FEEDER_MOTOR_ID = 8;
@@ -85,6 +90,8 @@ public class Constants {
     public static final double HUB_X_RED = FIELD_X_METERS - 4.0284;
     public static final double HUB_X_BLUE = 4.0284;
     public static final double HUB_Y = FIELD_Y_METERS / 2;
+
+    public static final double HUB_HEIGHT = 1.8288;
 
     // Pathfinding
     public static final PathConstraints PATH_CONSTRAINTS = new PathConstraints(1.75, 2, Math.PI * 1.5, Math.PI * 2.5);

@@ -66,17 +66,15 @@ public class ShooterSubsystem extends SubsystemBase {
     }
 
     public double MetersToRPS(double metersPerSecond) {
-        return metersPerSecond / 2 / Math.PI;
+        return metersPerSecond / (Constants.SHOOTER_DIAMETER * Math.PI);
     }
 
     public double getGoalSpeed(double distance) { // TODO: Find the formula to convert motorspeed(RPM) to Meters per second && include air resistance calulations
-        final double GRAVITAS = 9.80665;
-        final double HUB_HEIGHT = 1.8288;
         // double airResistance = 0;
         // Translation2d position = drivetrain.getRobotPosition();
         // double velocityInMeters = (distance * Math.sqrt(2*GRAVITAS))/(2* Math.cos(65) * Math.sqrt(distance * Math.tan(65) - HUB_HEIGHT));
         
-        double vel = distance * Math.sqrt(2*GRAVITAS)/(2*Math.cos(Constants.SHOOT_ANGLE_RADIANS) * Math.sqrt(distance) * Math.tan(Constants.SHOOT_ANGLE_RADIANS) - HUB_HEIGHT);
+        double vel = (distance * Math.sqrt(2*Constants.GRAVITAS))/(2*Math.cos(Constants.SHOOT_ANGLE_RADIANS) * Math.sqrt(distance * Math.tan(Constants.SHOOT_ANGLE_RADIANS) - Constants.HUB_HEIGHT));
         vel = MetersToRPS(vel) * Constants.SHOOTER_RPS_CORRECTION;
 
         return vel;
