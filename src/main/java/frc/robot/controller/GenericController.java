@@ -40,4 +40,8 @@ public class GenericController {
     protected int dpad(int id) {
         return this.internalHID.getHID().getPOV(id);
     }
+
+    public CommandGenericHID getHID() {
+        return this.internalHID;
+    }
 }

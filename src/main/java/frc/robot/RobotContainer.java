@@ -8,6 +8,7 @@ import static edu.wpi.first.units.Units.*;
 
 import java.util.Optional;
 import java.util.Set;
+import java.util.ResourceBundle.Control;
 
 import org.littletonrobotics.junction.Logger;
 
@@ -24,6 +25,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.Mechanism2d;
 import frc.robot.controller.XboxController;
@@ -164,11 +166,16 @@ public class RobotContainer {
         // and Y is defined as to the left according to WPILib convention.
         drivetrain.setDefaultCommand(
             // Drivetrain will execute this command periodically
-            drivetrain.applyRequest(() ->
-                drive.withVelocityX(-Math.pow(joystick.getLeftY() * MaxSpeed, 2) * Math.signum(joystick.getLeftY())) // Drive forward with negative Y (forward)
-                    .withVelocityY(-Math.pow(joystick.getLeftX() * MaxSpeed, 2) * Math.signum(joystick.getLeftX())) // Drive left with negative X (left)
-                    .withRotationalRate(getRotationRate()) // Drive counterclockwise with negative X (left)
-            )
+            drivetrain.applyRequest(() -> {
+                double driveSpeedCoef = 1;
+                if(controller.b().getAsBoolean()) {
+                    driveSpeedCoef = 0.5;
+                }
+
+                return drive.withVelocityX(-Math.pow(joystick.getLeftY() * MaxSpeed, 2) * Math.signum(joystick.getLeftY()) * driveSpeedCoef) // Drive forward with negative Y (forward)
+                    .withVelocityY(-Math.pow(joystick.getLeftX() * MaxSpeed, 2) * Math.signum(joystick.getLeftX()) * driveSpeedCoef) // Drive left with negative X (left)
+                    .withRotationalRate(getRotationRate() * driveSpeedCoef); // Drive counterclockwise with negative X (left)
+            })
         );
         
         // Idle while the robot is disabled. This ensures the configured
@@ -199,6 +206,11 @@ public class RobotContainer {
         coDriverController.fretRed().and(coDriverController.highFretboard()).whileTrue(new Shoot(shooter, drivetrain, coDriverController));
         coDriverController.fretYellow().and(coDriverController.highFretboard()).whileTrue(new Intake(intake, Constants.INTAKE_SPEED));
         coDriverController.fretBlue().and(coDriverController.highFretboard()).whileTrue(new Intake(intake, -Constants.INTAKE_SPEED));
+
+        controller.y().whileFalse(Commands.runOnce(() -> {
+            controller.getHID().setRumble(GenericHID.RumbleType.kRightRumble, 1.0);
+        }));
+ 
 
         coDriverController.strumUp().whileTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));
         coDriverController.strumDown().whileTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT));
