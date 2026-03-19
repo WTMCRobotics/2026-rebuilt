@@ -131,7 +131,7 @@ public class RobotContainer {
 
     private double getRotationRate() {
         double motorPower = 0;
-        if (!controller.x().getAsBoolean()) {
+        if (!controller.b().getAsBoolean()) {
             motorPower = -joystick.getRightX() * MaxAngularRate;
         } else {
             

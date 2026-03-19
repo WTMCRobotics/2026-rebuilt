@@ -33,12 +33,15 @@ public class IntakeSubsystemTests {
     @Test
     void testResetLeftEncoder() {
         intakeSubsystem.setEncoderPosition(12.0);
+        intakeSubsystem.resetLeftEncoder();
         assertEquals(0.0, intakeSubsystem.getEncoderLeftPosition(), DELTA);
+        
     }
 
     @Test
     void testResetRightEncoder() {
         intakeSubsystem.setEncoderPosition(12.0);
+         intakeSubsystem.resetRightEncoder();
         assertEquals(0.0, intakeSubsystem.getEncoderRightPosition(), DELTA);
     }
     @Test

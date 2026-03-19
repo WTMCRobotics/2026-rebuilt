@@ -13,11 +13,16 @@ public class Constants {
     public static final double RPMLEEVERTHINGYMAJIG_MAX = -0.4;
     public static final double TIME_TO_REV = 1.0;
 
+    public static final double SHOOTER_P = 0.05;
+    public static final double SHOOTER_I = 0.0;
+    public static final double SHOOTER_D = 0.0;
+
     public static final double SHOOT_ANGLE_RADIANS = Math.toRadians(65);
     public static final double SHOOTER_RPS_CORRECTION = 0.05;
     public static final double AUTON_SHOOTER_SPEED = 0.6;
 
     public static final double SHOOTER_DIAMETER = 5.0 / 39.37; 
+    public static final double SHOOTER_TOLERANCE = 3.0; 
     
     // Feeder
     public static final int FEEDER_MOTOR_ID = 8;

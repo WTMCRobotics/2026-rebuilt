@@ -69,8 +69,7 @@ public class ShooterSubsystem extends SubsystemBase {
         return metersPerSecond / (Constants.SHOOTER_DIAMETER * Math.PI);
     }
 
-    public double getGoalSpeed(double distance) { // TODO: Find the formula to convert motorspeed(RPM) to Meters per second && include air resistance calulations
-        // double airResistance = 0;
+    public double getGoalSpeed(double distance) {
         // Translation2d position = drivetrain.getRobotPosition();
         // double velocityInMeters = (distance * Math.sqrt(2*GRAVITAS))/(2* Math.cos(65) * Math.sqrt(distance * Math.tan(65) - HUB_HEIGHT));
         
