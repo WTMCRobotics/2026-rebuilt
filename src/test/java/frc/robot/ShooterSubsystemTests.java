@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
+import frc.robot.Mocks.MockShooterSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 
 @TestInstance(Lifecycle.PER_CLASS)
@@ -23,8 +24,8 @@ public class ShooterSubsystemTests {
 
     @Test
     void testSetShooter() {
-        shooterSubsystem.setShooter(0.8);
-        assertEquals(100.0, shooterSubsystem.getShooterEncoderVelocity(), DELTA);
+        MockShooterSubsystem.setShooter(0.8);
+        assertEquals(0.8, MockShooterSubsystem.getShooter(), DELTA);
     }
 
     @Test

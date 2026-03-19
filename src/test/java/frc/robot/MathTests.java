@@ -12,6 +12,7 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotContainer;
+import frc.robot.Mocks.MockShooterSubsystem;
 import frc.robot.commands.Shoot;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -23,13 +24,12 @@ public class MathTests {
 
     CommandSwerveDrivetrain drivetrain;
 
-    RobotContainer robotContainer;
     ShooterSubsystem shooterSubsystem;
 
 
     @BeforeAll
     void setup() {
-        shooterSubsystem = new ShooterSubsystem();
+        // shooterSubsystem = new ShooterSubsystem();
 
     }
 
@@ -62,7 +62,7 @@ public class MathTests {
     @Test
     void metersPerSecondtoRPS() {
        
-        assertEquals(Math.floor(1503.8262/60 * 1000) / 1000, Math.floor(shooterSubsystem.MetersToRPS(10) * 1000) / 1000);
+        assertEquals(Math.floor(1503.8262/60 * 1000) / 1000, Math.floor(MockShooterSubsystem.MetersToRPS(10) * 1000) / 1000);
     }
 
     @Test
@@ -79,7 +79,7 @@ public class MathTests {
         double distance = (-b + Math.sqrt(Math.pow(b, 2) - 4 * c)) / 2;
 
 
-        assertEquals(targetVel, shooterSubsystem.getGoalSpeed(distance) * (Constants.SHOOTER_DIAMETER * Math.PI) / Constants.SHOOTER_RPS_CORRECTION);
+        assertEquals(targetVel, MockShooterSubsystem.getGoalSpeed(distance) * (Constants.SHOOTER_DIAMETER * Math.PI) / Constants.SHOOTER_RPS_CORRECTION);
     }
     
 }

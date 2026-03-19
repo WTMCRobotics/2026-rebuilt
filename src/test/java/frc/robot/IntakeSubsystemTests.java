@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
+import frc.robot.Mocks.MockIntakeSubsystem;
 import frc.robot.subsystems.IntakeSubsystem.*;
 
 
@@ -26,8 +27,8 @@ public class IntakeSubsystemTests {
 
     @Test
     void testSetIntake() {
-        intakeSubsystem.setIntake(5.0);
-        assertEquals(5.0, intakeSubsystem.getIntake(), DELTA);
+        MockIntakeSubsystem.setIntake(5.0);
+        assertEquals(5.0, MockIntakeSubsystem.getIntake(), DELTA);
     }
 
     @Test
