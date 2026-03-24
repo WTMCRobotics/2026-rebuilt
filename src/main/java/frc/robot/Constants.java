@@ -13,8 +13,8 @@ public class Constants {
     public static final double RPMLEEVERTHINGYMAJIG_MAX = -0.4;
     public static final double TIME_TO_REV = 1.0;
 
-    public static final double SHOOTER_P = 0.05;
-    public static final double SHOOTER_I = 0.0;
+    public static final double SHOOTER_P = 0.5;
+    public static final double SHOOTER_I = 0.1;
     public static final double SHOOTER_D = 0.0;
 
     public static final double SHOOT_ANGLE_RADIANS = Math.toRadians(65);
@@ -44,6 +44,9 @@ public class Constants {
     public static final int CLIMB_DIRECTION_ID = 60;
     public static final int CLIMB_RIGHT_ID = 61;
     public static final int CLIMB_LEFT_ID = 62;
+
+    public static final double CLIMB_SPEED = 0.5;
+    public static final double CLIMB_ANGLE_SPEED = 0.25;
 
     public static final double CLIMB_DIRECTION_UP_P = 0.02;
     public static final double CLIMB_DIRECTION_UP_I = 0.0;

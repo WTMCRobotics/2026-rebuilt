@@ -96,6 +96,7 @@ public class RobotContainer {
     public RobotContainer() {
         shooter = new ShooterSubsystem();
         intake = new IntakeSubsystem();
+        climb = new ClimbSubsystem();
         
         drivetrain = TunerConstants.createDrivetrain();
 
@@ -212,12 +213,12 @@ public class RobotContainer {
         coDriverController.strumUp().whileTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_EXTEND));
         coDriverController.strumDown().whileTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT));
 
-        coDriverController.strumLeft().whileTrue(new ClimbDirection(climb, 0.25));
-        coDriverController.strumRight().whileTrue(new ClimbDirection(climb, -0.25));
-        coDriverController.fretGreen().and(coDriverController.lowFretboard()).whileTrue(new ClimbLeft(climb, 0.5));
-        coDriverController.fretRed().and(coDriverController.lowFretboard()).whileTrue(new ClimbLeft(climb, -0.5));
-        coDriverController.fretYellow().and(coDriverController.lowFretboard()).whileTrue(new ClimbRight(climb, -0.5));
-        coDriverController.fretBlue().and(coDriverController.lowFretboard()).whileTrue(new ClimbRight(climb, 0.5));
+        coDriverController.strumLeft().whileTrue(new ClimbDirection(climb, Constants.CLIMB_ANGLE_SPEED));
+        coDriverController.strumRight().whileTrue(new ClimbDirection(climb, -Constants.CLIMB_ANGLE_SPEED));
+        coDriverController.fretGreen().and(coDriverController.lowFretboard()).whileTrue(new ClimbLeft(climb, -Constants.CLIMB_SPEED));
+        coDriverController.fretRed().and(coDriverController.lowFretboard()).whileTrue(new ClimbLeft(climb, Constants.CLIMB_SPEED));
+        coDriverController.fretYellow().and(coDriverController.lowFretboard()).whileTrue(new ClimbRight(climb, Constants.CLIMB_SPEED));
+        coDriverController.fretBlue().and(coDriverController.lowFretboard()).whileTrue(new ClimbRight(climb, -Constants.CLIMB_SPEED));
 
 
         // Orchestra
