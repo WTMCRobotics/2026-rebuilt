@@ -5,6 +5,8 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.SparkMax;
 import com.ctre.phoenix6.hardware.TalonFX;
 
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -25,8 +27,14 @@ public class ShooterSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("Feeder velocity", getFeederEncoderVelocity());
     }
 
+    public double getShooterMotorVoltage() {
+        return RobotController.getBatteryVoltage();
+    }
+
     public void setShooter(double speed) {
-        shooter.set(speed);
+        double adjusted_speed = speed * (12 / getShooterMotorVoltage());
+        SmartDashboard.putNumber("Shooter set speed", adjusted_speed);
+        shooter.set(adjusted_speed);
     }
 
     public void stopShooter(){

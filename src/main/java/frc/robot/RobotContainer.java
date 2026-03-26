@@ -121,9 +121,7 @@ public class RobotContainer {
         SmartDashboard.putData("Field", m_field);
         SmartDashboard.putData("Mech", m_mech);
         SmartDashboard.putData("Reset Intake", new ResetIntake(intake));
-
-
-
+        
         Logger.recordOutput("MyPose", poseA);
     }
     public int updateFieldOdometry() {

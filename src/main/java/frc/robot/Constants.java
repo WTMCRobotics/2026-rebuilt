@@ -9,11 +9,11 @@ public class Constants {
     // Shooter
     public static final int SHOOTER_MOTOR_ID = 19;
 
-    public static final double RPMLEEVERTHINGYMAJIG_MIN = -1.0;
-    public static final double RPMLEEVERTHINGYMAJIG_MAX = -0.4;
+    public static final double RPMLEEVERTHINGYMAJIG_MIN = 1.0;
+    public static final double RPMLEEVERTHINGYMAJIG_MAX = 0.4;
     public static final double TIME_TO_REV = 1.0;
 
-    public static final double SHOOTER_P = 0.5;
+    public static final double SHOOTER_P = 0.0001;
     public static final double SHOOTER_I = 0.1;
     public static final double SHOOTER_D = 0.0;
 
@@ -33,7 +33,7 @@ public class Constants {
     public static final int INTAKE_EXTENDER_LEFT_ID = 50;
     public static final int INTAKE_EXTENDER_RIGHT_ID = 51;
     
-    public static final double INTAKE_SPEED = -1.0;
+    public static final double INTAKE_SPEED = -0.6;
     public static final double INTAKE_EXTENDER_SPEED = 0.4;
     public static final double INTAKE_LEFT_OVER_BUMP_SPEED = 1.0;
 
