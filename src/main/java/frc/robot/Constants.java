@@ -45,8 +45,9 @@ public class Constants {
     public static final int CLIMB_RIGHT_ID = 61;
     public static final int CLIMB_LEFT_ID = 62;
 
-    public static final double CLIMB_SPEED = 0.5;
-    public static final double CLIMB_ANGLE_SPEED = 0.25;
+    public static final double CLIMB_SPEED = 1.0;
+    public static final double CLIMB_ANGLE_SPEED = 0.40;
+    public static final double CLIMB_ANGLE_SPEED_DOWN = 0.25;
 
     public static final double CLIMB_DIRECTION_UP_P = 0.02;
     public static final double CLIMB_DIRECTION_UP_I = 0.0;

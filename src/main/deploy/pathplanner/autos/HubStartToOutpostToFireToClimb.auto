@@ -7,7 +7,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "UpperTrenchStartToLowerTrenchPass"
+            "pathName": "HubstartToOutpost;start"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Deploy Intake"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.0
           }
         },
         {
@@ -23,7 +35,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "lowerTrenchPassInnertocenterfire"
+                  "pathName": "OutpostToCenterFirePoint"
                 }
               }
             ]
@@ -42,7 +54,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 7.0
+                  "waitTime": 9.0
                 }
               }
             ]

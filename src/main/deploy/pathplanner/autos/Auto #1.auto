@@ -13,7 +13,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 3.0
+            "waitTime": 2.0
           }
         },
         {
@@ -49,56 +49,6 @@
                 "type": "named",
                 "data": {
                   "name": "Shoot"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "reckless;centerFiretoUpperTrenchPass"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "UpperTrenchPassToLowerTrenchPass"
-          }
-        },
-        {
-          "type": "deadline",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "lowerTrenchPassInnertocenterfire"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Rev"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Shoot"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 5.0
                 }
               }
             ]

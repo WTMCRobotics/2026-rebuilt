@@ -42,7 +42,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 12.0
+                  "waitTime": 7.0
                 }
               },
               {
@@ -52,6 +52,12 @@
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "CenterFirePointToClimb;Climb"
           }
         }
       ]

@@ -35,6 +35,7 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.DeferredCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
+import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
 import edu.wpi.first.wpilibj2.command.ProxyCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
@@ -47,6 +48,7 @@ import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.ClimbSubsystem.ClimbSubsystem;
+import frc.robot.subsystems.ClimbSubsystem.ClimbSwitch;
 import frc.robot.subsystems.IntakeSubsystem.IntakeSubsystem;
 import frc.robot.subsystems.IntakeSubsystem.IntakeSubsystemEnum;
 import frc.robot.commands.Shoot;
@@ -101,7 +103,7 @@ public class RobotContainer {
         drivetrain = TunerConstants.createDrivetrain();
 
         NamedCommands.registerCommand("Climb", new DeferredCommand(() -> new SequentialCommandGroup(
-                drivetrain.pathFindToPose(getClimbSpot()),
+                new ParallelRaceGroup(drivetrain.pathFindToPose(getClimbSpot()), new ClimbSwitch(climb)),
                 new ParallelDeadlineGroup(new WaitCommand(2.0), new ClimbDirection(climb, 0.2)),
                 new ParallelDeadlineGroup(new WaitCommand(0.5), new ClimbLeft(climb, 0.2), new ClimbRight(climb, -0.2)),
                 new ParallelDeadlineGroup(new WaitCommand(2.0), new ClimbLeft(climb, -0.2), new ClimbRight(climb, 0.2))
@@ -129,35 +131,36 @@ public class RobotContainer {
     }
 
     private double getRotationRate() {
-        double motorPower = 0;
-        if (!controller.b().getAsBoolean()) {
-            motorPower = -joystick.getRightX() * MaxAngularRate;
-        } else {
+        return -joystick.getRightX() * MaxAngularRate;
+        // double motorPower = 0;
+        // if (!controller.b().getAsBoolean()) {
+        //     motorPower = -joystick.getRightX() * MaxAngularRate;
+        // } else {
             
-            final double L = 1.0;
-            final double K = 1.0;
+        //     final double L = 1.0;
+        //     final double K = 1.0;
 
-            double hubX = drivetrain.getHubX();
-            double hubY = Constants.HUB_Y;
+        //     double hubX = drivetrain.getHubX();
+        //     double hubY = Constants.HUB_Y;
 
-            double targetRotation = drivetrain.getAngleTowards(hubX, hubY).getRadians();
-            double currentRotation = -drivetrain.getRotation3d().getZ();
-            double relativeRotation = currentRotation - targetRotation;
-            motorPower = L * Math.copySign(Math.pow(Math.abs(relativeRotation), 1 / K), relativeRotation) * Constants.HUB_ALIGN_POWER_COEF;
+        //     double targetRotation = drivetrain.getAngleTowards(hubX, hubY).getRadians();
+        //     double currentRotation = -drivetrain.getRotation3d().getZ();
+        //     double relativeRotation = currentRotation - targetRotation;
+        //     motorPower = L * Math.copySign(Math.pow(Math.abs(relativeRotation), 1 / K), relativeRotation) * Constants.HUB_ALIGN_POWER_COEF;
 
-            SmartDashboard.putNumber("L", L);
-            SmartDashboard.putNumber("K", K);
-            SmartDashboard.putNumber("HubX", hubX);
-            SmartDashboard.putNumber("HubY", hubY);
-            SmartDashboard.putNumber("targetrotation", targetRotation);
-            SmartDashboard.putNumber("currentRotation", currentRotation);
-            SmartDashboard.putNumber("relativerotation", relativeRotation);
-        }
+        //     SmartDashboard.putNumber("L", L);
+        //     SmartDashboard.putNumber("K", K);
+        //     SmartDashboard.putNumber("HubX", hubX);
+        //     SmartDashboard.putNumber("HubY", hubY);
+        //     SmartDashboard.putNumber("targetrotation", targetRotation);
+        //     SmartDashboard.putNumber("currentRotation", currentRotation);
+        //     SmartDashboard.putNumber("relativerotation", relativeRotation);
+        // }
 
         
-        SmartDashboard.putNumber("Motor Power", motorPower);
+        // SmartDashboard.putNumber("Motor Power", motorPower);
 
-        return motorPower;
+        // return motorPower;
     }
 
     private void configureBindings() {
@@ -212,7 +215,7 @@ public class RobotContainer {
         coDriverController.strumDown().whileTrue(new SetIntake(intake, IntakeSubsystemEnum.INTAKE_RETRACT));
 
         coDriverController.strumLeft().whileTrue(new ClimbDirection(climb, Constants.CLIMB_ANGLE_SPEED));
-        coDriverController.strumRight().whileTrue(new ClimbDirection(climb, -Constants.CLIMB_ANGLE_SPEED));
+        coDriverController.strumRight().whileTrue(new ClimbDirection(climb, -Constants.CLIMB_ANGLE_SPEED_DOWN));
         coDriverController.fretGreen().and(coDriverController.lowFretboard()).whileTrue(new ClimbLeft(climb, -Constants.CLIMB_SPEED));
         coDriverController.fretRed().and(coDriverController.lowFretboard()).whileTrue(new ClimbLeft(climb, Constants.CLIMB_SPEED));
         coDriverController.fretYellow().and(coDriverController.lowFretboard()).whileTrue(new ClimbRight(climb, Constants.CLIMB_SPEED));

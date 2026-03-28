@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.RobotContainer;
 
 public class ShooterSubsystem extends SubsystemBase {
     TalonFX shooter = new TalonFX(Constants.SHOOTER_MOTOR_ID);
@@ -27,12 +28,12 @@ public class ShooterSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("Feeder velocity", getFeederEncoderVelocity());
     }
 
-    public double getShooterMotorVoltage() {
+    public double getBatteryVoltage() {
         return RobotController.getBatteryVoltage();
     }
 
     public void setShooter(double speed) {
-        double adjusted_speed = speed * (12 / getShooterMotorVoltage());
+        double adjusted_speed = speed * (12.4 / getBatteryVoltage());
         SmartDashboard.putNumber("Shooter set speed", adjusted_speed);
         shooter.set(adjusted_speed);
     }

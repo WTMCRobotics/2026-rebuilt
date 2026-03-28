@@ -5,59 +5,59 @@
     "data": {
       "commands": [
         {
-          "type": "path",
-          "data": {
-            "pathName": "HubstartToOutpost;start"
-          }
-        },
-        {
           "type": "named",
           "data": {
             "name": "Deploy Intake"
           }
         },
         {
-          "type": "wait",
+          "type": "path",
           "data": {
-            "waitTime": 4.0
+            "pathName": "upper New Path"
           }
         },
         {
-          "type": "sequential",
+          "type": "deadline",
           "data": {
             "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "UpperTrenchPassInnertoCenterFirePoint"
+                }
+              },
               {
                 "type": "named",
                 "data": {
                   "name": "Rev"
                 }
+              }
+            ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 7.0
+                }
               },
               {
-                "type": "path",
+                "type": "named",
                 "data": {
-                  "pathName": "OutpostToCenterFirePoint"
+                  "name": "Shoot"
                 }
               }
             ]
           }
         },
         {
-          "type": "sequential",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Shoot"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 10.0
-                }
-              }
-            ]
+            "pathName": "CenterFirePointToClimb;Climb"
           }
         }
       ]

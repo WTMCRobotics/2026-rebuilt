@@ -62,7 +62,7 @@ public class Shoot extends Command {
 
         SmartDashboard.putNumber("Shooter Setpoint", goal_speed);
         SmartDashboard.putNumber("Hub Distance", hubDistance);
-        SmartDashboard.putNumber("Shooter motor voltage", shooterSubsystem.getShooterMotorVoltage());
+        SmartDashboard.putNumber("Shooter motor voltage", shooterSubsystem.getBatteryVoltage());
         SmartDashboard.putNumber("Hub X", hubX);
         SmartDashboard.putNumber("Hub Y", hubY);
         SmartDashboard.putString("Aliance", DriverStation.getAlliance().get().toString());
