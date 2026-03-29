@@ -9,8 +9,8 @@ public class Constants {
     // Shooter
     public static final int SHOOTER_MOTOR_ID = 19;
 
-    public static final double RPMLEEVERTHINGYMAJIG_MIN = 1.0;
-    public static final double RPMLEEVERTHINGYMAJIG_MAX = 0.4;
+    public static final double RPMLEEVERTHINGYMAJIG_MIN = 0.8;
+    public static final double RPMLEEVERTHINGYMAJIG_MAX = 0.5;
     public static final double TIME_TO_REV = 1.0;
 
     public static final double SHOOTER_P = 0.0001;
@@ -27,13 +27,15 @@ public class Constants {
     // Feeder
     public static final int FEEDER_MOTOR_ID = 8;
     public static final double FEEDER_SPEED = -0.5;
+    public static final double FEEDER_BACK_SPEED = 0.5;
+
 
     // Intake
     public static final int INTAKE_MOTOR_ID = 52;
     public static final int INTAKE_EXTENDER_LEFT_ID = 50;
     public static final int INTAKE_EXTENDER_RIGHT_ID = 51;
     
-    public static final double INTAKE_SPEED = -0.6;
+    public static final double INTAKE_SPEED = -0.8;
     public static final double INTAKE_EXTENDER_SPEED = 0.4;
     public static final double INTAKE_LEFT_OVER_BUMP_SPEED = 1.0;
 
@@ -47,7 +49,7 @@ public class Constants {
 
     public static final double CLIMB_SPEED = 1.0;
     public static final double CLIMB_ANGLE_SPEED = 0.40;
-    public static final double CLIMB_ANGLE_SPEED_DOWN = 0.25;
+    public static final double CLIMB_ANGLE_SPEED_DOWN = 0.4; //0.25;
 
     public static final double CLIMB_DIRECTION_UP_P = 0.02;
     public static final double CLIMB_DIRECTION_UP_I = 0.0;

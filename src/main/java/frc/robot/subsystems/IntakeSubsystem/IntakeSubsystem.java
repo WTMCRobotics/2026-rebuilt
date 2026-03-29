@@ -28,10 +28,13 @@ public class IntakeSubsystem extends SubsystemBase {
         SmartDashboard.putBoolean("Left Intake Forward Limit", leftForwardLimitSwitchHit());
         SmartDashboard.putBoolean("Left Intake Reverse Limit", leftReverseLimitSwitchHit());
 
-        if(leftReverseLimitSwitchHit()) {}
+        if(leftReverseLimitSwitchHit()) {
             resetLeftEncoder();
-        if(rightReverseLimitSwitchHit())
+        }
+        
+        if(rightReverseLimitSwitchHit()) {
             resetRightEncoder();
+        }
     }
 
     public void setIntake(double speed) {

@@ -13,7 +13,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "New Path"
+            "pathName": "upper New Path"
           }
         },
         {
@@ -23,7 +23,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "lowerTrenchPassInnertocenterfire"
+                  "pathName": "UpperTrenchPassInnertoCenterFirePoint"
                 }
               },
               {
@@ -42,7 +42,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 14.0
+                  "waitTime": 16.0
                 }
               },
               {

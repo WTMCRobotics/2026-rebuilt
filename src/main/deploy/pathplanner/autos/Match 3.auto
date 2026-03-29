@@ -5,25 +5,13 @@
     "data": {
       "commands": [
         {
-          "type": "named",
-          "data": {
-            "name": "Deploy Intake"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "upper New Path"
-          }
-        },
-        {
           "type": "deadline",
           "data": {
             "commands": [
               {
                 "type": "path",
                 "data": {
-                  "pathName": "UpperTrenchPassInnertoCenterFirePoint"
+                  "pathName": "UpperTrenchStartToCenterFirePoint"
                 }
               },
               {
@@ -42,7 +30,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 7.0
+                  "waitTime": 10.0
                 }
               },
               {
@@ -57,7 +45,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "CenterFirePointToClimb;Climb"
+            "pathName": "reckless;centerFiretoUpperTrenchPass"
           }
         }
       ]

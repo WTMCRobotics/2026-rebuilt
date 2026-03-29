@@ -11,8 +11,8 @@ public class Rev extends Command {
     ShooterSubsystem shooterSubsystem;
     CommandSwerveDrivetrain drivetrain;
 
-    double hubX = (DriverStation.getAlliance().get() == Alliance.Red) ? Constants.HUB_X_BLUE : Constants.HUB_X_RED;
-    double hubY = Constants.HUB_Y;
+    // double hubX = (DriverStation.getAlliance().get() == Alliance.Red) ? Constants.HUB_X_BLUE : Constants.HUB_X_RED;
+    // double hubY = Constants.HUB_Y;
 
     public Rev (ShooterSubsystem shooterSubsystem,CommandSwerveDrivetrain drivetrain) {
         this.shooterSubsystem = shooterSubsystem;

@@ -57,6 +57,7 @@ import frc.robot.commands.ResetIntake;
 import frc.robot.commands.SetIntake;
 import frc.robot.commands.ClimbLeft;
 import frc.robot.commands.ClimbRight;
+import frc.robot.commands.FeederBack;
 import frc.robot.commands.ClimbDirection;
 import frc.robot.commands.Rev;
 
@@ -129,38 +130,37 @@ public class RobotContainer {
     public int updateFieldOdometry() {
         return 1;
     }
-
+    
     private double getRotationRate() {
-        return -joystick.getRightX() * MaxAngularRate;
-        // double motorPower = 0;
-        // if (!controller.b().getAsBoolean()) {
-        //     motorPower = -joystick.getRightX() * MaxAngularRate;
-        // } else {
+        double motorPower = 0;
+        if (!controller.b().getAsBoolean()) {
+            motorPower = -joystick.getRightX() * MaxAngularRate;
+        } else {
             
-        //     final double L = 1.0;
-        //     final double K = 1.0;
+            final double L = 1.0;
+            final double K = 1.0;
 
-        //     double hubX = drivetrain.getHubX();
-        //     double hubY = Constants.HUB_Y;
+            double hubX = drivetrain.getHubX();
+            double hubY = Constants.HUB_Y;
 
-        //     double targetRotation = drivetrain.getAngleTowards(hubX, hubY).getRadians();
-        //     double currentRotation = -drivetrain.getRotation3d().getZ();
-        //     double relativeRotation = currentRotation - targetRotation;
-        //     motorPower = L * Math.copySign(Math.pow(Math.abs(relativeRotation), 1 / K), relativeRotation) * Constants.HUB_ALIGN_POWER_COEF;
+            double targetRotation = drivetrain.getAngleTowards(hubX, hubY).getRadians();
+            double currentRotation = -drivetrain.getRotation3d().getZ();
+            double relativeRotation = currentRotation - targetRotation;
+            motorPower = L * Math.copySign(Math.pow(Math.abs(relativeRotation), 1 / K), relativeRotation) * Constants.HUB_ALIGN_POWER_COEF;
 
-        //     SmartDashboard.putNumber("L", L);
-        //     SmartDashboard.putNumber("K", K);
-        //     SmartDashboard.putNumber("HubX", hubX);
-        //     SmartDashboard.putNumber("HubY", hubY);
-        //     SmartDashboard.putNumber("targetrotation", targetRotation);
-        //     SmartDashboard.putNumber("currentRotation", currentRotation);
-        //     SmartDashboard.putNumber("relativerotation", relativeRotation);
-        // }
+            SmartDashboard.putNumber("L", L);
+            SmartDashboard.putNumber("K", K);
+            SmartDashboard.putNumber("HubX", hubX);
+            SmartDashboard.putNumber("HubY", hubY);
+            SmartDashboard.putNumber("targetrotation", targetRotation);
+            SmartDashboard.putNumber("currentRotation", currentRotation);
+            SmartDashboard.putNumber("relativerotation", relativeRotation);
+        }
 
         
-        // SmartDashboard.putNumber("Motor Power", motorPower);
+        SmartDashboard.putNumber("Motor Power", motorPower);
 
-        // return motorPower;
+        return motorPower;
     }
 
     private void configureBindings() {
@@ -169,10 +169,10 @@ public class RobotContainer {
         drivetrain.setDefaultCommand(
             // Drivetrain will execute this command periodically
             drivetrain.applyRequest(() -> {
-                double driveSpeedCoef = 1 / controller.getLeftTriggerAxis();
+                double driveSpeedCoef = map(0, 1, 1, 0.3, controller.getRightTriggerAxis());
 
-                return drive.withVelocityX(-Math.pow(joystick.getLeftY() * MaxSpeed, 2) * Math.signum(joystick.getLeftY()) * driveSpeedCoef) // Drive forward with negative Y (forward)
-                    .withVelocityY(-Math.pow(joystick.getLeftX() * MaxSpeed, 2) * Math.signum(joystick.getLeftX()) * driveSpeedCoef) // Drive left with negative X (left)
+                return drive.withVelocityX(-Math.pow(joystick.getLeftY(), 2) * MaxSpeed * Math.signum(joystick.getLeftY()) * driveSpeedCoef) // Drive forward with negative Y (forward)
+                    .withVelocityY(-Math.pow(joystick.getLeftX(), 2) * MaxSpeed * Math.signum(joystick.getLeftX()) * driveSpeedCoef) // Drive left with negative X (left)
                     .withRotationalRate(getRotationRate() * driveSpeedCoef); // Drive counterclockwise with negative X (left)
             })
         );
@@ -220,6 +220,8 @@ public class RobotContainer {
         coDriverController.fretRed().and(coDriverController.lowFretboard()).whileTrue(new ClimbLeft(climb, Constants.CLIMB_SPEED));
         coDriverController.fretYellow().and(coDriverController.lowFretboard()).whileTrue(new ClimbRight(climb, Constants.CLIMB_SPEED));
         coDriverController.fretBlue().and(coDriverController.lowFretboard()).whileTrue(new ClimbRight(climb, -Constants.CLIMB_SPEED));
+        coDriverController.fretOrange().and(coDriverController.highFretboard()).whileTrue(new FeederBack(shooter));
+
 
 
         // Orchestra
@@ -239,6 +241,13 @@ public class RobotContainer {
             )
         );
         
+    }
+
+    public double map(double fromMin, double fromMax, double toMin, double toMax, double value) {
+        double fromDelta = fromMax - fromMin;
+        double toDelta = toMax - toMin;
+        
+        return ((value - fromMin) / fromDelta) * toDelta + toMin;
     }
 
     public Command getAutonomousCommand() {
